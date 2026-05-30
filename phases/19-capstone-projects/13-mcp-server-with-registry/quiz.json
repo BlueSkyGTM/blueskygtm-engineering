@@ -1,6 +1,6 @@
 {
   "lesson": "13-mcp-server-with-registry",
-  "title": "Capstone 13 \u00e2\u20ac\u201d MCP Server with Registry and Governance",
+  "title": "Capstone 13 — MCP Server with Registry and Governance",
   "questions": [
     {
       "stage": "pre",
@@ -12,7 +12,7 @@
         "Mutual TLS without scopes"
       ],
       "correct": 0,
-      "explanation": ""
+      "explanation": "OAuth 2.1 tokens carry per-tool scopes like `jira:read`, `s3:list`, and `postgres:query:readonly`, which the MCP server checks at tool-call time rather than just at session start."
     },
     {
       "stage": "check",
@@ -24,7 +24,7 @@
         "Exposes the tool manifest, transport URL, and auth requirements so the registry can validate and index the server"
       ],
       "correct": 3,
-      "explanation": ""
+      "explanation": "The .well-known/mcp-capabilities document exposes the tool manifest, transport URL, and auth requirements for service discovery and client auto-configuration."
     },
     {
       "stage": "check",
@@ -36,7 +36,7 @@
         "They require a different programming language"
       ],
       "correct": 2,
-      "explanation": ""
+      "explanation": "The registry stores tool definitions with versioned schemas, enabling clients to discover available tools, understand their parameters, and fetch compatible versions."
     },
     {
       "stage": "check",
@@ -48,7 +48,7 @@
         "Whether the caller's scopes permit invocation, plus PII redaction and payload caps"
       ],
       "correct": 3,
-      "explanation": ""
+      "explanation": "Governance uses OPA policies to enforce rules: rate limits per tool, allowed operations (read-only vs read-write), and access control based on user roles and scopes."
     },
     {
       "stage": "post",
@@ -60,7 +60,7 @@
         "Adding a second replica and showing the load balancer redistributing without session stickiness"
       ],
       "correct": 3,
-      "explanation": ""
+      "explanation": "The capstone measures registration accuracy (correctness of tool schemas), governance enforcement effectiveness (percentage of policy violations blocked), and service discovery reliability."
     },
     {
       "stage": "post",
@@ -72,7 +72,7 @@
         "PII improves search performance"
       ],
       "correct": 1,
-      "explanation": ""
+      "explanation": "Security is ensured by TLS encryption for all communications, signed JWTs for OAuth tokens, and regular security audits of the OPA policy bundle."
     }
   ]
 }
