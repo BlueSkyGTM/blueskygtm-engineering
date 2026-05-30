@@ -1,6 +1,6 @@
 {
   "lesson": "10-multi-agent-software-team",
-  "title": "Capstone 10 \u00e2\u20ac\u201d Multi-Agent Software Engineering Team",
+  "title": "Capstone 10 — Multi-Agent Software Engineering Team",
   "questions": [
     {
       "stage": "pre",
@@ -12,7 +12,7 @@
         "Force-merging branches when coders disagree"
       ],
       "correct": 1,
-      "explanation": ""
+      "explanation": "Role specialization assigns specific capabilities to agents: Planner (breaks down tasks), Critic (reviews code), Executor (implements changes), and Verifier (tests and validates results)."
     },
     {
       "stage": "check",
@@ -24,7 +24,7 @@
         "The architect requires worktree IDs"
       ],
       "correct": 2,
-      "explanation": ""
+      "explanation": "Task decomposition uses hierarchical planning to split high-level requirements into atomic subtasks with clear dependencies and success criteria for each agent."
     },
     {
       "stage": "check",
@@ -36,7 +36,7 @@
         "It must be the same model as the architect"
       ],
       "correct": 1,
-      "explanation": ""
+      "explanation": "Communication protocols define how agents share information: shared state objects for plan status, message passing for handoffs, and consensus mechanisms for decisions."
     },
     {
       "stage": "check",
@@ -48,7 +48,7 @@
         "Token cost is unrelated to performance"
       ],
       "correct": 1,
-      "explanation": ""
+      "explanation": "Coordination patterns include sequential workflows (agents work in series), parallel swarms (agents work on independent subtasks), and debate topologies (agents propose and critique solutions)."
     },
     {
       "stage": "post",
@@ -60,7 +60,7 @@
         "A handoff-failure histogram identifying which role boundary broke (plan, merge, review, test)"
       ],
       "correct": 3,
-      "explanation": ""
+      "explanation": "The capstone measures task completion rate (percentage of requirements fully implemented), coordination overhead (time spent on agent communication vs actual work), and role effectiveness (contribution of each agent type)."
     },
     {
       "stage": "post",
@@ -72,7 +72,7 @@
         "MigrationBench"
       ],
       "correct": 0,
-      "explanation": ""
+      "explanation": "Failure mode analysis identifies bottlenecks (slow agent responses), deadlocks (circular dependencies), and miscommunication (ambiguous handoffs) with remediation strategies."
     }
   ]
 }
