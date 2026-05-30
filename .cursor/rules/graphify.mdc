@@ -1,11 +1,28 @@
 ---
-description: graphify knowledge graph context
+description: graphify knowledge graph — agent routines (Consultant + Cline)
 alwaysApply: true
 ---
 
-This project has a graphify knowledge graph at graphify-out/.
+Local graph at graphify-out/ (gitignored). Regenerate: py -3.12 -m graphify update .
 
-- For codebase or architecture questions, when `graphify-out/graph.json` exists, first run `graphify query "<question>"` (or `graphify path "<A>" "<B>"` / `graphify explain "<concept>"`). These return a scoped subgraph, usually much smaller than `GRAPH_REPORT.md` or raw grep output.
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context
-- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
+## Consultant / Otto (read-only)
+
+- When graphify-out/graph.json exists, before broad repo search:
+  py -3.12 -m graphify query "<narrow question>"
+  py -3.12 -m graphify path "<A>" "<B>"
+  py -3.12 -m graphify explain "<node>"
+- Narrow queries (e.g. site/progress.js export import). Prefer path/explain when paths are known.
+- Never read graph.json into context.
+- GRAPH_REPORT.md: read only ## God Nodes, ## Surprising Connections, ## Suggested Questions, and the short header (Corpus/Summary/Freshness). Skip ## Community Hubs and ## Communities entirely.
+- Do not run graphify update.
+
+## Cline (implementer)
+
+- After edits under site/ or phases/: py -3.12 -m graphify update .
+- Use query/path/explain when reviewing PRs.
+
+## Do not
+
+- Run graphify site on the only graph (replaces full curriculum graph with site-only).
+- Commit graphify-out/.
+- Use Obsidian or --wiki for this project unless user explicitly requests later.

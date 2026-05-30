@@ -71,6 +71,10 @@ Consultant reviews and advises; Cline implements. When asked to review
 Cline's work, Consultant reads the file state and gives honest analysis.
 Direct the user to Cline for implementation changes.
 
-User may label turns: `Otto:` / `Navigator:` / `Consultant:` for review,
-`Cline:` for implement. When context is clear ("approve step 1" vs
-"implement step 1"), follow the matching permissions.
+  User may label turns: `Otto:` / `Navigator:` / `Consultant:` for review,
+  `Cline:` for implement. When context is clear ("approve step 1" vs
+  "implement step 1"), follow the matching permissions.
+
+  When exploring repo structure, never load graph.json; use py -3.12 -m graphify query (or path/explain) first. Skip Community Hubs in GRAPH_REPORT.md.
+
+  When handing off to Cline, deliver the full task brief in one copy-paste code block.

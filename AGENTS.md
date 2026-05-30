@@ -27,16 +27,19 @@ permissions as Navigator.
 
 Handoff: Otto advises → user approves → Cline implements.
 
----
-
 ## Graphify (local)
 
-- Requires Python 3.12 or 3.13: `py -3.12 -m pip install graphifyy`
-- Rebuild after code changes: `py -3.12 -m graphify update .`
-- Query: `py -3.12 -m graphify query "..."` (see `.cursor/rules/graphify.mdc`)
-- Outputs live in `graphify-out/` (entire directory is gitignored).
-- `graph.json` is local-only (gitignored); regenerate with `py -3.12 -m graphify update .`
-- Full-repo graph is too large for `graph.html` (limit 5000 nodes). Query CLI, open `GRAPH_REPORT.md`, or use `py -3.12 -m graphify site` for a smaller scoped build.
+- Python 3.12+: `py -3.12 -m pip install graphifyy`
+- Rebuild after code changes: `py -3.12 -m graphify update .` (Cline only)
+- Query: `py -3.12 -m graphify query "..."` (Consultant/Otto and Cline)
+- Outputs in `graphify-out/` (gitignored). `graph.json` is machine-only — never open for reading.
+- `GRAPH_REPORT.md`: optional skim of God Nodes / Surprising / Suggested Questions only; skip Community Hubs and Communities.
+- Full-repo graph is too large for `graph.html`. Do not run `graphify site` unless intentionally replacing the full graph.
+- No Obsidian/wiki workflow for this repo unless user revisits later.
+
+## Handoffs between agents
+
+When Consultant/Otto writes instructions for Cline or another implementer, put the entire handoff in one fenced code block (```text) so the user copy-pastes once. Include goal, done vs left, files, acceptance criteria, commit message, out-of-scope. Do not split across multiple blocks.
 
 ---
 
