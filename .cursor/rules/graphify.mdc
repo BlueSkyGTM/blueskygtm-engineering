@@ -15,10 +15,16 @@ Local graph at graphify-out/ (gitignored). Regenerate: py -3.12 -m graphify upda
 - Never read graph.json into context.
 - GRAPH_REPORT.md: read only ## God Nodes, ## Surprising Connections, ## Suggested Questions, and the short header (Corpus/Summary/Freshness). Skip ## Community Hubs and ## Communities entirely.
 - Do not run graphify update.
+- May run `python3 scripts/check_graphify_freshness.py` (no `--strict`) to
+  report staleness; must not run `graphify update`.
 
 ## Cline (implementer)
 
-- After edits under site/ or phases/: py -3.12 -m graphify update .
+- After edits under `site/` or `phases/`:
+  1. `py -3.12 -m graphify update .`
+  2. `python3 scripts/check_graphify_freshness.py --strict` (must exit 0)
+- If the session only changed README, ROADMAP, glossary, or quiz.json (no
+  `phases/**/code/` and no `site/`), skip both steps unless the user asks.
 - Use query/path/explain when reviewing PRs.
 
 ## Do not
@@ -26,3 +32,4 @@ Local graph at graphify-out/ (gitignored). Regenerate: py -3.12 -m graphify upda
 - Run graphify site on the only graph (replaces full curriculum graph with site-only).
 - Commit graphify-out/.
 - Use Obsidian or --wiki for this project unless user explicitly requests later.
+- Do not add CI, pre-commit hooks, or commit `graphify-out/` for freshness.
