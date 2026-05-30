@@ -40,15 +40,15 @@
     },
     {
       "stage": "check",
-      "question": "Which of the following is a correct implementation detail?",
+      "question": "How does the scheduler produce follow-up hypotheses for high-yield results?",
       "options": [
-        "Option A (placeholder)",
-        "Option B (placeholder)",
-        "Option C (placeholder)",
-        "Option D (placeholder)"
+        "The scheduler appends the result's payload to the same hypothesis and re-queues it",
+        "The user-supplied expander function maps Result to list[Hypothesis]; follow-ups are added to the queue",
+        "The scheduler calls the experiment runner again with the same parameters",
+        "Follow-ups are automatically generated from the result's metadata"
       ],
-      "correct": 0,
-      "explanation": ""
+      "correct": 1,
+      "explanation": "The expander is a pure function from Result to list[Hypothesis]. When a high-yield result lands, the scheduler calls the expander and the follow-up hypotheses are added to the queue for later scheduling."
     },
     {
       "stage": "post",
