@@ -47,7 +47,7 @@
         "Interleaving SWA and global layers gives each global layer a larger effective receptive field (via the preceding SWA layers) while keeping KV cache near O(W) for most layers",
         "Global layers read full-attention outputs but write to the SWA cache only, so no extra memory is used while long-range tokens are cached"
       ],
-      "correct": 3,
+      "correct": 2,
       "explanation": "In a 5:1 mix, five cheap SWA layers compress local context, then one global layer reads the full prefix to capture long-range dependencies. Because only 1-in-6 layers pays the O(N) KV cost, average cache size stays near O(W). The SWA layers also extend the receptive field for the global layer via the residual stream. Gemma 3 shows this is the 2026 textbook default for context >32K."
     },
     {
