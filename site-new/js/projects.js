@@ -35,15 +35,16 @@
     : `${shippedCount} of ${allCapstones.length} shipped`;
 
   const tiles = allCapstones.map(({ ph, l, i, done }) => {
-    const chTag  = `Ch. ${String(ph.id).padStart(2, '0')}`;
-    const foot   = el('div', { class: 'proj__foot' }, [
+    const chTag = `Ch. ${String(ph.id).padStart(2, '0')}`;
+    const foot  = el('div', { class: 'proj__foot' }, [
       el('span', { class: 'proj__tag' }, chTag),
+      l.type === 'Capstone' ? el('span', { class: 'proj__tag proj__tag--capstone' }, 'Capstone') : null,
       done && l.url
         ? el('a',    { class: 'proj__link', href: l.url, target: '_blank', rel: 'noopener' }, 'View ↗')
         : done
           ? el('span', { class: 'proj__st is-shipped' }, 'Shipped')
           : el('a',    { class: 'proj__link proj__link--locked', href: 'course.html' }, '[ locked ] — Go to Course')
-    ]);
+    ].filter(Boolean));
 
     return el('div', { class: 'proj ' + (done ? 'is-shipped' : 'is-locked') }, [
       el('div', { class: 'proj__body' }, [

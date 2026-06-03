@@ -247,6 +247,7 @@
 .proj__desc { font-size: 0.72rem; color: var(--cream); line-height: 1.45; flex: 1; }
 .proj__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); margin-top: var(--s3); }
 .proj__tag { font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-mute); }
+.proj__tag--capstone { color: var(--gold); border: 1px solid var(--gold); padding: 1px 5px; }
 .proj__st { font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 7px; border: 1px solid var(--line); color: var(--cream-dim); white-space: nowrap; }
 .proj.is-shipped .proj__st { color: var(--gold); border-color: var(--gold); }
 .proj.is-open .proj__st { color: var(--terra); border-color: var(--terra-deep); }
