@@ -15,18 +15,6 @@
       "explanation": "BLEU and F1 are sensitive to tokenisation. Binding the tokenizer to the metric makes scores reproducible and lets you point at the rule."
     },
     {
-      "stage": "pre",
-      "question": "What does modified n-gram precision do that plain n-gram precision does not?",
-      "options": [
-        "It uses a different log base",
-        "It clips each candidate n-gram count by the maximum count seen in any reference",
-        "It runs faster than plain precision",
-        "It returns a value in 0 to 100 instead of 0 to 1"
-      ],
-      "correct": 1,
-      "explanation": "Clipping by the reference cap stops a candidate from inflating its score by repeating a high-precision word over and over."
-    },
-    {
       "stage": "check",
       "question": "Why does BLEU use a brevity penalty?",
       "options": [
@@ -73,6 +61,18 @@
       ],
       "correct": 0,
       "explanation": "metric_name is the contract. A summary task can use rouge_l on one record and bleu_4 on another; the dispatcher does not need to care."
+    },
+    {
+      "stage": "post",
+      "question": "What does modified n-gram precision do that plain n-gram precision does not?",
+      "options": [
+        "It uses a different log base",
+        "It clips each candidate n-gram count by the maximum count seen in any reference",
+        "It runs faster than plain precision",
+        "It returns a value in 0 to 100 instead of 0 to 1"
+      ],
+      "correct": 1,
+      "explanation": "Clipping by the reference cap stops a candidate from inflating its score by repeating a high-precision word over and over."
     }
   ]
 }
