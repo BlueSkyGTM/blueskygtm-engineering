@@ -15,18 +15,6 @@
       "explanation": "N proposers, R rounds, cross-critique, convergence is the canonical Du et al. debate."
     },
     {
-      "stage": "pre",
-      "question": "Why does cross-model debate (e.g. ChatGPT + Bard) outperform single-model debate?",
-      "options": [
-        "Different vendors negotiate prices",
-        "Heterogeneity reduces shared blind spots so cross-critique catches more errors",
-        "It is cheaper",
-        "Vendors share weights"
-      ],
-      "correct": 1,
-      "explanation": "Mixing models brings independent error distributions, which raises the ceiling of debate."
-    },
-    {
       "stage": "check",
       "question": "What is the main token-cost win of a sparse topology over full mesh?",
       "options": [
