@@ -3,761 +3,370 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fleet Engine — AI GTM Intelligence Pipeline | BlueSkyGTM</title>
+<title>Fleet Engine — Three Versions. One Problem.</title>
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fleet Engine — AI GTM Intelligence Pipeline | BlueSkyGTM">
-<meta property="og:description" content="3-agent AI pipeline that reads job listings and funding signals to find which companies need what you're offering — before they realize it themselves.">
+<meta property="og:title" content="Fleet Engine — Three Versions. One Problem.">
+<meta property="og:description" content="A three-agent GTM pipeline. V1 documented. V2 rebuilding. V3 locked.">
 <meta property="og:url" content="https://portfolio.blueskygtm.engineer/">
 <meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
 <style>
-
-/* ── Variables ──────────────────────────────────────────── */
 :root {
-  --bg: #0A0A0A;
-  --surface: #111111;
-  --surface2: #161616;
-  --border: #1E1E1E;
-  --border2: #2A2A2A;
-  --text: #E6E6E6;
-  --muted: #6A6A6A;
-  --dim: #2E2E2E;
-  --accent: #B9E36A;   /* V1 — green */
-  --action: #76A1FF;   /* V2 — blue */
-  --violet: #9B6DFF;   /* V3 — violet (locked) */
-  --synapse: #D97757;  /* AI Engineering / Synapse — terracotta */
-  --white: #FFFFFF;
-  --orange: #4d89f5;   /* Fleet Engine base blue */
+  --bg: #0A0A0A; --surface: #111; --surface2: #161616;
+  --border: #1E1E1E; --border2: #2A2A2A;
+  --text: #E6E6E6; --muted: #6A6A6A; --dim: #333;
+  --accent: #B9E36A;   /* V1 green */
+  --action: #76A1FF;   /* V2 blue */
+  --locked: #3A3A3A;   /* V3 locked */
+  --orange: #FF6B35;
+  --white: #FFF;
 }
-
-/* ── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.6;
-  overflow-x: hidden;
-  font-feature-settings: "ss01", "ss02";
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg); color: var(--text);
+  font-size: 14px; line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
 }
 
-/* Grain overlay */
-body::after {
+/* ── dot grid bg ── */
+body::before {
   content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.18;
   pointer-events: none;
-  z-index: 9998;
-  opacity: 0.35;
-  mix-blend-mode: overlay;
+  z-index: 0;
 }
 
-/* ── Hero — full bleed ───────────────────────────────────── */
-.hero {
-  min-height: 88vh;
-  padding: 88px 48px 96px;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--border2);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+/* ── layout ── */
+.page { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
 
-/* Dot grid — same as V1 */
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 56px 56px;
-  opacity: 0.22;
-  pointer-events: none;
+/* ── header ── */
+header {
+  padding: 48px 48px 0;
+  display: flex; flex-direction: column; gap: 16px;
+  max-width: 1200px; margin: 0 auto; width: 100%;
 }
-.hero-grid::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 110%, var(--bg) 30%, transparent 100%);
-}
-
-.hero-inner { position: relative; z-index: 1; max-width: 880px; }
-
-/* Orange eyebrow — index identity */
 .eyebrow {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
 }
 .eyebrow::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--orange);
-  box-shadow: 0 0 10px var(--orange);
-  flex-shrink: 0;
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange); box-shadow: 0 0 10px var(--orange); flex-shrink: 0;
 }
-.eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
-
 h1 {
-  font-size: clamp(44px, 6.5vw, 84px);
-  font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: 0;
-  margin-bottom: 28px;
-  font-optical-sizing: auto;
-  max-width: 16ch;
+  font-size: clamp(32px, 4vw, 52px); font-weight: 500;
+  line-height: 1.08; letter-spacing: -0.01em; max-width: 14ch;
 }
 h1 em { font-style: normal; color: var(--orange); }
-
 .deck {
-  font-size: 17px;
-  color: var(--text);
-  line-height: 1.65;
-  max-width: 580px;
-  font-weight: 300;
-  margin-bottom: 40px;
+  font-size: 15px; color: var(--muted); font-weight: 300;
+  max-width: 480px; line-height: 1.65;
 }
 
-/* Hero explore hint — tells visitors the artifacts are interactive */
-.hero-hint {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--orange);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  margin-top: 4px;
+/* ── select hint ── */
+.select-hint {
+  margin-top: 8px; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--orange); display: flex; align-items: center; gap: 8px;
 }
-.hero-hint::before {
-  content: '';
-  display: block;
-  width: 18px;
-  height: 1px;
-  background: var(--orange);
-  opacity: 0.6;
-}
+.select-hint::before { content: ''; width: 20px; height: 1px; background: var(--orange); opacity: 0.5; }
 
-/* ── Stat bar — constrained ──────────────────────────────── */
-.stat-bar {
+/* ── panels ── */
+.panels-wrap {
+  flex: 1; padding: 48px;
+  max-width: 1200px; margin: 0 auto; width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--border2);
-  border-top: none;
-}
-
-.stat-cell {
-  padding: 32px 28px 28px;
-  border-right: 1px solid var(--border2);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.stat-cell:last-child { border-right: none; }
-
-.stat-n {
-  font-size: clamp(44px, 5.5vw, 68px);
-  font-weight: 600;
-  line-height: 0.9;
-  color: var(--white);
-  font-optical-sizing: auto;
-}
-
-.stat-d b { font-size: 12px; font-weight: 600; color: var(--text); display: block; margin-bottom: 3px; }
-.stat-d span { font-size: 11px; color: var(--text); line-height: 1.45; display: block; font-weight: 300; }
-
-/* ── Sample output section ───────────────────────────────── */
-/* Shows one real Outreach Bite so visitors see the actual product */
-.sample-wrap {
-  padding: 80px 48px;
-  border-bottom: 1px solid var(--border2);
-  background: var(--surface);
-}
-
-.sample-inner { max-width: 880px; }
-
-.sample-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.sample-label::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
-
-.sample-context {
-  font-size: 13px;
-  color: var(--text);
-  margin-bottom: 24px;
-  font-weight: 300;
-  line-height: 1.55;
-  max-width: 560px;
-}
-
-/* Terminal-style output frame */
-.sample-terminal {
-  border: 2px solid rgba(185,227,106,0.42);
-  background: var(--bg);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.32), 0 0 0 1px rgba(185,227,106,0.08);
-}
-
-.sample-bar {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface2);
-  gap: 8px;
-}
-.sdot { width: 9px; height: 9px; border-radius: 50%; }
-.sdot-r { background: #FF5F57; }
-.sdot-y { background: #FFBD2E; }
-.sdot-g { background: #28C840; }
-.sample-bar-title { font-size: 10px; color: var(--muted); margin: 0 auto; letter-spacing: 0.04em; }
-
-.sample-body {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-}
-
-.sample-meta {
-  padding: 24px 20px;
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.meta-row { }
-.meta-k { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.meta-v { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.3; }
-.meta-badge {
-  display: inline-block;
-  font-size: 10px;
-  padding: 3px 8px;
-  color: var(--accent);
-  border: 1px solid rgba(185,227,106,0.42);
-  background: rgba(185,227,106,0.06);
-  font-weight: 500;
-}
-
-.sample-output {
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.output-hook {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--text);
-  padding: 18px 20px;
-  background: rgba(255,255,255,0.025);
-  border-left: 3px solid var(--accent);
-  font-weight: 300;
-}
-
-.output-email {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--text);
-  white-space: pre-line;
-  padding: 18px 20px;
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,0.12);
-  font-weight: 300;
-}
-
-.sample-callout {
-  margin-top: 20px;
-  font-size: 13px;
-  color: var(--text);
-  font-weight: 300;
-  line-height: 1.55;
-}
-.sample-callout strong { color: var(--accent); font-weight: 500; }
-.sample-callout a { color: var(--accent); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(185,227,106,0.4); transition: border-color 0.15s; }
-.sample-callout a:hover { border-color: var(--accent); }
-
-/* ── Card grid — wider, more visual ─────────────────────── */
-.cards-section {
-  padding: 72px 48px 80px;
-  border-bottom: 1px solid var(--border2);
-}
-
-.cards-header {
-  max-width: 880px;
-  margin-bottom: 40px;
-}
-.cards-pre {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.cards-pre::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
-.cards-title { font-size: 26px; font-weight: 500; color: var(--text); line-height: 1.2; }
-.cards-sub { margin-top: 8px; font-size: 14px; color: var(--text); font-weight: 300; line-height: 1.55; }
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1.15fr 1fr;
   gap: 2px;
-  background: var(--border2);
-  border: 1px solid var(--border2);
+  align-items: stretch;
 }
 
-.card {
+/* ── panel base ── */
+.panel {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--border2);
   background: var(--surface);
-  padding: 0;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
+  position: relative; overflow: hidden;
   cursor: pointer;
-  position: relative;
-  transition: background 0.18s;
-  overflow: hidden;
-}
-.card:hover { background: var(--surface2); }
-
-/* Colored top accent — always visible, color-matched to destination */
-.card::before {
-  content: '';
-  display: block;
-  height: 3px;
-  background: var(--c);
-  opacity: 0.7;
-  transition: opacity 0.18s;
-}
-.card:hover::before { opacity: 1; }
-
-.card-v1 { --c: var(--accent); }
-.card-v2 { --c: var(--action); }
-.card-v3 { --c: var(--violet); }
-.card-sy { --c: var(--synapse); }
-
-/* V3 lock overlay */
-.card-locked { pointer-events: none; }
-.card-locked .card-inner { opacity: 0.45; }
-.card-lock-badge {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  background: rgba(10,10,10,0.82);
-  border: 1px solid var(--violet);
-  color: var(--violet);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  padding: 8px 18px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
-  backdrop-filter: blur(4px);
-}
-.card-lock-badge svg { width: 14px; height: 14px; }
-
-.card-inner { padding: 28px 28px 24px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
-
-.card-label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border: 1px solid;
-  display: inline-block;
-  align-self: flex-start;
-  color: var(--c);
-  border-color: color-mix(in srgb, var(--c) 35%, transparent);
-  background: color-mix(in srgb, var(--c) 9%, transparent);
+  transition: background 0.2s, border-color 0.2s;
+  text-decoration: none; color: inherit;
 }
 
-.card-title { font-size: 21px; font-weight: 500; color: var(--white); line-height: 1.15; }
-.card-sub { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; font-weight: 300; }
+/* color accent bar at top */
+.panel::before {
+  content: ''; display: block; height: 3px;
+  background: var(--c); opacity: 0.6;
+  transition: opacity 0.2s, height 0.2s;
+}
+.panel:not(.locked):hover::before { opacity: 1; height: 4px; }
+.panel:not(.locked):hover { background: var(--surface2); border-color: var(--c-border); }
 
-/* Pills — always visible */
-.card-stats { display: flex; flex-wrap: wrap; gap: 6px; }
-.stat-pill {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  padding: 3px 8px;
-  border: 1px solid;
+.panel-v1 { --c: var(--accent); --c-border: rgba(185,227,106,0.35); }
+.panel-v2 { --c: var(--action); --c-border: rgba(118,161,255,0.35); }
+.panel-v3 { --c: var(--locked); --c-border: var(--border2); cursor: default; }
+
+/* ── panel inner ── */
+.panel-inner { padding: 28px 28px 20px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+
+.panel-tag {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 3px 8px; border: 1px solid; display: inline-block; align-self: flex-start;
+  color: var(--c); border-color: color-mix(in srgb, var(--c) 35%, transparent);
+  background: color-mix(in srgb, var(--c) 8%, transparent);
+}
+.panel-v3 .panel-tag { color: var(--muted); border-color: var(--border2); background: transparent; }
+
+.panel-title {
+  font-size: 22px; font-weight: 500; color: var(--white); line-height: 1.1;
+}
+.panel-v3 .panel-title { color: var(--muted); }
+
+.panel-desc {
+  font-size: 13px; font-weight: 300; color: var(--text);
+  line-height: 1.65; flex: 1;
+}
+.panel-v3 .panel-desc { color: var(--dim); }
+
+/* ── pills ── */
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill {
+  font-size: 10px; font-weight: 500; padding: 3px 8px;
+  border: 1px solid; color: var(--c);
+  border-color: color-mix(in srgb, var(--c) 22%, transparent);
   background: transparent;
-  color: var(--c);
-  border-color: color-mix(in srgb, var(--c) 25%, transparent);
 }
+.panel-v3 .pill { color: var(--dim); border-color: var(--border); }
 
-/* Interactive badge — always visible, tells visitors these are clickable */
-.card-interactive {
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
-/* Card footer — always visible, styled as a proper CTA */
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 28px;
+/* ── node preview ── */
+.node-preview {
+  padding: 16px 28px;
   border-top: 1px solid var(--border);
-  background: rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.15);
+  display: flex; align-items: center; gap: 6px;
+  flex-wrap: wrap;
+}
+.preview-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); width: 100%; margin-bottom: 8px;
+}
+.node {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 8px 10px; border: 1px solid var(--border2);
+  background: var(--surface2); min-width: 54px;
+  transition: all 0.18s;
+}
+.panel:not(.locked):hover .node {
+  border-color: color-mix(in srgb, var(--c) 40%, transparent);
+  background: color-mix(in srgb, var(--c) 5%, var(--surface2));
+}
+.node-emoji { font-size: 16px; }
+.node-name { font-size: 9px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; }
+.node-role { font-size: 9px; color: var(--muted); }
+
+.node-arrow {
+  font-size: 11px; color: var(--border2);
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  transition: color 0.18s;
+}
+.node-arrow .arrow-label { font-size: 8px; letter-spacing: 0.06em; color: var(--muted); }
+.panel:not(.locked):hover .node-arrow { color: color-mix(in srgb, var(--c) 60%, transparent); }
+
+/* V3 node preview — blurred, locked */
+.panel-v3 .node { opacity: 0.35; filter: blur(0.5px); }
+.panel-v3 .node-arrow { opacity: 0.2; }
+
+/* ── lock overlay on V3 ── */
+.lock-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; pointer-events: none;
+  background: linear-gradient(180deg, transparent 30%, rgba(10,10,10,0.7) 100%);
+}
+.lock-icon {
+  width: 44px; height: 44px; border: 2px solid var(--border2);
+  background: var(--surface2); border-radius: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; opacity: 0.7;
+}
+.lock-text {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+}
+.lock-sub {
+  font-size: 11px; color: var(--dim); font-weight: 300; text-align: center;
+  max-width: 180px; line-height: 1.5;
+}
+
+/* ── panel footer CTA ── */
+.panel-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px; border-top: 1px solid var(--border);
+  background: rgba(0,0,0,0.1);
   transition: background 0.18s;
 }
-.card:hover .card-footer { background: rgba(0,0,0,0.22); }
+.panel:not(.locked):hover .panel-footer { background: rgba(0,0,0,0.22); }
 
-.card-open-label {
-  font-size: 11px;
-  color: var(--text);
-  font-weight: 400;
-  letter-spacing: 0;
+.footer-hint { font-size: 11px; color: var(--muted); font-weight: 300; }
+.footer-btn {
+  font-size: 11px; font-weight: 600; color: var(--c);
+  letter-spacing: 0.04em; display: flex; align-items: center; gap: 6px;
 }
+.footer-arrow {
+  width: 22px; height: 22px;
+  border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+  background: color-mix(in srgb, var(--c) 8%, transparent);
+  display: grid; place-items: center; font-size: 13px;
+  transition: all 0.15s;
+}
+.panel:not(.locked):hover .footer-arrow {
+  background: color-mix(in srgb, var(--c) 18%, transparent);
+  border-color: color-mix(in srgb, var(--c) 55%, transparent);
+}
+.panel-v3 .footer-btn { color: var(--muted); }
+.panel-v3 .footer-arrow { border-color: var(--border2); background: transparent; }
 
-.card-open-btn {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--c);
-  letter-spacing: 0.04em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.card-open-arrow {
-  width: 22px;
-  height: 22px;
-  border: 1px solid color-mix(in srgb, var(--c) 40%, transparent);
-  background: color-mix(in srgb, var(--c) 10%, transparent);
-  display: grid;
-  place-items: center;
-  font-size: 13px;
-  transition: background 0.15s, border-color 0.15s;
-}
-.card:hover .card-open-arrow {
-  background: color-mix(in srgb, var(--c) 20%, transparent);
-  border-color: color-mix(in srgb, var(--c) 60%, transparent);
-}
-
-/* ── Diagnosis block ─────────────────────────────────────── */
-.diagnosis-section {
-  padding: 64px 48px;
-  border-bottom: 1px solid var(--border2);
-}
-.diagnosis-inner { max-width: 880px; }
-
-.diagnosis {
-  border: 1px solid var(--border2);
-  border-left: 3px solid var(--orange);
-  background: var(--surface);
-  padding: 28px 32px;
-  font-size: 15px;
-  line-height: 1.85;
-  color: var(--text);
-  font-weight: 300;
-}
-.diagnosis .lbl {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 12px;
-  display: block;
-}
-.diagnosis strong { color: var(--orange); font-weight: 500; }
-
-/* ── Footer ──────────────────────────────────────────────── */
+/* ── footer bar ── */
 footer {
-  padding: 28px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  border-top: 1px solid var(--border2);
+  position: relative; z-index: 1;
+  padding: 20px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border2); flex-wrap: wrap; gap: 10px;
 }
 footer span { font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
-footer a { font-size: 10px; color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.15s; }
-footer a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+footer a { font-size: 10px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+footer a:hover { color: var(--orange); }
 
-/* ── Reveal ──────────────────────────────────────────────── */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
-.reveal.vis { opacity: 1; transform: translateY(0); }
-
-/* ── Responsive ──────────────────────────────────────────── */
+/* ── responsive ── */
 @media (max-width: 860px) {
-  .hero { padding: 64px 28px 72px; }
-  .stat-bar { grid-template-columns: repeat(2, 1fr); }
-  .card-grid { grid-template-columns: 1fr; }
-  .sample-wrap, .cards-section, .diagnosis-section { padding-left: 28px; padding-right: 28px; }
-  .sample-body { grid-template-columns: 1fr; }
-  .sample-meta { border-right: 0; border-bottom: 1px solid var(--border); }
-  footer { padding: 24px 28px; flex-direction: column; text-align: center; }
+  .panels-wrap { grid-template-columns: 1fr; padding: 28px; }
+  header { padding: 36px 28px 0; }
+  footer { padding: 20px 28px; }
 }
-@media (max-width: 540px) {
-  h1 { font-size: 38px; }
-  .stat-bar { grid-template-columns: 1fr 1fr; }
-  .stat-n { font-size: 40px; }
-}
-
 </style>
 </head>
 <body>
+<div class="page">
 
-<!-- ══ HERO ══ -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="eyebrow reveal">Fleet Engine · Raymond Fenton</div>
-    <h1 class="reveal">Fathom.<br>Cortex.<br><em>Helix.</em></h1>
-    <p class="deck reveal">
-      Three AI agents read job listings and funding signals, reach the bottom of the ATS to extract what companies are actually building toward, and produce Schwartz-style outreach grounded in each prospect's operational reality. V1 proved the signals. V2 proves the orchestration. V3 closes the loop.
-    </p>
-    <div class="hero-hint reveal">Fathom and Cortex are fully interactive — nodes clickable, rows selectable, agent prompts readable. Helix unlocks when Cortex Phase 2 ships.</div>
-  </div>
-</section>
+  <header>
+    <div class="eyebrow">AI GTM Enrichment Pipeline · Raymond Fenton</div>
+    <h1>Three versions.<br>One problem.<br><em>Not finished.</em></h1>
+    <p class="deck">A three-agent pipeline that reads job listings and funding signals, classifies the operational pressure behind them, and writes outreach grounded in each prospect's specific situation.</p>
+    <div class="select-hint">Select a version to enter</div>
+  </header>
 
-<!-- STAT BAR -->
-<div class="stat-bar reveal">
-  <div class="stat-cell">
-    <div class="stat-n">3</div>
-    <div class="stat-d"><b>Agents</b><span>Ahab finds. Nemo enriches. Neptune transforms. System prompts preserved verbatim across all three versions.</span></div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">18</div>
-    <div class="stat-d"><b>Failure Modes</b><span>Every Fathom break diagnosed forensically. Not one was in the agents. The infrastructure was the failure domain.</span></div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">3</div>
-    <div class="stat-d"><b>Versions</b><span>Fathom → signal extraction. Cortex → Claude Code orchestration. Helix → self-learning RAG.</span></div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">500+</div>
-    <div class="stat-d"><b>Leads Enriched</b><span>Across six campaigns in Fathom. Fifteen funded samples in the archive — each row opens the full forensic record.</span></div>
-  </div>
-</div>
+  <div class="panels-wrap">
 
-<!-- ══ SAMPLE OUTPUT ══ -->
-<!-- Shows one real Outreach Bite so visitors see actual pipeline output before reading about it -->
-<div class="sample-wrap">
-  <div class="sample-inner reveal">
-    <div class="sample-label">Sample output · neptune_output.json</div>
-    <p class="sample-context">This is what the pipeline produces at the end of a run. Funding signal detected, friction type classified, hook and email generated. Select any row in V1 to see this for 15 funded companies.</p>
-
-    <div class="sample-terminal">
-      <div class="sample-bar">
-        <div class="sdot sdot-r"></div>
-        <div class="sdot sdot-y"></div>
-        <div class="sdot sdot-g"></div>
-        <div class="sample-bar-title">neptune_output.json · Crux Climate · API Stutter</div>
-      </div>
-      <div class="sample-body">
-        <div class="sample-meta">
-          <div class="meta-row">
-            <div class="meta-k">Company</div>
-            <div class="meta-v">Crux Climate</div>
-          </div>
-          <div class="meta-row">
-            <div class="meta-k">Friction</div>
-            <div class="meta-v"><span class="meta-badge">API Stutter</span></div>
-          </div>
-          <div class="meta-row">
-            <div class="meta-k">Funding Signal</div>
-            <div class="meta-v">$50M Series B · Apr 2025</div>
-          </div>
-          <div class="meta-row">
-            <div class="meta-k">Source Role</div>
-            <div class="meta-v">Marketing Ops Associate</div>
-          </div>
-          <div class="meta-row">
-            <div class="meta-k">Stack Evidence</div>
-            <div class="meta-v">HubSpot · Clay · Apollo</div>
-          </div>
-        </div>
-        <div class="sample-output">
-          <div class="output-hook">Saw the $50M Series B and the role calling out HubSpot workflows plus Clay and Apollo list building. That is usually the point where the GTM stack starts creating its own coordination tax. The useful work is making enrichment, routing, and CRM updates behave like one system instead of several tabs.</div>
-          <div class="output-email">Hi there,
-
-Congratulations on the $50M Series B. That is a pivotal moment, and it usually brings more volume, more handoffs, and less room for messy data.
-
-I noticed that pressure showing up in your Marketing Ops opening, especially around the HubSpot, Clay, and Apollo requirements. That combination often points to useful GTM tools creating coordination work instead of removing it.
-
-If I could help make enrichment, routing, and CRM updates behave like one system, I would start by mapping the handoff between Clay outputs and the HubSpot fields that need to receive them.
-
-If that would be useful, I would be glad to compare notes.
-
-Regards,
-Raymond</div>
+    <!-- ── V1 ── -->
+    <a class="panel panel-v1" href="v1_remake.html">
+      <div class="panel-inner">
+        <span class="panel-tag">V1 · Archive</span>
+        <div class="panel-title">The Original Build</div>
+        <p class="panel-desc">Single-file Node.js orchestrator. Three agents. 1,500 stress-test cycles across six campaigns. Broke 18 times. Every failure documented forensically before the rebuild.</p>
+        <div class="pills">
+          <span class="pill">3 agents</span>
+          <span class="pill">15 funded leads</span>
+          <span class="pill">18 failure modes</span>
+          <span class="pill">1,500 cycles</span>
         </div>
       </div>
-    </div>
-
-    <p class="sample-callout">
-      This hook was produced by Neptune after Nemo classified the <strong>API Stutter</strong> signal. The Fathom archive contains 15 leads like this. <a href="v1_remake.html">Open Fathom →</a> to select any row and see the full forensic record — friction type, proof URL, contact, funding signal, hook, and complete email.
-    </p>
-  </div>
-</div>
-
-<!-- ══ CARD GRID ══ -->
-<div class="cards-section">
-  <div class="cards-header reveal">
-    <div class="cards-pre">Four artifacts</div>
-    <div class="cards-title">Fathom. Cortex. Helix. — and the curriculum that teaches the stack they run on.</div>
-    <div class="cards-sub">Fathom and Cortex are fully interactive. Helix is locked — in progress. Synapse opens on GitHub.</div>
-  </div>
-
-  <div class="card-grid reveal">
-
-    <a class="card card-v1" href="v1_remake.html">
-      <div class="card-inner">
-        <span class="card-label">Fleet Engine: Fathom</span>
-        <div class="card-title">Reach the Bottom</div>
-        <p class="card-sub">Three agents dive the ATS. Ahab surfaces companies via job listings and funding signals. Nemo classifies the friction beneath the posting. Neptune writes to the operational reality, not the job title. 1,500 cycles. 18 failures. Every one documented.</p>
-        <div class="card-stats">
-          <span class="stat-pill">3 agents</span>
-          <span class="stat-pill">15 funded leads</span>
-          <span class="stat-pill">18 failure modes</span>
-          <span class="stat-pill">1,500 cycles</span>
-        </div>
-        <div class="card-interactive">Interactive: payload table · forensic dictionary · workflow map · prompt showcase</div>
+      <div class="node-preview">
+        <div class="preview-label">Interactive inside</div>
+        <div class="node"><span class="node-emoji">🪝</span><span class="node-name">Ahab</span><span class="node-role">Find</span></div>
+        <div class="node-arrow">→</div>
+        <div class="node"><span class="node-emoji">🔬</span><span class="node-name">Nemo</span><span class="node-role">Enrich</span></div>
+        <div class="node-arrow">→</div>
+        <div class="node"><span class="node-emoji">🔱</span><span class="node-name">Neptune</span><span class="node-role">Transform</span></div>
       </div>
-      <div class="card-footer">
-        <span class="card-open-label">Click any row. Select any signal. The data is live.</span>
-        <span class="card-open-btn">Open <span class="card-open-arrow">→</span></span>
+      <div class="panel-footer">
+        <span class="footer-hint">Payload table · forensic dictionary · prompts</span>
+        <span class="footer-btn">Enter <span class="footer-arrow">→</span></span>
       </div>
     </a>
 
-    <a class="card card-v2" href="v2_remake.html">
-      <div class="card-inner">
-        <span class="card-label">Fleet Engine: Cortex</span>
-        <div class="card-title">Claude Code as the Admiral</div>
-        <p class="card-sub">The agents were never the problem. Cortex eliminates every hostile infrastructure layer and gives Claude Code direct command. ADK Pipeline_Orchestrator deploys the fleet as a single endpoint. Logic orchestrates the agents. No hooks, no middleware, no n8n.</p>
-        <div class="card-stats">
-          <span class="stat-pill">ADK Pipeline_Orchestrator</span>
-          <span class="stat-pill">Vertex AI RAG</span>
-          <span class="stat-pill">Clay delivery</span>
-          <span class="stat-pill">0 self-hosted</span>
+    <!-- ── V2 ── -->
+    <a class="panel panel-v2" href="v2_remake.html">
+      <div class="panel-inner">
+        <span class="panel-tag">V2 · Rewrite</span>
+        <div class="panel-title">Cloud-Native Rebuild</div>
+        <p class="panel-desc">Agents worked. Infrastructure didn't. V2 eliminates every hostile layer. Vertex AI runs the agents. GCS handles the handoffs. Clay receives finished rows. HubSpot records.</p>
+        <div class="pills">
+          <span class="pill">Gemini 2.5 Flash + Pro</span>
+          <span class="pill">GCS handoff</span>
+          <span class="pill">RAG memory</span>
+          <span class="pill">Clay → HubSpot</span>
+          <span class="pill">0 self-hosted</span>
         </div>
-        <div class="card-interactive">Interactive: before/after architecture · agent prompts · ADK deployment map</div>
       </div>
-      <div class="card-footer">
-        <span class="card-open-label">Click an agent card to read its prompt.</span>
-        <span class="card-open-btn">Open <span class="card-open-arrow">→</span></span>
+      <div class="node-preview">
+        <div class="preview-label">Interactive inside</div>
+        <div class="node"><span class="node-emoji">🪝</span><span class="node-name">Ahab</span><span class="node-role">Discover</span></div>
+        <div class="node-arrow">→<span class="arrow-label">GCS</span></div>
+        <div class="node"><span class="node-emoji">🔬</span><span class="node-name">Nemo</span><span class="node-role">Enrich</span></div>
+        <div class="node-arrow">→<span class="arrow-label">GCS</span></div>
+        <div class="node"><span class="node-emoji">🔱</span><span class="node-name">Neptune</span><span class="node-role">Synthesize</span></div>
+        <div class="node-arrow">→</div>
+        <div class="node"><span class="node-emoji">📡</span><span class="node-name">Deliver</span><span class="node-role">Clay</span></div>
+      </div>
+      <div class="panel-footer">
+        <span class="footer-hint">Architecture toggle · build phases · prompts</span>
+        <span class="footer-btn">Enter <span class="footer-arrow">→</span></span>
       </div>
     </a>
 
-    <div class="card card-v3 card-locked" aria-disabled="true">
-      <div class="card-lock-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Coming — Cortex Phase 2
-      </div>
-      <div class="card-inner">
-        <span class="card-label">Fleet Engine: Helix</span>
-        <div class="card-title">The Pipeline Learns</div>
-        <p class="card-sub">Reply outcomes from HubSpot flow back into the RAG store. A fourth agent — Polish — uses what converted to rewrite what hasn't. The pipeline improves its own Outreach Bites across runs. Helix is the DNA that compounds.</p>
-        <div class="card-stats">
-          <span class="stat-pill">Polish agent</span>
-          <span class="stat-pill">Outcome feedback loop</span>
-          <span class="stat-pill">HubSpot → RAG</span>
-          <span class="stat-pill">Self-improving Bites</span>
+    <!-- ── V3 ── -->
+    <div class="panel panel-v3 locked">
+      <div class="panel-inner">
+        <span class="panel-tag">V3 · In Development</span>
+        <div class="panel-title">Self-Improving Pipeline</div>
+        <p class="panel-desc">Reply outcomes from HubSpot flow back into the RAG store. A fourth agent uses that signal to improve outreach before delivery. The pipeline learns what converts.</p>
+        <div class="pills">
+          <span class="pill">Polish agent</span>
+          <span class="pill">Outcome feedback loop</span>
+          <span class="pill">RAG compounds</span>
+          <span class="pill">Reply signal</span>
         </div>
-        <div class="card-interactive">Unlocks when Cortex Phase 2 completes — 50+ outcome entries in the RAG store.</div>
       </div>
-      <div class="card-footer">
-        <span class="card-open-label">Blocked on Cortex Phase 2 completion.</span>
-        <span class="card-open-btn">Coming <span class="card-open-arrow">⋯</span></span>
+      <div class="node-preview">
+        <div class="preview-label">Unlocks after V2 Phase 2</div>
+        <div class="node"><span class="node-emoji">🔱</span><span class="node-name">Neptune</span><span class="node-role">Synthesize</span></div>
+        <div class="node-arrow">→</div>
+        <div class="node"><span class="node-emoji">✨</span><span class="node-name">Polish</span><span class="node-role">Refine</span></div>
+        <div class="node-arrow">→</div>
+        <div class="node"><span class="node-emoji">📡</span><span class="node-name">Deliver</span><span class="node-role">Clay</span></div>
+        <div class="node-arrow">→<span class="arrow-label">loop</span></div>
+        <div class="node"><span class="node-emoji">📊</span><span class="node-name">Outcomes</span><span class="node-role">RAG</span></div>
+      </div>
+
+      <!-- lock overlay -->
+      <div class="lock-overlay">
+        <div class="lock-icon">🔒</div>
+        <div class="lock-text">Locked</div>
+        <div class="lock-sub">Phase 2 of V2 must complete before V3 begins.</div>
+      </div>
+
+      <div class="panel-footer">
+        <span class="footer-hint">Gate: 50 leads delivered to HubSpot</span>
+        <span class="footer-btn">Locked <span class="footer-arrow">🔒</span></span>
       </div>
     </div>
 
-    <a class="card card-sy" href="https://github.com/BlueSkyGTM/ai-engineering-school" target="_blank" rel="noopener noreferrer">
-      <div class="card-inner">
-        <span class="card-label">🧙🏾‍♂️ Professor Synapse</span>
-        <div class="card-title">AI Engineering From Scratch</div>
-        <p class="card-sub">498 lessons across 20 phases — from raw math to production LLMs. Professor Synapse reads your progress, loads your phase specialist, and teaches via Socratic inquiry mapped to each lesson. Clone and launch in Claude Code.</p>
-        <div class="card-stats">
-          <span class="stat-pill">498 lessons</span>
-          <span class="stat-pill">20 phases</span>
-          <span class="stat-pill">351 quizzes</span>
-          <span class="stat-pill">Claude Code skill</span>
-        </div>
-        <div class="card-interactive">Clone repo → open in Claude Code → /professor-synapse</div>
-      </div>
-      <div class="card-footer">
-        <span class="card-open-label">Open curriculum repo on GitHub.</span>
-        <span class="card-open-btn">Open <span class="card-open-arrow">→</span></span>
-      </div>
-    </a>
-
   </div>
+
+  <footer>
+    <span>Raymond Fenton · AI GTM Enrichment Pipeline</span>
+    <a href="https://github.com/BlueSkyGTM" target="_blank" rel="noopener noreferrer">GitHub →</a>
+  </footer>
+
 </div>
-
-<!-- ══ DIAGNOSIS ══ -->
-<div class="diagnosis-section">
-  <div class="diagnosis-inner reveal">
-    <div class="diagnosis">
-      <span class="lbl">// Core Diagnosis</span>
-      Every failure in Fathom was environmental, not architectural. Docker conflicts. n8n interpretation errors. Postgres connection pool exhaustion. Three layers of open-source middleware pretending to be a shared space.
-      <br><br>
-      Cortex eliminates the environment as a failure domain entirely — <strong>the three agent system prompts transferred verbatim. The 18 failure modes did not.</strong>
-      <br><br>
-      Helix does not redesign the agents. It gives them memory of what worked.
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer>
-  <span>Fleet Engine · Raymond Fenton</span>
-  <a href="https://github.com/BlueSkyGTM" target="_blank" rel="noopener noreferrer">GitHub →</a>
-</footer>
-
-<script>
-(function () {
-  const els = document.querySelectorAll('.reveal');
-  if (!window.IntersectionObserver) {
-    els.forEach(el => el.classList.add('vis'));
-    return;
-  }
-  const io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('vis');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.06 });
-  els.forEach(el => io.observe(el));
-})();
-</script>
-
 </body>
 </html>
