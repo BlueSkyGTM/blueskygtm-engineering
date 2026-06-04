@@ -15,18 +15,6 @@
       "explanation": "BM25 dominates on literal symbols; dense dominates on paraphrases. A real endpoint receives both classes from the same users."
     },
     {
-      "stage": "pre",
-      "question": "What is the BM25 parameter b at the default 0.75?",
-      "options": [
-        "A multiplier on the IDF term",
-        "A length-normalization knob: longer documents are penalized but not linearly",
-        "A query-time exponent on cosine similarity",
-        "The number of fields in the document"
-      ],
-      "correct": 1,
-      "explanation": "b interpolates between no length normalization (0) and full normalization (1); 0.75 is the published recommendation."
-    },
-    {
       "stage": "check",
       "question": "What does Reciprocal Rank Fusion compute for each candidate?",
       "options": [
@@ -73,6 +61,18 @@
       ],
       "correct": 1,
       "explanation": "Repeating tokens at index time multiplies term frequency, which lets the BM25 scoring math stay one summation rather than a separate field-score combinator."
+    },
+    {
+      "stage": "post",
+      "question": "What is the BM25 parameter b at the default 0.75?",
+      "options": [
+        "A multiplier on the IDF term",
+        "A length-normalization knob: longer documents are penalized but not linearly",
+        "A query-time exponent on cosine similarity",
+        "The number of fields in the document"
+      ],
+      "correct": 1,
+      "explanation": "b interpolates between no length normalization (0) and full normalization (1); 0.75 is the published recommendation."
     }
   ]
 }
