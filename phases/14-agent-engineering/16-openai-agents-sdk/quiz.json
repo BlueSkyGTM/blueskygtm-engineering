@@ -15,18 +15,6 @@
       "explanation": "The SDK ships these five primitives."
     },
     {
-      "stage": "pre",
-      "question": "How does the model see a handoff?",
-      "options": [
-        "As a custom HTTP endpoint",
-        "As a tool named transfer_to_<agent_name>",
-        "As a system message",
-        "As a special token"
-      ],
-      "correct": 1,
-      "explanation": "Handoffs are exposed as tools with the transfer_to_<agent> name shape."
-    },
-    {
       "stage": "check",
       "question": "Which three guardrail types does the SDK ship?",
       "options": [
