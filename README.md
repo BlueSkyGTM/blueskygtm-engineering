@@ -37,9 +37,7 @@ npm install -g ~/gbrain 2>/dev/null || (git clone https://github.com/garrytan/gb
 ### 3. Install graphify per workspace
 
 ```bash
-cd workspaces/ai-school-curriculum  && graphify install --project && cd ../..
-cd workspaces/ai-school-expansion   && graphify install --project && cd ../..
-cd workspaces/ai-school-website     && graphify install --project && cd ../..
+cd workspaces/ai-school-curriculum   && graphify install --project && cd ../..
 cd workspaces/ai-school-anti-library && graphify install --project && cd ../..
 ```
 
@@ -200,9 +198,7 @@ Once installed, open Claude Code in `workspaces/` — the `CLAUDE.md` and `CONTE
 
 | Workspace | What it does |
 |-----------|-------------|
-| [ai-school-curriculum](workspaces/ai-school-curriculum/) | 473-lesson AI engineering curriculum — 20 phases, raw math through production systems |
-| [ai-school-expansion](workspaces/ai-school-expansion/) | MLOps + production ML absorption source (Made With ML fork) |
-| [ai-school-website](workspaces/ai-school-website/) | Gamified world-map frontend for the curriculum (vanilla JS, no framework) |
+| [ai-school-curriculum](workspaces/ai-school-curriculum/) | 498-lesson AI engineering curriculum — 20 chapters, taught by Professor Synapse |
 | [ai-school-anti-library](workspaces/ai-school-anti-library/) | Curated cognitive anchor library — books, courses, papers |
 | [workspace-builder](workspaces/workspace-builder/) | Build a new ICM workspace for any domain (5 stages) |
 
