@@ -15,18 +15,6 @@
       "explanation": "Planner emits structured plans. The executor runs them. Mixing the two is the chain-of-thought trap this lesson is moving away from."
     },
     {
-      "stage": "pre",
-      "question": "Why is expected_outcome part of the Step shape even though the executor does not check it?",
-      "options": [
-        "Because the dispatcher uses it as a cache key",
-        "Because it gives the replanner and tracers a stated success condition to read",
-        "Because the registry requires it",
-        "Because the model trains on it"
-      ],
-      "correct": 1,
-      "explanation": "The replanner reads it when revising. The tracer renders it on the timeline. It is a human-readable contract on the step."
-    },
-    {
       "stage": "check",
       "question": "When a step fails and the replanner returns a new plan, what does the executor emit on the event stream?",
       "options": [
