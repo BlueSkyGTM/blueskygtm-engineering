@@ -15,18 +15,6 @@
       "explanation": "A short router, durable state, and a task queue are the floor."
     },
     {
-      "stage": "pre",
-      "question": "What is the lesson's framing of AGENTS.md?",
-      "options": [
-        "A 3000-line onboarding manual",
-        "A short router that points at deeper docs and the state and board",
-        "A pure prompt-cache key",
-        "A secret kept out of the repo"
-      ],
-      "correct": 1,
-      "explanation": "AGENTS.md is a router, not a manual; long manuals get ignored."
-    },
-    {
       "stage": "check",
       "question": "What does Augment Code's data say about a good AGENTS.md?",
       "options": [
