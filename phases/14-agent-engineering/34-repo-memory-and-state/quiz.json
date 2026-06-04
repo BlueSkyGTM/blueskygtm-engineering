@@ -15,18 +15,6 @@
       "explanation": "Repo memory is for durable, three-months-from-now-useful state; transient data is telemetry."
     },
     {
-      "stage": "pre",
-      "question": "What schema field carries the agent's contract version?",
-      "options": [
-        "schema_version",
-        "build_hash",
-        "model_id",
-        "session_uuid"
-      ],
-      "correct": 0,
-      "explanation": "schema_version is the integer contract; the manager refuses to load from an unknown version."
-    },
-    {
       "stage": "check",
       "question": "How does atomic write work?",
       "options": [
