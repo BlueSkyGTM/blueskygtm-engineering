@@ -11,6 +11,14 @@
   background: rgba(20,17,15,0.92); backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
+/* Auth button */
+#sa-auth-btn { margin-left: var(--s3); flex-shrink: 0; }
+.auth-btn { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.1s; }
+.auth-btn--in { color: var(--cream-dim); border: 1px solid var(--line); padding: 4px 10px; }
+.auth-btn--in:hover { color: var(--terra); border-color: var(--terra); }
+.auth-btn--out { color: var(--terra); }
+.auth-btn--out:hover { color: var(--cream); }
+.auth-avatar { border-radius: 50%; flex-shrink: 0; }
 .top .brand { display: flex; align-items: center; gap: var(--s2); white-space: nowrap; }
 .top .brand .mark { width: 14px; height: 14px; background: var(--terra); flex-shrink: 0; }
 .top .brand b { font-family: var(--pix); font-size: 1.5rem; color: var(--cream); text-transform: uppercase; white-space: nowrap; }
