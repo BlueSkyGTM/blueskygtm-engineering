@@ -15,18 +15,6 @@
       "explanation": "Workflow = predefined code path the engineer owns; agent = the model owns the graph."
     },
     {
-      "stage": "pre",
-      "question": "What are the three capabilities of the augmented LLM that underpins all five patterns?",
-      "options": [
-        "Search (retrieval), tools (actions), memory (persistence)",
-        "Embeddings, fine-tuning, RAG",
-        "Vector, KV, graph",
-        "Plan, execute, reflect"
-      ],
-      "correct": 0,
-      "explanation": "The atomic unit is one LLM with retrieval, tools, and memory wired in."
-    },
-    {
       "stage": "check",
       "question": "Which is NOT one of the five Anthropic workflow patterns?",
       "options": [
