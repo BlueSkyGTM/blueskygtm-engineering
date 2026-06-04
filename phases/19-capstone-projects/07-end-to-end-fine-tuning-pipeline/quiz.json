@@ -15,18 +15,6 @@
       "explanation": ""
     },
     {
-      "stage": "pre",
-      "question": "Why does the pipeline compose SFT then DPO (or GRPO) rather than DPO alone?",
-      "options": [
-        "Axolotl does not implement DPO",
-        "SFT establishes domain behavior on labeled completions while DPO or GRPO aligns the model against preference pairs or verifiable rewards",
-        "DPO requires a separate base model architecture",
-        "DPO cannot run on quantized weights"
-      ],
-      "correct": 1,
-      "explanation": ""
-    },
-    {
       "stage": "check",
       "question": "What does EAGLE-3 contribute to the vLLM serving stage?",
       "options": [
