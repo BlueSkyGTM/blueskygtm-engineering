@@ -15,18 +15,6 @@
       "explanation": ""
     },
     {
-      "stage": "pre",
-      "question": "Which classifier handles multilingual coverage across roughly 132 languages?",
-      "options": [
-        "Nemotron 3 Content Safety",
-        "ShieldGemma-2",
-        "X-Guard",
-        "Llama Guard 4"
-      ],
-      "correct": 2,
-      "explanation": ""
-    },
-    {
       "stage": "check",
       "question": "Why is over-refusal measured on a benign suite like XSTest?",
       "options": [
