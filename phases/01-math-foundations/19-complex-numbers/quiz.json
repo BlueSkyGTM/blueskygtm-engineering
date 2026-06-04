@@ -13,7 +13,7 @@
       "explanation": "The imaginary unit i is defined by the property i^2 = -1. It extends the real number line into a 2D plane. Geometrically, multiplying by i is a 90-degree rotation — two multiplications (i^2) give a 180-degree rotation, which is -1."
     },
     {
-      "stage": "pre",
+      "stage": "check",
       "question": "What does Euler's formula e^(i*theta) equal?",
       "options": [
         "theta + i",
@@ -25,7 +25,7 @@
       "explanation": "Euler's formula states e^(i*theta) = cos(theta) + i*sin(theta). This connects complex exponentials to trigonometry and shows that e^(i*theta) traces the unit circle as theta varies."
     },
     {
-      "stage": "post",
+      "stage": "check",
       "question": "What is the result of (3 + 2i)(1 + 4i)?",
       "options": [
         "3 + 8i",
@@ -35,6 +35,18 @@
       ],
       "correct": 2,
       "explanation": "Using FOIL: (3)(1) + (3)(4i) + (2i)(1) + (2i)(4i) = 3 + 12i + 2i + 8i^2 = 3 + 14i + 8(-1) = 3 + 14i - 8 = -5 + 14i."
+    },
+    {
+      "stage": "check",
+      "question": "Which of the following best describes: Perform complex arithmetic (add, multiply, divide, conjugate) in...?",
+      "options": [
+        "Euler's formula to convert between complex exponentials and trigonometric functi",
+        "Perform complex arithmetic (add, multiply, divide, conjugate) in both rectangular and...",
+        "the Discrete Fourier Transform using complex roots of unity",
+        "how complex rotations underlie RoPE and sinusoidal positional encodings in trans"
+      ],
+      "correct": 1,
+      "explanation": "Perform complex arithmetic (add, multiply, divide, conjugate) in both rectangular and polar form"
     },
     {
       "stage": "post",
