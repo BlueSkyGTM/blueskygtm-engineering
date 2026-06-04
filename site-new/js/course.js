@@ -52,10 +52,19 @@
   const expanded = new Set();
   let filter = 'all';
 
+  /* Phase 19 accordion: show only the 17 standalone capstones (combines multiple
+     phases). Deep-build track sub-lessons are visible on the Projects page. */
+  function phaseItems(ph) {
+    if (ph.id !== 19) return ph.lessons.map((ls, i) => ({ ls, i }));
+    return ph.lessons.map((ls, i) => ({ ls, i }))
+      .filter(({ ls }) => ls.combines && /^P/.test(ls.combines));
+  }
+
   const phaseStat = (ph) => {
+    const items = phaseItems(ph);
     let done = 0;
-    ph.lessons.forEach((_, i) => { if (store.isDone(ph.id, i)) done++; });
-    const total = ph.lessons.length;
+    items.forEach(({ i }) => { if (store.isDone(ph.id, i)) done++; });
+    const total = items.length;
     return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
   };
 
@@ -97,7 +106,7 @@
       el('span', { class: 'toc__chev' }, '▸')
     ]);
     const frag = [head];
-    if (open) frag.push(el('div', { class: 'toc__lessons' }, ph.lessons.map((ls, i) => lessonRow(ph, ls, i))));
+    if (open) frag.push(el('div', { class: 'toc__lessons' }, phaseItems(ph).map(({ ls, i }) => lessonRow(ph, ls, i))));
     return frag;
   }
 

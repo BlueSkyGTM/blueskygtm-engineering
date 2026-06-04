@@ -58,6 +58,7 @@
 .home-hero { padding: var(--s7) 0 var(--s5); border-bottom: 1px solid var(--line); margin-bottom: var(--s5); }
 .home-hero__t { font-family: var(--pix); font-size: clamp(2.8rem, 7.5vw, 5rem); line-height: 1.02; text-transform: uppercase; color: var(--cream); margin: var(--s3) 0 var(--s5); }
 .home-hero__sub { max-width: 60ch; font-size: 0.92rem; line-height: 1.6; color: var(--cream); text-wrap: pretty; }
+.home-hero__by { max-width: 60ch; font-size: 0.82rem; line-height: 1.5; color: var(--muted); margin-top: var(--s4); }
 
 .signposts { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s4); }
 .signpost {
