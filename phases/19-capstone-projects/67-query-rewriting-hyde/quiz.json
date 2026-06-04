@@ -15,18 +15,6 @@
       "explanation": "HyDE writes a document-shaped passage in the corpus voice and retrieves on that embedding; the query vector is replaced."
     },
     {
-      "stage": "pre",
-      "question": "Why is it acceptable for the LLM-generated hypothetical document in HyDE to be factually wrong?",
-      "options": [
-        "The reranker repairs factual errors",
-        "The retriever cares about the token distribution, not factual correctness; the hypothetical's vector lands near the real passage",
-        "The user never sees the hypothetical",
-        "The LLM call is rolled back when wrong"
-      ],
-      "correct": 1,
-      "explanation": "Retrieval is similarity in embedding space; if the hypothetical's vocabulary matches the corpus, the vector lands in the right region."
-    },
-    {
       "stage": "check",
       "question": "What is the difference between multi-query expansion and query decomposition?",
       "options": [
@@ -73,6 +61,18 @@
       ],
       "correct": 1,
       "explanation": "All three rewriters fan out to a model call; if they run in parallel the floor is one model call latency, then the retrievals run in parallel after."
+    },
+    {
+      "stage": "post",
+      "question": "Why is it acceptable for the LLM-generated hypothetical document in HyDE to be factually wrong?",
+      "options": [
+        "The reranker repairs factual errors",
+        "The retriever cares about the token distribution, not factual correctness; the hypothetical's vector lands near the real passage",
+        "The user never sees the hypothetical",
+        "The LLM call is rolled back when wrong"
+      ],
+      "correct": 1,
+      "explanation": "Retrieval is similarity in embedding space; if the hypothetical's vocabulary matches the corpus, the vector lands in the right region."
     }
   ]
 }
