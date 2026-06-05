@@ -383,7 +383,7 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
 
 <nav class="page-nav">
   <a href="index.html" class="nav-back">← Back</a>
-  <span class="nav-title">Agentic GTM · MCP Edition</span>
+  <span class="nav-title">Fleet Engine: Cortex · Claude Code Orchestration</span>
   <a href="https://github.com/BlueSkyGTM/agentic-gtm-mcp" class="nav-link">GitHub →</a>
 </nav>
 
@@ -409,20 +409,20 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
 <!-- STAT BAR -->
 <div class="stat-bar reveal">
   <div class="stat-cell">
-    <div class="stat-n">3</div>
-    <div class="stat-d"><b>Agents</b>Ahab, Nemo, Neptune. Same prompts, new runtime. Gemini 2.5 Flash and Pro via Vertex AI.</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">3</div>
-    <div class="stat-d"><b>Build Phases</b>GCS Pipeline → MCP Delivery → RAG Feedback Loop. Phase 1 built and ready.</div>
-  </div>
-  <div class="stat-cell">
     <div class="stat-n">0</div>
-    <div class="stat-d"><b>Self-Hosted Services</b>No Docker. No Postgres. No n8n. No VM. No SSH. No ops overhead.</div>
+    <div class="stat-d"><b>Self-Hosted Services</b>No Docker. No Postgres. No n8n. No VM. No SSH. The ops layer that kept failing is gone.</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n">3</div>
+    <div class="stat-d"><b>RAG Corpora</b>Live in Vertex AI us-central1 Serverless. Ahab dedup vault, Nemo calibration store, Neptune bite variation store.</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n">2</div>
+    <div class="stat-d"><b>Execution Paths</b>Node.js for local iteration. Python ADK for deployed Agent Engine runs. Both write neptune_output.json to the same GCS bucket.</div>
   </div>
   <div class="stat-cell">
     <div class="stat-n">1</div>
-    <div class="stat-d"><b>RAG Store</b>Live. rag_store.json in GCS. Compounds across every run via text-embedding-004.</div>
+    <div class="stat-d"><b>Orchestrator</b>Claude Code as Admiral. run.js for the Node.js path. agents.py + Pipeline_Orchestrator for the ADK path.</div>
   </div>
 </div>
 
@@ -470,9 +470,61 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
   </div>
 </section>
 
-<!-- ══ SECTION 02: BUILD PHASES ══ -->
+<!-- ══ SECTION 02: EXECUTION PATHS ══ -->
+<section class="process" id="paths">
+  <div class="section-label reveal" data-num="02">Two Execution Paths</div>
+  <h2 class="process-h2 reveal">Local Iteration. <em>Deployed Agent Engine.</em></h2>
+  <p class="process-lead reveal">
+    Both paths run the same three agents with the same system prompts. Both write neptune_output.json to the same GCS bucket. <span class="em">Node.js for fast local runs. Python ADK for hosted execution on Google's Agent Runtime.</span>
+  </p>
+
+  <div class="token-compare reveal">
+    <div class="tc-side before" style="background:#070a08">
+      <div class="tc-tag before"><span class="dot" style="background:var(--accent)"></span>Node.js Path — Local Iteration</div>
+      <div class="tc-headline" style="color:var(--accent); font-size:42px">run.js</div>
+      <div class="tc-sub">Direct Vertex AI calls · google-auth-library</div>
+      <div class="tc-code">
+        <span><span class="good">$ node run.js "campaign message"</span></span>
+        <br>
+        <span style="color:var(--dim)">// safe first run:</span>
+        <span><span class="good">$ DRY_RUN=true SKIP_RAG=true node run.js "..."</span></span>
+        <br>
+        <span style="color:var(--dim)">// deliver to Clay after Neptune:</span>
+        <span><span class="good">$ DELIVER=true node run.js</span></span>
+      </div>
+      <div class="tc-bullets">
+        <div class="tc-bullet">No deployment step — runs agents directly</div>
+        <div class="tc-bullet">Fastest path for iteration and debugging</div>
+        <div class="tc-bullet">Gates each stage via fileExists() before proceeding</div>
+        <div class="tc-bullet">DELIVER=true routes to Clay by Target_Service_Intent</div>
+      </div>
+    </div>
+    <div class="tc-side after">
+      <div class="tc-tag after"><span class="dot"></span>Python ADK Path — Agent Engine</div>
+      <div class="tc-headline" style="font-size:42px">agents.py</div>
+      <div class="tc-sub">Pipeline_Orchestrator on Google Agent Runtime · global</div>
+      <div class="tc-code">
+        <span><span class="good">$ adk deploy Pipeline_Orchestrator \</span></span>
+        <span><span class="good">    --project project-8bd530c5 --location global</span></span>
+        <br>
+        <span><span class="good">$ adk run Pipeline_Orchestrator --input "..."</span></span>
+        <br>
+        <span style="color:var(--dim)">// after each run, write back to RAG:</span>
+        <span><span class="good">$ python scripts/upload_to_rag.py --corpus ... --dry-run</span></span>
+      </div>
+      <div class="tc-bullets">
+        <div class="tc-bullet">RagTool reads from 3 Vertex AI corpora during execution</div>
+        <div class="tc-bullet">RAG write-back is explicit via upload_to_rag.py post-run</div>
+        <div class="tc-bullet">Clay delivery still uses DELIVER=true node run.js</div>
+        <div class="tc-bullet">MCP server delivery deferred to V3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 03: BUILD PHASES ══ -->
 <section class="process" id="phases">
-  <div class="section-label reveal" data-num="02">The Three Build Phases</div>
+  <div class="section-label reveal" data-num="03">The Three Build Phases</div>
   <h2 class="process-h2 reveal">GCS Pipeline. MCP Delivery. <em>RAG Feedback.</em></h2>
   <p class="process-lead reveal">
     V2 builds in three gates. Each gate produces something a human can inspect before the next phase runs. <span class="em">Phase 1 is built and ready to run. Phase 2 and 3 are sequentially blocked.</span>
@@ -480,235 +532,75 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
 
   <div class="phase-grid reveal">
     <div class="phase-card">
-      <div class="phase-num">Phase 1 <span class="phase-status done">BUILT</span></div>
-      <div class="phase-q">GCS Pipeline</div>
+      <div class="phase-num">Phase 1 <span class="phase-status done">LIVE</span></div>
+      <div class="phase-q">GCS Pipeline + RAG</div>
       <div class="phase-desc">
-        Ahab (Flash + grounding) writes <code>ahab_output.json</code> to GCS. Nemo (Pro + grounding) reads it, enriches each lead, writes <code>nemo_output.json</code>. Neptune (Pro + responseSchema) reads Nemo's output, writes <code>neptune_output.json</code> with the Outreach Bite.<br><br>
-        RAG shared memory is live — every agent reads and writes rag_store.json on each run. The store compounds.<br><br>
-        <strong>run.js</strong> is the single entry point. Gates each stage before proceeding.
+        Ahab (Flash + grounding) writes <code>ahab_output.json</code> to GCS. Nemo (Pro + grounding) enriches each lead, applies CATALYST_STALE, writes <code>nemo_output.json</code>. Neptune (Pro + responseSchema) writes <code>neptune_output.json</code> with the Outreach Bite.<br><br>
+        Three Vertex AI RAG corpora live in us-central1 Serverless — Ahab dedup vault, Nemo calibration, Neptune bite variation. All compounds across runs.<br><br>
+        ADK path deployed: <code>agents.py</code> + <code>Pipeline_Orchestrator</code> on Agent Engine global.
       </div>
       <div class="phase-gate"><b>Success gate:</b> 50 leads in neptune_output.json with Outreach_Bite populated.</div>
     </div>
     <div class="phase-card">
-      <div class="phase-num">Phase 2 <span class="phase-status blocked">BLOCKED</span></div>
-      <div class="phase-q">MCP Delivery</div>
+      <div class="phase-num">Phase 2 <span class="phase-status blocked">BLOCKED ON P1</span></div>
+      <div class="phase-q">Clay + HubSpot Delivery</div>
       <div class="phase-desc">
-        MCP server exposes Neptune's output to downstream tools. Four tools planned:<br><br>
-        <strong>get_leads</strong> — all qualified leads from neptune_output.json<br>
-        <strong>get_lead_by_company</strong> — single lead lookup<br>
-        <strong>push_to_sheet</strong> — Google Sheets export<br>
-        <strong>push_to_clay</strong> — Clay enrichment handoff<br><br>
-        No Express server. No custom HTTP routing. Claude Code orchestration.
+        Two Clay tables — Fleet Engine: GTM and Fleet Engine: Accounting. Each sourced from a webhook. Neptune routes by Target_Service_Intent. <code>DELIVER=true node run.js</code> pushes after each run.<br><br>
+        Clay tables sync to HubSpot: contact + Outreach_Bite note written on arrival. No enrichment columns — Neptune delivers pre-enriched rows.<br><br>
+        MCP server delivery deferred to V3.
       </div>
-      <div class="phase-gate"><b>Success gate:</b> At least one downstream tool receiving Neptune output.</div>
+      <div class="phase-gate"><b>Success gate:</b> Both Clay tables receiving rows. HubSpot contacts created.</div>
     </div>
     <div class="phase-card">
-      <div class="phase-num">Phase 3 <span class="phase-status blocked">BLOCKED</span></div>
-      <div class="phase-q">RAG Feedback Loop</div>
+      <div class="phase-num">Phase 3 <span class="phase-status blocked">V3</span></div>
+      <div class="phase-q">MCP + Reply Feedback</div>
       <div class="phase-desc">
-        After first replies arrive, <code>feedback.js</code> marks outcomes — replied, bounced, ignored. The RAG query layer weights replied entries higher in Neptune retrieval.<br><br>
-        Current RAG state: improves Bite variety across leads (no repeated openings or villains). Does not yet distinguish quality from variety.<br><br>
-        <strong>Do not delete rag_store.json between runs.</strong> The store is the compounding asset.
+        MCP server exposes Neptune output to downstream tools — <code>get_leads</code>, <code>push_to_clay</code>, <code>push_to_sheet</code>. Claude Code as the only orchestrator, no Express server.<br><br>
+        Reply outcomes feed back into RAG: replied entries weight higher in Neptune retrieval. Current RAG improves Bite variety. Phase 3 closes the loop on quality vs. variety.<br><br>
+        See CLAUDE_V3.md.
       </div>
-      <div class="phase-gate"><b>Success gate:</b> Neptune Bites differ structurally across leads without explicit prompting.</div>
+      <div class="phase-gate"><b>Success gate:</b> Neptune Bites vary structurally and improve reply rate over 3+ campaigns.</div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 03: RAG MEMORY ══ -->
+<!-- ══ SECTION 04: RAG MEMORY ══ -->
 <section class="process" id="rag">
-  <div class="section-label reveal" data-num="03">RAG Shared Memory</div>
-  <h2 class="process-h2 reveal">Intelligence That <em>Compounds.</em></h2>
+  <div class="section-label reveal" data-num="04">Vertex AI RAG Corpora</div>
+  <h2 class="process-h2 reveal">Three Corpora. <em>One Compounding System.</em></h2>
   <p class="process-lead reveal">
-    Every run feeds the RAG store. Ahab uses it to deduplicate across campaigns. Nemo uses it to calibrate friction type consistency. Neptune uses it to vary Bite structure across leads. <span class="em">The store is never deleted. It gets smarter every time.</span>
+    Each agent has its own corpus in Vertex AI us-central1 Serverless. Ahab deduplicates across campaigns. Nemo calibrates friction classification. Neptune varies Bite structure. <span class="em">All three are live. Every run compounds them.</span>
   </p>
 
   <div class="rag-diagram reveal">
     <div class="rag-flow">
       <div class="rag-node ahab">🐋 Ahab<span class="node-model">Flash · grounding</span></div>
-      <div class="rag-arrow">→</div>
-      <div class="rag-node gcs">GCS<span class="node-model">ahab_output.json</span></div>
-      <div class="rag-arrow">→</div>
+      <div class="rag-arrow">⇅</div>
+      <div class="rag-node rag" style="border-color:rgba(185,227,106,0.70);background:rgba(185,227,106,0.06)">Ahab Corpus<span class="node-model" style="color:var(--accent)">Dedup vault · 6536218…</span></div>
+      <div class="rag-arrow" style="visibility:hidden">→</div>
       <div class="rag-node nemo">🐟 Nemo<span class="node-model">Pro · grounding</span></div>
     </div>
-    <div class="rag-flow" style="margin-bottom:0">
+    <div class="rag-flow">
       <div class="rag-node neptune">🔱 Neptune<span class="node-model">Pro · schema</span></div>
-      <div class="rag-arrow">←</div>
-      <div class="rag-node gcs">GCS<span class="node-model">nemo_output.json</span></div>
-      <div class="rag-arrow" style="visibility:hidden">→</div>
-      <div class="rag-node rag">RAG Store<span class="node-model">text-embedding-004</span></div>
+      <div class="rag-arrow">⇅</div>
+      <div class="rag-node rag" style="border-color:rgba(215,183,255,0.70);background:rgba(215,183,255,0.06)">Neptune Corpus<span class="node-model" style="color:#D7B7FF">Bite store · 3877687…</span></div>
+      <div class="rag-arrow">⇅</div>
+      <div class="rag-node rag">Nemo Corpus<span class="node-model">Calibration · 5352756…</span></div>
     </div>
     <div style="margin-top:28px">
       <div class="rag-legend">
         <div class="rag-legend-item ahab-leg">
-          <b>Ahab reads RAG</b>
-          <span>Queries top-10 prior discoveries before searching. Excluded companies list is built from RAG — deduplication across campaigns is automatic.</span>
+          <b>Ahab Corpus — Dedup Vault</b>
+          <span>Queries top-10 prior discoveries before searching. Companies already in the vault are excluded. Deduplication across all campaigns is automatic — no manual tracking.</span>
         </div>
         <div class="rag-legend-item nemo-leg">
-          <b>Nemo reads + writes RAG</b>
-          <span>Queries top-3 similar enrichment profiles before enriching each lead. Upserts ACTIVE enrichments. Friction type calibration improves across runs.</span>
+          <b>Nemo Corpus — Calibration Store</b>
+          <span>Queries top-3 similar enrichment profiles before each lead. Friction type classification stays consistent with prior runs. Only ACTIVE leads write back — SHIPWRECKED stays out.</span>
         </div>
         <div class="rag-legend-item neptune-leg">
-          <b>Neptune reads + writes RAG</b>
-          <span>Queries top-3 prior Bites filtered by friction type + intent. Told explicitly to vary opening and villain. Upserts each finished Bite for future variation reference.</span>
+          <b>Neptune Corpus — Bite Variation Store</b>
+          <span>Queries top-3 prior Bites filtered by friction type + intent — told explicitly to vary opening and villain from retrieved examples. Every finished Bite compounds the variation store.</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SECTION 04: AGENT CONTINUITY ══ -->
-<section class="process" id="agents">
-  <div class="section-label reveal" data-num="04">Agent Continuity</div>
-  <h2 class="process-h2 reveal">Same Prompts. <em>Evolved Output Contract.</em></h2>
-  <p class="process-lead reveal">
-    The core persona, methodology, and Forensic Dictionary transferred from V1 verbatim. What evolved in V2: the output schemas, the CATALYST_STALE handling, and Neptune's contact framing logic. <span class="em">Select an agent to read the V2 system instruction.</span>
-  </p>
-
-  <div class="agent-showcase reveal">
-    <div class="agent-stack">
-      <div class="agent-card ahab-card on" data-agent="ahab">
-        <div class="agent-name">🐋 Ahab</div>
-        <div class="agent-model">gemini-2.5-flash · Google Search grounding</div>
-        <div class="agent-role">The Hunter · Find</div>
-        <p>Speed over depth. Ahab runs Flash with grounding enabled — real web search, not hallucinated company names. RAG deduplication means every search finds net-new targets from prior campaigns.</p>
-        <div class="agent-chip-row"><span>🎯 Technical Harpooner</span><span>📡 Signal Harpooner</span></div>
-        <p class="subagent-note">Reads RAG before searching (top-10 prior discoveries → Excluded Companies). Bulk-upserts full Catch into RAG after each run. Writes ahab_output.json to GCS.</p>
-      </div>
-      <div class="agent-card nemo-card" data-agent="nemo">
-        <div class="agent-name">🐟 Nemo</div>
-        <div class="agent-model">gemini-2.5-pro · Google Search grounding</div>
-        <div class="agent-role">The Intelligence Analyst · Enrich</div>
-        <p>Depth over speed. Nemo runs Pro with grounding to verify direct URLs and contact claims. CATALYST_STALE now hard-gates leads — funding over 18 months old routes to SHIPWRECKED, not a flag.</p>
-        <div class="agent-chip-row"><span>🤿 URL Recon Diver</span><span>🩺 Health Check Diver</span><span>🔎 Friction Diver</span></div>
-        <p class="subagent-note">Reads RAG before each lead (top-3 similar enrichments). Upserts ACTIVE leads into RAG. Writes nemo_output.json (active) and shipwrecked.json separately to GCS.</p>
-      </div>
-      <div class="agent-card neptune-card" data-agent="neptune">
-        <div class="agent-name">🔱 Neptune</div>
-        <div class="agent-model">gemini-2.5-pro · responseSchema enforcement</div>
-        <div class="agent-role">The Authority Engine · Transform</div>
-        <p>Schema-enforced output. Neptune runs Pro with responseSchema — the Outreach_Bite, Neptune_Log, and funding_signal are typed fields, not text to parse. Contact_Frame routing adjusts the angle by role.</p>
-        <div class="agent-chip-row"><span>🎯 Rule of One</span><span>🪞 Reflect First</span><span>⚡ Specific Outcome</span></div>
-        <p class="subagent-note">Reads RAG before each Bite (top-3 similar Bites, filtered by friction type). Explicitly told to vary opening and villain. Upserts each Bite into RAG. Writes neptune_output.json to GCS.</p>
-      </div>
-    </div>
-
-    <div class="agent-prompt-grid">
-      <div class="prompt-excerpt-column ahab-prompt on">
-        <div class="prompt-kicker">🐋 Ahab — V2 System Instruction</div>
-        <pre class="prompt-excerpt">system_instruction: |
-  [Task]: RAW DATA HARVESTING of {{CAMPAIGN_TYPE}} opportunities.
-  You are the high-volume scraper at the front-end of the pipeline.
-  [Persona]: 🐋 Ahab, the Hunter.
-  [Sub-Agents]:
-    - 🎯 Technical Harpooner: Scans listings for tech-stack keywords.
-    - 📡 Signal Harpooner: Scans for growth and health keywords.
-
-  [Handoff_Protocol]:
-  - Fill the Catch array for Nemo. Do not analyze.
-  - Do not burn tokens on enrichment. Give Nemo maximum raw leads.
-  - DO NOT return companies in the Excluded Companies list.
-    These come from prior runs. Find net-new targets only.
-
-  [Core_Directives]:
-  1. Execute 5+ varied search queries targeting the lead profile.
-  2. STRICT KEYWORD EXTRACTION: only short phrases in signals.
-     No full sentences. Keywords only.
-  3. SKIP AGGREGATORS: jobgether, jobsora, indeed, glassdoor,
-     linkedin, ziprecruiter. Direct company sites only.
-  4. Every query MUST be logged in Harpooner_Logs.
-
-  [Output_Schema]:
-  {
-    "Harpooner_Logs": ["query1", "query2", ...],
-    "Catch": [{
-      "Company_Name": "string",
-      "Job_URL": "direct company URL only",
-      "Location_Status": "Remote | Hybrid | On-site",
-      "Raw_Primary_Signals": ["keyword"],
-      "Raw_Health_Signals": ["keyword"]
-    }]
-  }</pre>
-      </div>
-      <div class="prompt-excerpt-column nemo-prompt">
-        <div class="prompt-kicker">🐟 Nemo — V2 System Instruction</div>
-        <pre class="prompt-excerpt">system_instruction: |
-  [Task]: SINGLE-LEAD DIAGNOSTIC ENRICHMENT.
-  [Persona]: 🐟 Nemo, the Intelligence Analyst.
-  [Mission]: Analyze ONE lead. Produce a Clay-ready output.
-
-  [Clay_Readiness_Protocol]:
-  - Every claim must be sourced. No invented details.
-  - Direct_URL must be the company's own domain.
-    Not a job board or listing URL.
-  - Contact_Recon must be a real person with a verifiable role.
-  - Target_Service_Intent derived from evidence only.
-
-  [Target_Service_Intent_Routing]:
-  - "Accounting": controllers, bookkeeping, QuickBooks signals
-  - "GTM": RevOps, CRM operations, marketing automation
-
-  [Forensic_Dictionary]:
-  1. API Stutter: tools exist but don't talk to each other.
-  2. Scale Friction: growth outpacing data infrastructure.
-  3. Manual Data Debt: humans doing work tables should structure.
-  4. Displacement Signal: generalist doing specialist work.
-
-  [CATALYST_STALE]:
-  If funding signal is older than 18 months:
-    set status = SHIPWRECKED
-    set reason_code = CATALYST_STALE
-  Do not enrich further. Route to shipwrecked.json.
-
-  [Output_Schema]:
-  {
-    "Enriched_Lead": { ... full enrichment fields ... },
-    "Nemo_Enrich_Audit": {
-      "status": "ACTIVE | SHIPWRECKED",
-      "reason_code": "null | CATALYST_STALE | MISSING_CONTACT | ..."
-    }
-  }</pre>
-      </div>
-      <div class="prompt-excerpt-column neptune-prompt">
-        <div class="prompt-kicker">🔱 Neptune — V2 System Instruction</div>
-        <pre class="prompt-excerpt">system_instruction: |
-  [Task]: OUTREACH SYNTHESIS — Robert Collier method.
-  [Persona]: 🔱 Neptune, the Authority Engine.
-  [Prime_Directive]: Confirm what the prospect already knows.
-  You are not selling. You are proving you understand their
-  specific situation better than they can articulate it.
-
-  [Bite_Principles]:
-  1. REFLECT: Name what they are already doing before offering.
-     Their stack, their process, their friction — stated precisely.
-  2. NAME THE VILLAIN: The specific tool that breaks. The exact
-     process that doesn't scale. Never generic.
-  3. OFFER THE SPECIFIC OUTCOME: Not a feature. Not a capability.
-     The exact operational result they already want.
-
-  [Funding_Signal_Handling]:
-  If funding_signal is present:
-    Open with the momentum hook, then pivot to friction.
-  If funding_signal is null:
-    Open directly with the operational pressure.
-
-  [Contact_Frame]:
-  CTO / VP Eng       → architecture debt angle
-  VP Revenue / CRO   → pipeline visibility angle
-  Head Growth / CMO  → CAC efficiency angle
-  RevOps             → data integrity angle
-
-  [The_Rule_of_One_Mandate]:
-  1. 🎯 One Reader: intimate 1-on-1. Never "team" or "company."
-  2. 🪞 First-Person ONLY: "I" — never agency framing.
-  3. ⚡ One Peer Suggestion: specific to their exact signals.
-
-  [Output_Schema]: responseSchema-enforced
-  {
-    "Neptune_Log": { "friction_type": "...", "contact_frame": "..." },
-    "Outreach_Bite": "3-4 sentence string",
-    "funding_signal": "string | null"
-  }</pre>
       </div>
     </div>
   </div>
@@ -718,6 +610,7 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
 <section class="contact" id="contact">
   <div class="contact-copy reveal">
     <div class="section-label" data-num="05">The Architect</div>
+
     <h2 class="contact-h2">GTM Systems Engineer.<br><em>AI Workflow Architecture.</em></h2>
     <p class="contact-sub">
       I turn messy GTM inputs into structured records, useful handoffs, and workflows that a revenue team can actually inspect, trust, and use.
@@ -743,24 +636,11 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
   </div>
 </section>
 <footer>
-  <div class="footer-left">© 2026 Raymond Fenton · V2 · Vertex AI · GCS · RAG</div>
-  <div class="footer-quote">The prompts survived. The infrastructure didn't have to.</div>
+  <div class="footer-left">© 2026 Raymond Fenton · Fleet Engine: Cortex · Vertex AI · GCS · RAG</div>
+  <div class="footer-quote">The agents didn't change. The substrate did.</div>
 </footer>
 
 <script>
-// ── Agent card → matching prompt highlight ────────────────────────────────────
-document.querySelectorAll('.agent-card[data-agent]').forEach(card => {
-  card.addEventListener('click', () => {
-    const agent = card.dataset.agent;
-    document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('on'));
-    document.querySelectorAll('.prompt-excerpt-column').forEach(p => p.classList.remove('on'));
-    card.classList.add('on');
-    const prompt = document.querySelector('.prompt-excerpt-column.' + agent + '-prompt');
-    if (prompt) prompt.classList.add('on');
-  });
-});
-
-// ── Scroll reveal ─────────────────────────────────────────────────────────────
 const obs = new IntersectionObserver(
   entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
   { threshold: 0.08 }
