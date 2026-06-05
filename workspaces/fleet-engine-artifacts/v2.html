@@ -164,9 +164,50 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--action); outlin
 .tc-sub { font-size: 13px; color: var(--text); margin-bottom: 28px; }
 
 .tc-code { font-size: 11px; line-height: 2; color: var(--text); padding-top: 22px; border-top: 1px solid var(--border2); }
-.tc-code .arrow { color: var(--dim); padding: 0 6px; }
+.tc-code .arrow { color: #444; padding: 0 6px; }
 .tc-code .bad   { color: var(--red); }
 .tc-code .good  { color: var(--action); }
+
+/* ── Polyglot bridge (absorbed from python_remake) ─────────── */
+.bridge-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border2);
+  border: 2px solid rgba(118,161,255,0.38);
+  box-shadow: 0 42px 120px rgba(0,0,0,0.34), 0 0 0 1px rgba(118,161,255,0.08);
+}
+.bridge-side { padding: 36px 36px 40px; }
+.bridge-side.node { background: #07090f; }
+.bridge-side.py   { background: #0a0906; }
+.bridge-tag { font-size: 10px; letter-spacing: 0.06em; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+.bridge-side.node .bridge-tag { color: var(--action); }
+.bridge-side.py   .bridge-tag { color: #f0a030; }
+.bridge-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.bridge-headline { font-size: 32px; font-weight: 400; line-height: 1.0; margin-bottom: 8px; font-optical-sizing: auto; }
+.bridge-side.node .bridge-headline { color: var(--action); }
+.bridge-side.py   .bridge-headline { color: #f0a030; }
+.bridge-sub { font-size: 13px; color: var(--text); margin-bottom: 24px; font-weight: 300; }
+.bridge-code {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 11px; line-height: 1.85; color: var(--text);
+  padding-top: 22px; border-top: 1px solid var(--border2);
+}
+.bridge-code .line { display: block; }
+.bridge-code .key   { color: var(--text); }
+.bridge-code .comm  { color: var(--muted); }
+.bridge-code .hi-node { color: var(--action); }
+.bridge-code .hi-py   { color: #f0a030; }
+.bridge-code .hi-str  { color: #FFD580; }
+
+/* ── Architecture decisions (absorbed from changelog_remake) ── */
+.constraints { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.constraint { background: var(--bg); padding: 36px 32px; transition: background 0.2s; }
+.constraint:hover { background: var(--surface2); }
+.constraint-num { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 20px; text-transform: uppercase; }
+.constraint-q { font-size: 20px; font-weight: 500; color: var(--action); margin-bottom: 16px; line-height: 1.2; }
+.constraint-before { font-size: 13px; color: var(--text); margin-bottom: 16px; line-height: 1.6; font-weight: 300; }
+.constraint-arrow { font-size: 18px; color: var(--action); margin-bottom: 14px; display: block; opacity: 0.5; }
+.constraint-after { font-size: 13px; color: var(--text); line-height: 1.6; font-weight: 300; }
+.constraint-after strong { color: var(--action); font-weight: 500; }
 
 .tc-bullets { margin-top: 22px; display: flex; flex-direction: column; gap: 8px; }
 .tc-bullet { font-size: 13px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; font-weight: 300; }
@@ -353,13 +394,171 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.vis { opacity: 1; transform: translateY(0); }
 
+/* ── Trilingual code explorer ────────────────────────────── */
+.lang-tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 0; }
+.lang-tab { font-size: 12px; font-weight: 500; padding: 14px 24px; background: none; border: none; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; letter-spacing: 0.02em; }
+.lang-tab:hover { color: var(--text); }
+.lang-tab.on { color: var(--action); border-bottom-color: var(--action); }
+.lang-panel {
+  border: 1px solid var(--border);
+  border-top: none;
+  background: #07090e;
+  min-height: 340px;
+  overflow: hidden;
+}
+.lang-code-wrap { padding: 0; }
+.lang-code-bar { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border); }
+.lang-code-dot { width: 9px; height: 9px; border-radius: 50%; }
+.lang-code-dot.r { background: #FF5F57; }
+.lang-code-dot.y { background: #FFBD2E; }
+.lang-code-dot.g { background: #28C840; }
+.lang-code-filename { font-size: 10px; color: var(--muted); margin: 0 auto; letter-spacing: 0.04em; }
+.lang-code {
+  font-family: 'Courier New', 'DM Mono', monospace;
+  font-size: 12px; line-height: 1.9; color: var(--text);
+  padding: 22px 28px; overflow-x: auto;
+  scrollbar-color: #365FA8 #0D1118; scrollbar-width: thin;
+  white-space: pre;
+}
+.lang-code .kw   { color: #76A1FF; }
+.lang-code .str  { color: #FFD580; }
+.lang-code .cm   { color: #5A6070; }
+.lang-code .fn   { color: #B9E36A; }
+.lang-code .py   { color: #f0a030; }
+.lang-code .hi   { color: #E6E6E6; }
+.lang-desc { padding: 20px 28px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text); line-height: 1.65; font-weight: 300; background: rgba(0,0,0,0.2); }
+.lang-desc strong { color: var(--action); font-weight: 500; }
+
+/* ── Orchestration terminal ──────────────────────────────── */
+.orch-terminal {
+  border: 2px solid rgba(118,161,255,0.40);
+  background: #060810;
+  box-shadow: 0 42px 120px rgba(0,0,0,0.48), 0 0 0 1px rgba(118,161,255,0.08);
+  overflow: hidden;
+}
+.orch-bar { display: flex; align-items: center; gap: 8px; padding: 12px 18px; background: rgba(255,255,255,0.04); border-bottom: 1px solid var(--border); }
+.orch-dot { width: 10px; height: 10px; border-radius: 50%; }
+.orch-dot.r { background: #FF5F57; }
+.orch-dot.y { background: #FFBD2E; }
+.orch-dot.g { background: #28C840; }
+.orch-title { font-size: 10px; color: var(--muted); margin: 0 auto; letter-spacing: 0.04em; }
+.orch-stages { display: flex; border-bottom: 1px solid var(--border); }
+.orch-stage-btn { flex: 1; padding: 12px; font-size: 11px; font-weight: 600; color: var(--muted); background: none; border: none; border-right: 1px solid var(--border); cursor: pointer; letter-spacing: 0.04em; transition: all 0.18s; }
+.orch-stage-btn:last-child { border-right: none; }
+.orch-stage-btn:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.orch-stage-btn.on { color: var(--action); background: rgba(118,161,255,0.06); border-bottom: 2px solid var(--action); }
+.orch-output {
+  font-family: 'Courier New', monospace;
+  font-size: 12px; line-height: 1.85;
+  padding: 24px 28px;
+  min-height: 280px;
+  overflow-y: auto;
+  scrollbar-color: #365FA8 #0D1118; scrollbar-width: thin;
+}
+.orch-line { display: block; }
+.orch-line.dim   { color: #3a4050; }
+.orch-line.cmd   { color: #B9E36A; }
+.orch-line.info  { color: #8899AA; }
+.orch-line.ok    { color: #28C840; }
+.orch-line.warn  { color: #FFBD2E; }
+.orch-line.err   { color: #FF5F57; }
+.orch-line.gate  { color: var(--action); }
+.orch-line.bite  { color: #f0a030; font-style: italic; margin: 4px 0; padding-left: 4px; border-left: 2px solid rgba(240,160,48,0.4); }
+.orch-line.blank { display: block; height: 10px; }
+
+/* ── Failure log (absorbed from changelog) ───────────────── */
+.domain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 32px; }
+.domain-card { background: var(--bg); padding: 22px 20px; cursor: pointer; border-bottom: 2px solid transparent; transition: background 0.2s, border-color 0.2s; }
+.domain-card:hover { background: var(--surface2); }
+.domain-card.on { border-bottom-color: var(--red); background: rgba(255,85,85,0.04); }
+.domain-icon { font-size: 20px; margin-bottom: 10px; }
+.domain-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.domain-count { font-size: 28px; font-weight: 600; color: var(--text); line-height: 1; margin-bottom: 8px; }
+.domain-desc { font-size: 11px; color: var(--muted); line-height: 1.5; font-weight: 300; }
+.failure-log { border: 2px solid rgba(255,85,85,0.35); background: var(--surface); box-shadow: 0 42px 120px rgba(0,0,0,0.34), 0 0 0 1px rgba(255,85,85,0.06); }
+.log-bar { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--surface2); border-bottom: 1px solid var(--border); }
+.log-dot { width: 10px; height: 10px; border-radius: 50%; }
+.log-dot-r { background: #FF5F57; }
+.log-dot-y { background: #FFBD2E; }
+.log-dot-g { background: #28C840; }
+.log-title { font-size: 10px; color: var(--muted); margin: 0 auto; letter-spacing: 0.04em; }
+.log-body { display: grid; grid-template-columns: minmax(240px, 0.6fr) minmax(0, 1.4fr); height: 560px; overflow: hidden; }
+.log-list { overflow-y: auto; border-right: 1px solid var(--border); scrollbar-color: #365FA8 #0D1118; scrollbar-width: thin; }
+.log-group-header { padding: 8px 18px 6px; background: var(--surface2); border-bottom: 1px solid var(--border); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); position: sticky; top: 0; z-index: 2; }
+.log-row { padding: 12px 18px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .15s; display: flex; align-items: flex-start; gap: 10px; }
+.log-row:hover { background: rgba(255,85,85,0.05); }
+.log-row.on { background: rgba(255,85,85,0.08); box-shadow: inset 3px 0 0 var(--red); }
+.log-num { font-size: 10px; color: var(--muted); font-weight: 600; flex-shrink: 0; padding-top: 2px; min-width: 22px; }
+.log-row-title { font-size: 12px; color: var(--text); font-weight: 500; line-height: 1.3; }
+.log-row-domain { font-size: 10px; color: var(--muted); margin-top: 3px; }
+.log-detail { background: var(--surface2); padding: 24px; overflow-y: auto; scrollbar-color: #365FA8 #0D1118; scrollbar-width: thin; }
+.detail-num { font-size: 10px; color: var(--red); font-weight: 700; letter-spacing: 0.1em; margin-bottom: 8px; }
+.detail-title { font-size: clamp(18px, 2vw, 26px); font-weight: 500; color: var(--text); line-height: 1.1; margin-bottom: 6px; }
+.detail-domain { font-size: 11px; color: var(--muted); margin-bottom: 22px; letter-spacing: 0.04em; }
+.detail-card { border: 1px solid var(--border); background: rgba(255,255,255,0.026); padding: 16px; margin-bottom: 12px; }
+.detail-card.cause  { border-left: 3px solid var(--red); }
+.detail-card.fix    { border-left: 3px solid var(--accent); }
+.detail-card.v2     { border-left: 3px solid var(--action); }
+.detail-label { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.detail-card.cause .detail-label { color: var(--red); }
+.detail-card.fix   .detail-label { color: var(--accent); }
+.detail-card.v2    .detail-label { color: var(--action); }
+.detail-body { font-size: 13px; color: var(--text); line-height: 1.6; font-weight: 300; }
+.detail-body code { font-family: monospace; font-size: 11px; background: rgba(255,255,255,0.06); padding: 1px 5px; color: var(--accent); }
+
+/* ── Python pattern explorer (absorbed) ─────────────────── */
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 32px; }
+.cat-card { background: var(--bg); padding: 22px 20px; cursor: pointer; border-bottom: 2px solid transparent; transition: background 0.2s, border-color 0.2s; }
+.cat-card:hover { background: var(--surface2); }
+.cat-card.on { border-bottom-color: #f0a030; background: rgba(240,160,48,0.04); }
+.cat-icon { font-size: 20px; margin-bottom: 10px; }
+.cat-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.cat-problem { font-size: 11px; color: var(--muted); line-height: 1.5; font-weight: 300; }
+.pattern-explorer { border: 2px solid rgba(240,160,48,0.40); background: var(--surface); box-shadow: 0 42px 120px rgba(0,0,0,0.34), 0 0 0 1px rgba(240,160,48,0.06); }
+.explorer-bar { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--surface2); border-bottom: 1px solid var(--border); }
+.exp-dot { width: 10px; height: 10px; border-radius: 50%; }
+.exp-dot-r { background: #FF5F57; }
+.exp-dot-y { background: #FFBD2E; }
+.exp-dot-g { background: #28C840; }
+.exp-title { font-size: 10px; color: var(--muted); margin: 0 auto; letter-spacing: 0.04em; }
+.explorer-body { display: grid; grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1.45fr); height: 560px; overflow: hidden; }
+.pattern-list { overflow-y: auto; border-right: 1px solid var(--border); scrollbar-color: #365FA8 #0D1118; scrollbar-width: thin; }
+.pattern-group-header { padding: 8px 18px 6px; background: var(--surface2); border-bottom: 1px solid var(--border); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f0a030; position: sticky; top: 0; z-index: 2; }
+.pattern-row { padding: 13px 18px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .15s; display: flex; align-items: flex-start; gap: 10px; }
+.pattern-row:hover { background: rgba(240,160,48,0.05); }
+.pattern-row.on { background: rgba(240,160,48,0.08); box-shadow: inset 3px 0 0 #f0a030; }
+.pattern-num { font-size: 10px; color: var(--muted); font-weight: 600; flex-shrink: 0; padding-top: 2px; min-width: 22px; }
+.pattern-row-title { font-size: 12px; color: var(--text); font-weight: 500; line-height: 1.3; }
+.pattern-row-cat { font-size: 10px; color: var(--muted); margin-top: 3px; }
+.pattern-detail { background: var(--surface2); padding: 24px; overflow-y: auto; scrollbar-color: #365FA8 #0D1118; scrollbar-width: thin; }
+.pat-label { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f0a030; margin-bottom: 6px; }
+.pat-title { font-size: clamp(18px, 2vw, 26px); font-weight: 500; color: var(--text); line-height: 1.1; margin-bottom: 20px; }
+.pat-card { border: 1px solid var(--border); background: rgba(255,255,255,0.026); padding: 16px; margin-bottom: 12px; }
+.pat-card.prob { border-left: 3px solid var(--red); }
+.pat-card.app  { border-left: 3px solid #f0a030; }
+.pat-card.code { border-left: 3px solid var(--action); padding: 0; overflow: hidden; }
+.pat-card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.pat-card.prob .pat-card-label { color: var(--red); }
+.pat-card.app  .pat-card-label { color: #f0a030; }
+.pat-card.code .pat-card-label { color: var(--action); padding: 12px 16px 0; }
+.pat-body { font-size: 13px; color: var(--text); line-height: 1.6; font-weight: 300; }
+.pat-code {
+  font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.8;
+  padding: 12px 16px;
+  background: repeating-linear-gradient(180deg, rgba(255,255,255,0.018) 0, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 22px), rgba(0,0,0,0.2);
+  color: #FFD580; white-space: pre; overflow-x: auto;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .agent-showcase { grid-template-columns: 1fr; }
-  .agent-prompt-grid { grid-template-columns: 1fr; }
-  .rag-flow { grid-template-columns: 1fr; }
-  .rag-arrow { display: none; }
-  .rag-legend { grid-template-columns: 1fr; }
+  .log-body { grid-template-columns: 1fr; height: auto; }
+  .log-detail { min-height: 400px; border-left: 0; border-top: 1px solid var(--border); }
+  .explorer-body { grid-template-columns: 1fr; height: auto; }
+  .pattern-detail { min-height: 400px; border-left: 0; border-top: 1px solid var(--border); }
+  .bridge-compare { grid-template-columns: 1fr; }
+  .domain-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .lang-tabs { flex-wrap: wrap; }
 }
 @media (max-width: 1000px) {
   .page-nav { padding: 0 24px; }
@@ -426,108 +625,158 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
   </div>
 </div>
 
-<!-- ══ SECTION 01: ARCHITECTURE ══ -->
-<section class="process" id="architecture">
-  <div class="section-label reveal" data-num="01">The Architecture</div>
-  <h2 class="process-h2 reveal">Same Agents. <em>Cloud-Native Runtime.</em></h2>
+<!-- ══ SECTION 01: TRILINGUAL ══ -->
+<section class="process" id="languages">
+  <div class="section-label reveal" data-num="01">Three Languages. One Pipeline.</div>
+  <h2 class="process-h2 reveal">Node.js. Python. <em>Agent Prompts.</em></h2>
   <p class="process-lead reveal">
-    V1 ran on a self-hosted GCP VM with Docker, Postgres, and n8n stitched together. V2 replaces all of it with managed services. <span class="em">The agents didn't change. The substrate did.</span>
+    Cortex runs across three distinct code layers — each written in a different language, each with a different job. Node.js runs the agents through Vertex AI. Python ADK hosts the orchestrator on Agent Engine and validates every output contract with Pydantic. Agent prompts are the third language: version-controlled instruction sets that define how each agent thinks. <span class="em">Select a layer to read it.</span>
+  </p>
+  <div class="reveal">
+    <div class="lang-tabs" id="lang-tabs">
+      <button class="lang-tab on" data-lang="node">Node.js — Agent Runtime</button>
+      <button class="lang-tab" data-lang="python">Python ADK — Orchestrator</button>
+      <button class="lang-tab" data-lang="prompts">Agent Prompts — Instruction Layer</button>
+    </div>
+    <div class="lang-panel" id="lang-panel"></div>
+  </div>
+</section>
+
+<!-- ══ SECTION 02: FAILURE LOG ══ -->
+<!-- What V1 proved: every fix introduced a new failure surface. The infrastructure was the enemy. -->
+<section class="process" id="failures">
+  <div class="section-label reveal" data-num="02">18 Failure Modes — Why We Removed It Instead of Fixing It</div>
+  <h2 class="process-h2 reveal">Every Fix Introduced <em>A New Failure.</em></h2>
+  <p class="process-lead reveal">
+    V1 ran 1,500 enrichment cycles across six campaigns. Every failure was documented. The pattern that emerged: fixing one layer broke another. The infrastructure was fighting itself. <span class="em">The decision wasn't to improve it. It was to remove it. Click a domain to filter the 18 failures by where they actually lived.</span>
   </p>
 
-  <div class="token-compare reveal">
-    <div class="tc-side before">
-      <div class="tc-tag before"><span class="dot"></span>V1 — Self-Hosted Stack</div>
-      <div class="tc-headline">6<span class="unit">failure domains</span></div>
-      <div class="tc-sub">Every layer a potential failure point</div>
-      <div class="tc-code">
-        <span>GCP VM<span class="arrow">→</span><span class="bad">Docker</span><span class="arrow">→</span><span class="bad">Postgres</span><span class="arrow">→</span><span class="bad">n8n</span><span class="arrow">→</span>Node.js<span class="arrow">→</span><span class="bad">SSH</span></span>
-      </div>
-      <div class="tc-bullets">
-        <div class="tc-bullet">VM restart silently corrupts the Postgres index</div>
-        <div class="tc-bullet">n8n loses webhook state on container restart</div>
-        <div class="tc-bullet">Postgres connection timeouts under concurrent agent load</div>
-        <div class="tc-bullet">Docker networking drops between pipeline stages</div>
-        <div class="tc-bullet">SSH key rotation silently breaks CI pipeline</div>
-        <div class="tc-bullet">Stack updates require coordinated downtime</div>
-      </div>
+  <div class="domain-grid reveal" id="domain-grid">
+    <div class="domain-card on" data-domain="all">
+      <div class="domain-icon">⬡</div>
+      <div class="domain-name">All Domains</div>
+      <div class="domain-count">18</div>
+      <div class="domain-desc">Every failure was environmental. None touched the agent prompts.</div>
     </div>
-    <div class="tc-side after">
-      <div class="tc-tag after"><span class="dot"></span>V2 — Cloud-Native</div>
-      <div class="tc-headline">0<span class="unit">self-hosted services</span></div>
-      <div class="tc-sub">No ops layer to fail</div>
-      <div class="tc-code">
-        <span><span class="good">Vertex AI</span><span class="arrow">→</span><span class="good">GCS</span><span class="arrow">→</span><span class="good">Claude Code</span><span class="arrow">→</span><span class="good">MCP</span></span>
-      </div>
-      <div class="tc-bullets">
-        <div class="tc-bullet">Gemini 2.5 Flash for Ahab (speed + grounding)</div>
-        <div class="tc-bullet">Gemini 2.5 Pro for Nemo and Neptune (depth + schema)</div>
-        <div class="tc-bullet">GCS JSON files survive any process failure</div>
-        <div class="tc-bullet">No database, no connection pool, no schema drift</div>
-        <div class="tc-bullet">RAG store compounds across runs — intelligence accumulates</div>
-        <div class="tc-bullet">MCP delivery in Phase 2 — no orchestration server needed</div>
+    <div class="domain-card" data-domain="Scraping">
+      <div class="domain-icon">🎣</div>
+      <div class="domain-name">Scraping</div>
+      <div class="domain-count">6</div>
+      <div class="domain-desc">Aggregator URLs, hallucinated companies, exclusion lists that didn't survive a restart.</div>
+    </div>
+    <div class="domain-card" data-domain="Routing">
+      <div class="domain-icon">🔀</div>
+      <div class="domain-name">Routing / Parsing</div>
+      <div class="domain-count">6</div>
+      <div class="domain-desc">n8n expression errors, duplicate rows, connection pool exhaustion, the HTTP server that serialized everything.</div>
+    </div>
+    <div class="domain-card" data-domain="Output QA">
+      <div class="domain-icon">🔬</div>
+      <div class="domain-name">Output QA</div>
+      <div class="domain-count">6</div>
+      <div class="domain-desc">CATALYST_STALE misses, redirect URLs, citation markers in the Bite, Neptune returning prose instead of JSON.</div>
+    </div>
+  </div>
+
+  <div class="failure-log reveal">
+    <div class="log-bar">
+      <div class="log-dot log-dot-r"></div>
+      <div class="log-dot log-dot-y"></div>
+      <div class="log-dot log-dot-g"></div>
+      <div class="log-title">V1 Failure Log · 18 Entries · Scraping / Routing / Output QA</div>
+    </div>
+    <div class="log-body">
+      <div class="log-list" id="log-list"></div>
+      <div class="log-detail" id="log-detail">
+        <div style="font-size:10px;color:var(--muted);text-align:center;padding:80px 0;line-height:2;">
+          // select any failure<br>to open the forensic record
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 02: EXECUTION PATHS ══ -->
-<section class="process" id="paths">
-  <div class="section-label reveal" data-num="02">Two Execution Paths</div>
-  <h2 class="process-h2 reveal">Local Iteration. <em>Deployed Agent Engine.</em></h2>
+<!-- ══ SECTION 03: ORCHESTRATION TERMINAL ══ -->
+<!-- Claude Code as Admiral — how the pipeline actually runs -->
+<section class="process" id="orchestration">
+  <div class="section-label reveal" data-num="03">Claude Code Orchestration — The Admiral in Action</div>
+  <h2 class="process-h2 reveal">One Command. <em>Three Agents. The Pipeline Runs.</em></h2>
   <p class="process-lead reveal">
-    Both paths run the same three agents with the same system prompts. Both write neptune_output.json to the same GCS bucket. <span class="em">Node.js for fast local runs. Python ADK for hosted execution on Google's Agent Runtime.</span>
+    Claude Code is the Admiral — it invokes Ahab, gates the handoff to Nemo, gates the handoff to Neptune, and delivers. No middleware. No server. No polling. GCS files are the only shared state. <span class="em">Click a stage to see how the pipeline actually moves.</span>
   </p>
 
-  <div class="token-compare reveal">
-    <div class="tc-side before" style="background:#070a08">
-      <div class="tc-tag before"><span class="dot" style="background:var(--accent)"></span>Node.js Path — Local Iteration</div>
-      <div class="tc-headline" style="color:var(--accent); font-size:42px">run.js</div>
-      <div class="tc-sub">Direct Vertex AI calls · google-auth-library</div>
-      <div class="tc-code">
-        <span><span class="good">$ node run.js "campaign message"</span></span>
-        <br>
-        <span style="color:var(--dim)">// safe first run:</span>
-        <span><span class="good">$ DRY_RUN=true SKIP_RAG=true node run.js "..."</span></span>
-        <br>
-        <span style="color:var(--dim)">// deliver to Clay after Neptune:</span>
-        <span><span class="good">$ DELIVER=true node run.js</span></span>
-      </div>
-      <div class="tc-bullets">
-        <div class="tc-bullet">No deployment step — runs agents directly</div>
-        <div class="tc-bullet">Fastest path for iteration and debugging</div>
-        <div class="tc-bullet">Gates each stage via fileExists() before proceeding</div>
-        <div class="tc-bullet">DELIVER=true routes to Clay by Target_Service_Intent</div>
-      </div>
+  <div class="orch-terminal reveal">
+    <div class="orch-bar">
+      <span class="orch-dot r"></span>
+      <span class="orch-dot y"></span>
+      <span class="orch-dot g"></span>
+      <span class="orch-title">Claude Code → Fleet Engine: Cortex · pipeline run</span>
     </div>
-    <div class="tc-side after">
-      <div class="tc-tag after"><span class="dot"></span>Python ADK Path — Agent Engine</div>
-      <div class="tc-headline" style="font-size:42px">agents.py</div>
-      <div class="tc-sub">Pipeline_Orchestrator on Google Agent Runtime · global</div>
-      <div class="tc-code">
-        <span><span class="good">$ adk deploy Pipeline_Orchestrator \</span></span>
-        <span><span class="good">    --project project-8bd530c5 --location global</span></span>
-        <br>
-        <span><span class="good">$ adk run Pipeline_Orchestrator --input "..."</span></span>
-        <br>
-        <span style="color:var(--dim)">// after each run, write back to RAG:</span>
-        <span><span class="good">$ python scripts/upload_to_rag.py --corpus ... --dry-run</span></span>
-      </div>
-      <div class="tc-bullets">
-        <div class="tc-bullet">RagTool reads from 3 Vertex AI corpora during execution</div>
-        <div class="tc-bullet">RAG write-back is explicit via upload_to_rag.py post-run</div>
-        <div class="tc-bullet">Clay delivery still uses DELIVER=true node run.js</div>
-        <div class="tc-bullet">MCP server delivery deferred to V3</div>
+    <div class="orch-stages" id="orch-stages">
+      <button class="orch-stage-btn on" data-stage="0">01 · Ahab Discovers</button>
+      <button class="orch-stage-btn" data-stage="1">02 · Nemo Enriches</button>
+      <button class="orch-stage-btn" data-stage="2">03 · Neptune Synthesizes</button>
+    </div>
+    <div class="orch-output" id="orch-output"></div>
+  </div>
+</section>
+
+<!-- ══ SECTION 04: PYTHON CONTROL LAYER ══ -->
+<!-- Python validates, enforces contracts, and bridges to downstream tools -->
+<section class="process" id="python">
+  <div class="section-label reveal" data-num="04">Python Control Layer — Schema Enforcement, State Machines, Output Contracts</div>
+  <h2 class="process-h2 reveal">Node.js Runs the Agents. <em>Python Makes Sure They Stayed in Contract.</em></h2>
+  <p class="process-lead reveal">
+    The Node.js pipeline writes four typed GCS files per run. Python reads them at the boundary, validates every field with Pydantic, enforces state transitions, strips Gemini citation artifacts, and validates the IPC handshake. These aren't utilities — they're the production control layer. <span class="em">Select a pattern to read the field notes.</span>
+  </p>
+
+  <div class="cat-grid reveal" id="cat-grid">
+    <div class="cat-card on" data-cat="all">
+      <div class="cat-icon">⬡</div>
+      <div class="cat-name">All Patterns</div>
+      <div class="cat-problem">8 patterns across 4 categories. Each solves a specific control problem in a live LLM pipeline.</div>
+    </div>
+    <div class="cat-card" data-cat="Schema Enforcement">
+      <div class="cat-icon">🧱</div>
+      <div class="cat-name">Schema Enforcement</div>
+      <div class="cat-problem">LLM output is untyped text. Revenue data needs types, enums, and constraints. Pydantic closes that gap at the GCS boundary.</div>
+    </div>
+    <div class="cat-card" data-cat="State Machines">
+      <div class="cat-icon">⚙️</div>
+      <div class="cat-name">State Machines</div>
+      <div class="cat-problem">Illegal stage transitions are impossible, not just unlikely. No lead can reach Neptune before Nemo approves it.</div>
+    </div>
+    <div class="cat-card" data-cat="LLM Output Cleanup">
+      <div class="cat-icon">🧹</div>
+      <div class="cat-name">LLM Output Cleanup</div>
+      <div class="cat-problem">Gemini grounding adds citation markers. Vertex AI returns redirect URLs. Both were V1 failures. These are the V2 fixes.</div>
+    </div>
+  </div>
+
+  <div class="pattern-explorer reveal">
+    <div class="explorer-bar">
+      <div class="exp-dot exp-dot-r"></div>
+      <div class="exp-dot exp-dot-y"></div>
+      <div class="exp-dot exp-dot-g"></div>
+      <div class="exp-title">Python Control Layer · 8 Patterns · V2 Field Names</div>
+    </div>
+    <div class="explorer-body">
+      <div class="pattern-list" id="pat-list"></div>
+      <div class="pattern-detail" id="pat-detail">
+        <div style="font-size:10px;color:var(--muted);text-align:center;padding:80px 0;line-height:2;">
+          // select a pattern<br>to open the field notes
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 03: BUILD PHASES ══ -->
+<!-- ══ SECTION 05: BUILD PHASES ══ -->
 <section class="process" id="phases">
-  <div class="section-label reveal" data-num="03">The Three Build Phases</div>
-  <h2 class="process-h2 reveal">GCS Pipeline. MCP Delivery. <em>RAG Feedback.</em></h2>
+  <div class="section-label reveal" data-num="05">Three Phases</div>
+  <h2 class="process-h2 reveal">GCS Pipeline. Clay Delivery. <em>Self-Improving.</em></h2>
   <p class="process-lead reveal">
-    V2 builds in three gates. Each gate produces something a human can inspect before the next phase runs. <span class="em">Phase 1 is built and ready to run. Phase 2 and 3 are sequentially blocked.</span>
+    V2 builds in three gates. Each gate produces something a human can inspect before the next phase opens. <span class="em">Phase 1 is live. Phase 2 delivers to Clay and HubSpot. Phase 3 closes the feedback loop.</span>
   </p>
 
   <div class="phase-grid reveal">
@@ -541,7 +790,7 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
       <div class="phase-gate"><b>Success gate:</b> 50 leads in neptune_output.json with Outreach_Bite populated.</div>
     </div>
     <div class="phase-card">
-      <div class="phase-num">Phase 2 <span class="phase-status blocked">BLOCKED ON P1</span></div>
+      <div class="phase-num">Phase 2</div>
       <div class="phase-q">Clay + HubSpot Delivery</div>
       <div class="phase-desc">
         Two Clay tables — Fleet Engine: GTM and Fleet Engine: Accounting. Each sourced from a webhook. Neptune routes by Target_Service_Intent. <code>DELIVER=true node run.js</code> pushes after each run.<br><br>
@@ -551,7 +800,7 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
       <div class="phase-gate"><b>Success gate:</b> Both Clay tables receiving rows. HubSpot contacts created.</div>
     </div>
     <div class="phase-card">
-      <div class="phase-num">Phase 3 <span class="phase-status blocked">V3</span></div>
+      <div class="phase-num">Phase 3</div>
       <div class="phase-q">MCP + Reply Feedback</div>
       <div class="phase-desc">
         MCP server exposes Neptune output to downstream tools — <code>get_leads</code>, <code>push_to_clay</code>, <code>push_to_sheet</code>. Claude Code as the only orchestrator, no Express server.<br><br>
@@ -563,47 +812,6 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
   </div>
 </section>
 
-<!-- ══ SECTION 04: RAG MEMORY ══ -->
-<section class="process" id="rag">
-  <div class="section-label reveal" data-num="04">Vertex AI RAG Corpora</div>
-  <h2 class="process-h2 reveal">Three Corpora. <em>One Compounding System.</em></h2>
-  <p class="process-lead reveal">
-    Each agent has its own corpus in Vertex AI us-central1 Serverless. Ahab deduplicates across campaigns. Nemo calibrates friction classification. Neptune varies Bite structure. <span class="em">All three are live. Every run compounds them.</span>
-  </p>
-
-  <div class="rag-diagram reveal">
-    <div class="rag-flow">
-      <div class="rag-node ahab">🐋 Ahab<span class="node-model">Flash · grounding</span></div>
-      <div class="rag-arrow">⇅</div>
-      <div class="rag-node rag" style="border-color:rgba(185,227,106,0.70);background:rgba(185,227,106,0.06)">Dedup Vault<span class="node-model" style="color:var(--accent)">Every company ever found</span></div>
-      <div class="rag-arrow" style="visibility:hidden">→</div>
-      <div class="rag-node nemo">🐟 Nemo<span class="node-model">Pro · grounding</span></div>
-    </div>
-    <div class="rag-flow">
-      <div class="rag-node neptune">🔱 Neptune<span class="node-model">Pro · schema</span></div>
-      <div class="rag-arrow">⇅</div>
-      <div class="rag-node rag" style="border-color:rgba(215,183,255,0.70);background:rgba(215,183,255,0.06)">Bite Store<span class="node-model" style="color:#D7B7FF">Prior outreach, vary from these</span></div>
-      <div class="rag-arrow">⇅</div>
-      <div class="rag-node rag">Calibration<span class="node-model">Friction patterns, stay consistent</span></div>
-    </div>
-    <div style="margin-top:28px">
-      <div class="rag-legend">
-        <div class="rag-legend-item ahab-leg">
-          <b>Dedup Vault</b>
-          <span>Every company Ahab has ever found lives here. Before each new run, Ahab pulls the full exclusion list from it. No company ever appears twice across campaigns — automatically.</span>
-        </div>
-        <div class="rag-legend-item nemo-leg">
-          <b>Calibration Store</b>
-          <span>Prior enrichment profiles, grouped by friction type. Nemo reads the closest matches before classifying each new lead. Friction typing stays consistent across every run — no drift.</span>
-        </div>
-        <div class="rag-legend-item neptune-leg">
-          <b>Bite Store</b>
-          <span>Every Outreach Bite ever written. Neptune is told to vary opening lines, villain names, and CTAs from retrieved examples. Each run makes the next one harder to repeat.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══ OPERATOR ══ -->
 <section class="contact" id="contact">
@@ -640,11 +848,566 @@ footer { padding: 36px 48px; display: flex; align-items: center; justify-content
 </footer>
 
 <script>
+// ── Scroll reveal ─────────────────────────────────────────
 const obs = new IntersectionObserver(
   entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
   { threshold: 0.08 }
 );
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── §01 Trilingual code explorer ──────────────────────────
+const langContent = {
+  node: {
+    file: 'agents/neptune.js',
+    desc: '<strong>Node.js</strong> is the agent runtime. Each agent makes a direct REST call to Vertex AI via <strong>google-auth-library</strong>, enforcing responseSchema at the API level so Outreach_Bite, Neptune_Log, and funding_signal come back as typed fields — not text to parse. After Neptune completes, <strong>utils/gcs.js</strong> writes neptune_output.json to Cloud Storage. The gate checks GCS before advancing.',
+    code: `<span class="cm">// agents/neptune.js — responseSchema enforced at the API level</span>
+<span class="kw">const</span> schema = {
+  type: <span class="str">'OBJECT'</span>,
+  properties: {
+    <span class="hi">Neptune_Log</span>:    { type: <span class="str">'OBJECT'</span>, properties: { friction_strategy: {type:<span class="str">'STRING'</span>}, rule_of_one_check: {type:<span class="str">'STRING'</span>} } },
+    <span class="hi">Outreach_Bite</span>: { type: <span class="str">'STRING'</span> },
+    <span class="hi">funding_signal</span>: { type: <span class="str">'STRING'</span>, nullable: <span class="kw">true</span> }
+  },
+  required: [<span class="str">'Outreach_Bite'</span>, <span class="str">'Neptune_Log'</span>]
+};
+
+<span class="cm">// callVertex enforces schema — Neptune cannot return prose</span>
+<span class="kw">const</span> result = <span class="kw">await</span> <span class="fn">callVertex</span>(NEPTUNE_SYSTEM, prompt, {
+  model: <span class="str">'gemini-2.5-pro-preview-05-06'</span>,
+  responseSchema: schema
+});
+
+<span class="cm">// GCS write — idempotent, same key overwrites</span>
+<span class="kw">await</span> <span class="fn">writeJSON</span>(bucket, <span class="str">'neptune_output.json'</span>, leads);
+<span class="cm">// Gate: confirm GCS write before pipeline advances</span>
+<span class="kw">await</span> <span class="fn">gate</span>(<span class="str">'neptune_output.json'</span>);`
+  },
+  python: {
+    file: 'agents.py',
+    desc: '<strong>Python ADK</strong> wraps the same three agents in LlmAgent definitions and deploys them to Google Agent Engine via <strong>Pipeline_Orchestrator</strong>. Each agent gets a <strong>RagTool</strong> pointing to its Vertex AI corpus. The ADK path runs hosted — no local process needed. After each run, <strong>upload_to_rag.py</strong> writes outputs back to the corpora explicitly.',
+    code: `<span class="cm"># agents.py — Python ADK orchestration layer</span>
+<span class="kw">from</span> google.adk.agents <span class="kw">import</span> <span class="py">LlmAgent</span>
+<span class="kw">from</span> google.adk.tools  <span class="kw">import</span> <span class="py">RagTool</span>
+
+<span class="cm"># Each agent gets its own Vertex AI RAG corpus</span>
+ahab_rag = <span class="py">RagTool</span>(corpus_name=<span class="str">'projects/954265623326/locations/us-central1/ragCorpora/6536218395128365056'</span>)
+nemo_rag  = <span class="py">RagTool</span>(corpus_name=<span class="str">'projects/954265623326/locations/us-central1/ragCorpora/5352756855548411904'</span>)
+
+ahab = <span class="py">LlmAgent</span>(
+    name=<span class="str">'Ahab'</span>,
+    model=<span class="str">'gemini-2.5-flash-preview-05-20'</span>,
+    instruction=AHAB_SYSTEM,   <span class="cm"># verbatim from REFERENCES.md</span>
+    tools=[ahab_rag]
+)
+
+<span class="cm"># Pipeline_Orchestrator is the ADK entry point</span>
+root_agent = <span class="py">LlmAgent</span>(
+    name=<span class="str">'Pipeline_Orchestrator'</span>,
+    model=<span class="str">'gemini-2.5-flash-preview-05-20'</span>,
+    instruction=ORCHESTRATOR_INSTRUCTION,
+    sub_agents=[ahab, nemo, neptune]
+)
+
+<span class="cm"># Deploy: adk deploy Pipeline_Orchestrator --project ... --location global</span>
+<span class="cm"># Run:    adk run Pipeline_Orchestrator --input "campaign message"</span>`
+  },
+  prompts: {
+    file: 'REFERENCES.md → NEPTUNE_SYSTEM',
+    desc: '<strong>Agent prompts are the third language</strong> — version-controlled instruction sets written in structured natural language. Each agent\'s system prompt is stored verbatim in REFERENCES.md and transferred unchanged from V1 to V2. They define persona, methodology, output contract, and behavioral guardrails. NEPTUNE_SYSTEM is the most precise: three Schwartz principles, contact framing by role, and an explicit mandate to vary structure across leads.',
+    code: `<span class="cm"># NEPTUNE_SYSTEM — verbatim from REFERENCES.md</span>
+<span class="cm"># Version-controlled. Tested across 1,500 cycles. Transferred unchanged V1→V2.</span>
+
+[Task]: OUTREACH SYNTHESIS.
+[Persona]: Neptune, the Authority Engine.
+[Prime_Directive]:
+You are not selling. You are confirming what the prospect already knows.
+
+[Bite_Principles]:
+<span class="hi">1. REFLECT</span>: Name what they are already doing before offering.
+   Their stack, their process, their friction — stated precisely.
+<span class="hi">2. NAME THE VILLAIN</span>: The specific tool that breaks.
+   Never generic. Name the exact platform failing them.
+<span class="hi">3. OFFER THE SPECIFIC OUTCOME</span>: Not a feature.
+   The exact operational result they already want.
+
+[Contact_Frame]:
+  CTO / VP Eng       → architecture debt angle
+  VP Revenue / CRO   → pipeline visibility angle
+  Head Growth / CMO  → CAC efficiency angle
+  RevOps             → data integrity angle
+
+[Output_Contract]: responseSchema-enforced
+{
+  "Neptune_Log":    { "friction_strategy": "...", "rule_of_one_check": "..." },
+  "Outreach_Bite":  <span class="str">"3-4 sentence string"</span>,
+  "funding_signal": <span class="str">"string | null"</span>
+}`
+  }
+};
+
+(function initLangExplorer() {
+  const tabs = document.querySelectorAll('.lang-tab');
+  const panel = document.getElementById('lang-panel');
+  function render(lang) {
+    const d = langContent[lang];
+    panel.innerHTML = `
+      <div class="lang-code-wrap">
+        <div class="lang-code-bar">
+          <span class="lang-code-dot r"></span>
+          <span class="lang-code-dot y"></span>
+          <span class="lang-code-dot g"></span>
+          <span class="lang-code-filename">${d.file}</span>
+        </div>
+        <div class="lang-code">${d.code}</div>
+        <div class="lang-desc">${d.desc}</div>
+      </div>`;
+  }
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('on'));
+      t.classList.add('on');
+      render(t.dataset.lang);
+    });
+  });
+  render('node');
+})();
+
+// ── §02 Failure log ───────────────────────────────────────
+const failures = [
+  {id:'01',domain:'Scraping',title:'Aggregator URL Through the Blocklist',
+   cause:'Ahab returned an Indeed URL wrapped in a company-branded redirect. The blocklist checked the root domain, not the resolved destination. The redirect resolved to indeed.com after Nemo already consumed it.',
+   fix:'Expanded blocklist to check both the raw URL and any redirect destination. Added a URL resolution step before Nemo received the payload.',
+   v2:'Eliminated. Ahab runs via Vertex AI Grounding — Google Search returns direct company URLs. There is no scraper to circumvent and no redirect chain to follow.'},
+  {id:'02',domain:'Scraping',title:'Hallucinated Company With No Real URL',
+   cause:'Gemini returned a company name that appeared plausible but did not exist. Nemo could not verify the direct URL and spent a full Pro call returning null for every field.',
+   fix:'Added a pre-enrichment filter that rejected any lead where a Google search returned zero results for the company name.',
+   v2:'Eliminated. Vertex AI Grounding requires an indexed source for every returned company. If a company is not findable via Google Search, it cannot enter the Catch array.'},
+  {id:'03',domain:'Scraping',title:'Job Link Rotated Before Nemo Could Verify',
+   cause:'Time-sensitive job listings rotated or expired between Ahab\'s discovery and Nemo\'s enrichment. Nemo received a 404 job URL and had no fallback signal.',
+   fix:'Added a freshness check that hit the job URL before passing it to Nemo. Stale links were marked EXPIRED and excluded from enrichment.',
+   v2:'Mitigated. Grounding sources are indexed, not live scraped, reducing rotation risk. The CATALYST_STALE rule hard-gates leads with stale funding signals before enrichment.'},
+  {id:'04',domain:'Scraping',title:'Exclusion List Lost on Server Restart',
+   cause:'The exclusion list (previously seen companies) was held in a Postgres table that was not backed up. A VM restart without clean shutdown cleared the index. Ahab re-discovered companies already enriched in prior runs.',
+   fix:'Persisted the exclusion list to a Postgres table with daily snapshots. Added a startup integrity check that refused to run if the exclusion table was empty.',
+   v2:'Eliminated. Exclusion lists persist in the Vertex AI RAG dedup corpus. The corpus survives across restarts, VMs, and sessions — it is the only shared state for deduplication.'},
+  {id:'05',domain:'Scraping',title:'Duplicate Company From Two Job Board Entry Points',
+   cause:'Two different search branches found the same company from different job board URLs. Both passed the blocklist. Nemo enriched the company twice.',
+   fix:'Added deduplication on Company_Name before writing to Catch. The second occurrence was dropped. Added a unique constraint in Postgres to prevent double-writes.',
+   v2:'Eliminated. Dedup is enforced by the RAG corpus query before each Ahab run. Any company already in the vault is excluded from search entirely.'},
+  {id:'06',domain:'Scraping',title:'Signal Extraction Included Full Sentences',
+   cause:'Gemini occasionally returned full sentences in Raw_Primary_Signals instead of short keywords. Downstream filtering expected comma-separated keywords; sentences triggered false positives.',
+   fix:'Added a post-processing step that split long signal strings on sentence boundaries and discarded entries over 60 characters.',
+   v2:'Mitigated by prompt. AHAB_SYSTEM explicitly constrains: "STRICT KEYWORD EXTRACTION: only short phrases or keywords." responseSchema enforcement planned for Ahab in V3.'},
+  {id:'07',domain:'Routing',title:'n8n Expression Failed on Lowercase Field Name',
+   cause:'Ahab\'s output used "catch" (lowercase) in one run. The n8n expression {{$json.Catch}} was case-sensitive and evaluated to undefined, silently skipping all leads.',
+   fix:'Normalized all field names to Title_Case in the Node.js parser before writing to Postgres. Added an n8n guard checking for both "Catch" and "catch".',
+   v2:'Eliminated. There is no n8n. The Node.js parser normalizes field names before writing ahab_output.json to GCS. Nemo reads a typed file, not an n8n expression result.'},
+  {id:'08',domain:'Routing',title:'n8n Retry Loop Produced Duplicate Rows',
+   cause:'When a webhook timed out, n8n retried the full payload. If the original had partially succeeded, the retry produced a second set of rows with the same data but different auto-generated IDs.',
+   fix:'Changed all Postgres writes to UPSERT. Added idempotency keys derived from company_name + run_id to every enrichment write.',
+   v2:'Eliminated. There is no n8n and no Postgres. GCS writes are idempotent by design — the same key overwrites the same file. There is no retry loop to produce duplicates.'},
+  {id:'09',domain:'Routing',title:'n8n Expression Error on Null Contact_Recon',
+   cause:'The n8n node extracting {{$json.Enriched_Lead.Contact_Recon.email}} threw when Contact_Recon was null, dropping all leads in that batch.',
+   fix:'Added null guards to every n8n expression accessing nested fields.',
+   v2:'Eliminated. No n8n. Nemo\'s output schema defines Contact_Recon as a nullable object. The Node.js parser handles nulls at the GCS write step, not at a middleware interpretation layer.'},
+  {id:'10',domain:'Routing',title:'n8n Execution Log Limit Flushed Mid-Run',
+   cause:'n8n\'s execution log filled to its configured limit during a large batch. When auto-pruned, it cleared active execution context for in-progress nodes. Remaining leads were silently dropped.',
+   fix:'Increased the n8n execution log limit. Added a progress counter writing completed lead count to Postgres every 5 leads.',
+   v2:'Eliminated. No n8n. Claude Code is the orchestrator. Each agent writes its output to a GCS file before the next agent reads it. There is no shared execution log to overflow.'},
+  {id:'11',domain:'Routing',title:'Postgres Connection Pool Exhausted',
+   cause:'Five concurrent Nemo calls each opened a Postgres connection. With n8n overhead and the Express server also holding connections, all 10 pool slots were consumed. New connections timed out and compounded.',
+   fix:'Increased pool size and added pgBouncer. Reduced concurrent Nemo calls to 3.',
+   v2:'Eliminated entirely. No Postgres. Nemo reads ahab_output.json from GCS and processes leads sequentially, writing results to nemo_output.json. GCS HTTP calls are stateless.'},
+  {id:'12',domain:'Routing',title:'HTTP Server Serialized All Agent Calls',
+   cause:'The Express server was the single entry point for all agent invocations. Under concurrent load, calls queued behind each other. A slow Nemo call blocked all subsequent Ahab and Neptune calls.',
+   fix:'Moved to async queue management. Added worker threads for concurrent Nemo processing.',
+   v2:'Eliminated. No Express server. run.js orchestrates agents sequentially by design — each stage gates on the previous GCS file. Concurrency is not the goal; correctness is.'},
+  {id:'13',domain:'Output QA',title:'CATALYST_STALE Missed Non-Standard Funding Format',
+   cause:'Funding signals like "raised $12M in a seed round (Q3 2022)" were not matched by the CATALYST_STALE regex, which expected standard date formats. Stale leads passed the check.',
+   fix:'Expanded CATALYST_STALE regex to match quarter/year formats and added a secondary date extraction step.',
+   v2:'Enforced at the prompt level. NEMO_SYSTEM mandates: "If the most recent funding event is older than 18 months from today, you MUST set status=SHIPWRECKED." The model reasons about dates, not a regex.'},
+  {id:'14',domain:'Output QA',title:'Grounding Redirect URL Passed as Direct_URL',
+   cause:'Vertex AI Grounding sometimes returned redirect URLs (vertexaisearch.cloud.google.com) instead of the resolved company domain. These passed Nemo\'s URL check and appeared in the final payload.',
+   fix:'Added a URL sanitization step that detected and resolved grounding redirect patterns.',
+   v2:'Enforced at the utility layer. utils/vertex.js strips known grounding redirect patterns before any agent receives the URL. The sanitization runs on every Vertex AI response.'},
+  {id:'15',domain:'Output QA',title:'Citation Markers Appeared in Outreach_Bite',
+   cause:'Gemini\'s grounding citations [1], [2] leaked into Neptune\'s output string. The final Outreach_Bite contained reference markers that broke the tone and looked unprofessional.',
+   fix:'Added a post-processing step stripping citation markers via regex before writing the Bite to Postgres.',
+   v2:'Enforced at the utility layer. utils/payload.js strips citation markers and Vertex grounding artifacts before the Bite reaches any downstream system.'},
+  {id:'16',domain:'Output QA',title:'Neptune Returned Prose Instead of JSON',
+   cause:'Without responseSchema enforcement, Neptune occasionally returned the Outreach_Bite as a prose paragraph with embedded JSON rather than a clean JSON object. The parser failed silently.',
+   fix:'Added fence-stripping logic and a JSON extraction fallback that attempted to parse markdown-wrapped JSON.',
+   v2:'Eliminated. Neptune uses responseSchema enforcement — the API rejects any response that does not match the typed schema. There is no fence to strip and no prose to parse.'},
+  {id:'17',domain:'Output QA',title:'Character Encoding Mismatch on Company Names',
+   cause:'Company names with em-dashes or accented characters caused encoding mismatches between the Latin-1 scraping layer and the UTF-8 Postgres text field, producing mojibake in the final Outreach_Bite.',
+   fix:'Forced UTF-8 encoding at every layer in the Node.js pipeline.',
+   v2:'Eliminated. Vertex AI Grounding returns UTF-8 encoded company names. GCS stores and returns UTF-8. There is no encoding boundary between the scraping layer and the database layer.'},
+  {id:'18',domain:'Output QA',title:'responseSchema Occasionally Bypassed in Test Mode',
+   cause:'In development, responseSchema was disabled to speed up iteration. A test-mode flag was accidentally left enabled in a production deployment, allowing Neptune to return untyped output.',
+   fix:'Added a CI check that verified responseSchema was enabled in the production configuration before any deployment.',
+   v2:'Eliminated. The ADK path uses LlmAgent definitions in agents.py — there is no test-mode flag and no environment where schema enforcement is disabled.'}
+];
+
+(function initFailureLog() {
+  const listEl = document.getElementById('log-list');
+  const detailEl = document.getElementById('log-detail');
+  const domainGrid = document.getElementById('domain-grid');
+  let currentDomain = 'all';
+  let currentId = null;
+
+  function renderList() {
+    const filtered = currentDomain === 'all' ? failures : failures.filter(f => f.domain === currentDomain);
+    const groups = {};
+    filtered.forEach(f => { (groups[f.domain] = groups[f.domain] || []).push(f); });
+    listEl.innerHTML = Object.entries(groups).map(([d, fs]) =>
+      `<div class="log-group-header">${d}</div>` +
+      fs.map(f => `<div class="log-row${f.id === currentId ? ' on' : ''}" data-id="${f.id}">
+        <span class="log-num">${f.id}</span>
+        <div><div class="log-row-title">${f.title}</div><div class="log-row-domain">${f.domain}</div></div>
+      </div>`).join('')
+    ).join('');
+    listEl.querySelectorAll('.log-row').forEach(r => {
+      r.addEventListener('click', () => { currentId = r.dataset.id; renderList(); renderDetail(currentId); });
+    });
+  }
+
+  function renderDetail(id) {
+    const f = failures.find(x => x.id === id);
+    if (!f) return;
+    detailEl.innerHTML = `
+      <div class="detail-num">${f.domain} · Failure ${f.id}</div>
+      <div class="detail-title">${f.title}</div>
+      <div class="detail-card cause"><div class="detail-label">Root Cause</div><div class="detail-body">${f.cause}</div></div>
+      <div class="detail-card fix"><div class="detail-label">V1 Fix Applied</div><div class="detail-body">${f.fix}</div></div>
+      <div class="detail-card v2"><div class="detail-label">V2 Status</div><div class="detail-body">${f.v2}</div></div>`;
+  }
+
+  domainGrid.querySelectorAll('.domain-card').forEach(c => {
+    c.addEventListener('click', () => {
+      domainGrid.querySelectorAll('.domain-card').forEach(x => x.classList.remove('on'));
+      c.classList.add('on');
+      currentDomain = c.dataset.domain;
+      currentId = null;
+      renderList();
+      detailEl.innerHTML = '<div style="font-size:10px;color:var(--muted);text-align:center;padding:80px 0;line-height:2;">// select any failure<br>to open the forensic record</div>';
+    });
+  });
+
+  renderList();
+})();
+
+// ── §03 Orchestration terminal ────────────────────────────
+const orchStages = [
+  [
+    {cls:'cmd',  t:'$ node run.js "Target Series A/B B2B SaaS companies hiring for RevOps..."'},
+    {cls:'blank'},
+    {cls:'gate', t:'[Pipeline] Starting run — Claude Code as Admiral'},
+    {cls:'info', t:'[Ahab]     RAG query: checking dedup vault for prior companies...'},
+    {cls:'info', t:'[Ahab]     43 companies excluded from prior runs'},
+    {cls:'info', t:'[Ahab]     Executing 5+ search queries against Vertex AI Grounding...'},
+    {cls:'blank'},
+    {cls:'dim',  t:'  Query 1: site:greenhouse.io "RevOps" "HubSpot" "Series A" -intern'},
+    {cls:'dim',  t:'  Query 2: site:lever.co "GTM Operations" "Salesforce" "Series B"'},
+    {cls:'dim',  t:'  Query 3: site:ashbyhq.com "Marketing Operations" "n8n OR Zapier"'},
+    {cls:'dim',  t:'  Query 4: site:jobs.ashbyhq.com "Revenue Operations" funding 2025'},
+    {cls:'dim',  t:'  Query 5: site:greenhouse.io "Clay" OR "Apollo" "Head of RevOps"'},
+    {cls:'blank'},
+    {cls:'ok',   t:'[Ahab]     Catch: 31 companies found (aggregators filtered, dedup applied)'},
+    {cls:'ok',   t:'[Ahab]     Writing ahab_output.json → GCS ✓'},
+    {cls:'gate', t:'[Gate]     ahab_output.json confirmed in GCS → advancing to Nemo ✓'}
+  ],
+  [
+    {cls:'info', t:'[Nemo]     Reading ahab_output.json from GCS (31 leads)...'},
+    {cls:'blank'},
+    {cls:'info', t:'[Nemo]     Processing lead 01/31: Dashworks'},
+    {cls:'dim',  t:'             RAG calibration query: 3 prior enrichments (friction: API Stutter)'},
+    {cls:'dim',  t:'             URL recon: dashworks.ai (verified ✓)'},
+    {cls:'dim',  t:'             Funding signal: $16M Series A · March 2025 ✓'},
+    {cls:'dim',  t:'             Friction: API Stutter (HubSpot ↔ Salesforce disconnect)'},
+    {cls:'dim',  t:'             Contact: Jamie Park, Head of RevOps'},
+    {cls:'ok',   t:'             Status: ACTIVE ✓'},
+    {cls:'blank'},
+    {cls:'info', t:'[Nemo]     Processing lead 07/31: BuildOps'},
+    {cls:'dim',  t:'             Funding signal: Series B · August 2022 (43 months ago)'},
+    {cls:'warn', t:'             CATALYST_STALE: funding > 18 months → SHIPWRECKED ✗'},
+    {cls:'blank'},
+    {cls:'ok',   t:'[Nemo]     Run complete: 24 ACTIVE · 7 SHIPWRECKED'},
+    {cls:'ok',   t:'[Nemo]     Writing nemo_output.json, shipwrecked.json → GCS ✓'},
+    {cls:'gate', t:'[Gate]     nemo_output.json confirmed in GCS → advancing to Neptune ✓'}
+  ],
+  [
+    {cls:'info', t:'[Neptune]  Reading 24 ACTIVE leads from GCS...'},
+    {cls:'blank'},
+    {cls:'info', t:'[Neptune]  Processing lead 01/24: Dashworks'},
+    {cls:'dim',  t:'             RAG query: bite variation store'},
+    {cls:'dim',  t:'             3 prior bites retrieved (friction: API Stutter, intent: GTM)'},
+    {cls:'dim',  t:'             Instructed to vary opening and villain from retrieved examples'},
+    {cls:'dim',  t:'             responseSchema enforced at API level'},
+    {cls:'blank'},
+    {cls:'dim',  t:'  Synthesizing Outreach_Bite...'},
+    {cls:'blank'},
+    {cls:'bite', t:'  Jamie, saw the $16M Series A — looks like you\'re building serious GTM'},
+    {cls:'bite', t:'  momentum. The signal I keep seeing at your stage is HubSpot and Salesforce'},
+    {cls:'bite', t:'  running in parallel without a clean sync layer, which means your RevOps'},
+    {cls:'bite', t:'  hire lands in a system that\'s already reporting differently than it\'s routing.'},
+    {cls:'bite', t:'  Worth a conversation about what that handoff looks like right now?'},
+    {cls:'blank'},
+    {cls:'ok',   t:'[Neptune]  responseSchema enforced — all 24 Bites typed ✓'},
+    {cls:'ok',   t:'[Neptune]  Writing neptune_output.json → GCS ✓'},
+    {cls:'gate', t:'[Gate]     24 leads with Outreach_Bite → run complete ✓'},
+    {cls:'blank'},
+    {cls:'cmd',  t:'$ DELIVER=true node run.js  # push to Clay when ready'}
+  ]
+];
+
+(function initOrchTerminal() {
+  const btns = document.querySelectorAll('.orch-stage-btn');
+  const out = document.getElementById('orch-output');
+
+  function renderStage(i) {
+    out.innerHTML = orchStages[i].map(l =>
+      `<span class="orch-line ${l.cls}">${l.t || ''}</span>`
+    ).join('\n');
+  }
+
+  btns.forEach(b => {
+    b.addEventListener('click', () => {
+      btns.forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      renderStage(+b.dataset.stage);
+    });
+  });
+
+  renderStage(0);
+})();
+
+// ── §04 Python pattern explorer ───────────────────────────
+const patterns = [
+  {id:'01',cat:'Schema Enforcement',title:'Pydantic Models for Neptune Output Validation',
+   prob:'Neptune\'s Outreach_Bite returns from Gemini as a string inside a JSON object. Once it\'s a Python dict, it has no types. Code that assumes friction_type is always a FrictionType enum breaks silently when the model returns "api stutter" instead of "API Stutter".',
+   app:'Define a Pydantic BaseModel mirroring neptune_output.json exactly. FrictionType enum matches V2\'s forensicTerms constant verbatim. Pass each record through the model on read — any deviation raises ValidationError immediately, before reaching any CRM.',
+   code:`from pydantic import BaseModel
+from enum import Enum
+from typing import Literal
+from datetime import datetime
+
+class FrictionType(str, Enum):
+    API_STUTTER      = "API Stutter"
+    SCALE_FRICTION   = "Scale Friction"
+    MANUAL_DATA_DEBT = "Manual Data Debt"
+    DISPLACEMENT     = "Displacement Signal"
+
+class NeptuneRecord(BaseModel):
+    Company_Name:   str
+    friction_type:  FrictionType    # enum — rejects typos
+    Outreach_Bite:  str
+    funding_signal: str | None
+    schema_version: Literal["2.1"]  # rejects old contracts
+    written_at:     datetime
+
+def read_neptune_output(bucket):
+    raw = json.loads(bucket.blob("neptune_output.json").download_as_text())
+    return [NeptuneRecord(**r) for r in raw]  # raises on bad data`},
+  {id:'02',cat:'Schema Enforcement',title:'Enum Validation for Target_Service_Intent Routing',
+   prob:'Neptune routes each lead to Clay by Target_Service_Intent: "GTM" or "Accounting". A model returning "gtm" or "GTM Operations" instead of "GTM" causes silent routing failures — leads land in the wrong Clay table.',
+   app:'Enforce Target_Service_Intent as a two-value enum at the GCS read boundary. Add a normalizer that maps common variations to canonical values before Pydantic validation, then reject anything outside the enum.',
+   code:`class ServiceIntent(str, Enum):
+    GTM        = "GTM"
+    ACCOUNTING = "Accounting"
+
+_INTENT_ALIASES = {
+    "gtm": "GTM",
+    "gtm operations": "GTM",
+    "accounting": "Accounting",
+    "financial": "Accounting",
+}
+
+def normalize_intent(raw: str) -> str:
+    return _INTENT_ALIASES.get(raw.lower().strip(), raw)
+
+class NeptuneRecord(BaseModel):
+    Target_Service_Intent: ServiceIntent
+    @validator('Target_Service_Intent', pre=True)
+    def norm_intent(cls, v):
+        return normalize_intent(v)`},
+  {id:'03',cat:'State Machines',title:'Lead Pipeline FSM — Illegal Transitions Are Impossible',
+   prob:'A lead in V1 could reach Neptune before Nemo approved it if the Postgres status field was set incorrectly. No state machine enforced the sequence. A bug in the routing layer could silently skip enrichment.',
+   app:'Model the lead lifecycle as a finite state machine with explicit allowed transitions. The pipeline cannot advance a lead to the next state unless it is currently in the expected state. SHIPWRECKED is a terminal state.',
+   code:`from enum import Enum, auto
+
+class LeadState(Enum):
+    DISCOVERED   = auto()
+    ENRICHED     = auto()
+    ACTIVE       = auto()
+    SHIPWRECKED  = auto()  # terminal
+    SYNTHESIZED  = auto()
+
+TRANSITIONS = {
+    LeadState.DISCOVERED:  [LeadState.ENRICHED],
+    LeadState.ENRICHED:    [LeadState.ACTIVE, LeadState.SHIPWRECKED],
+    LeadState.ACTIVE:      [LeadState.SYNTHESIZED],
+    LeadState.SHIPWRECKED: [],    # no transitions out
+    LeadState.SYNTHESIZED: [],
+}
+
+def advance(lead, to_state):
+    if to_state not in TRANSITIONS[lead.state]:
+        raise ValueError(f"Illegal: {lead.state} → {to_state}")
+    lead.state = to_state`},
+  {id:'04',cat:'State Machines',title:'Stage Gate — GCS File as the State Contract',
+   prob:'In V1, the pipeline proceeded to the next stage if the previous Postgres write completed without error. If the write succeeded but the data was malformed, the next stage consumed bad input silently.',
+   app:'Use the GCS file as the stage gate. The gate reads the file, validates it against the Pydantic schema, and only returns success if both the file exists AND its content is valid. An invalid file fails the gate explicitly.',
+   code:`def gate(bucket, blob_name: str, model: type[BaseModel]) -> list:
+    """Gate: file must exist AND be schema-valid."""
+    blob = bucket.blob(blob_name)
+    if not blob.exists():
+        raise RuntimeError(f"Gate failed: {blob_name} not in GCS")
+
+    raw = json.loads(blob.download_as_text())
+
+    try:
+        records = [model(**r) for r in raw]
+    except ValidationError as e:
+        raise RuntimeError(f"Gate failed: {blob_name} schema invalid\\n{e}")
+
+    return records
+
+# Usage — pipeline will not advance past Nemo if output is invalid
+active_leads = gate(bucket, "nemo_output.json", NeptuneInput)`},
+  {id:'05',cat:'LLM Output Cleanup',title:'Grounding URL Sanitizer',
+   prob:'Vertex AI Grounding sometimes returns URLs beginning with vertexaisearch.cloud.google.com as resolved company domains. These look like direct URLs, pass Nemo\'s verification check, and appear in the final payload as Direct_URL.',
+   app:'Add a URL sanitization step that detects and resolves Vertex grounding redirect patterns before any agent receives the URL. Run it on every Vertex AI response, not as an afterthought.',
+   code:`import re
+from urllib.parse import urlparse, parse_qs
+
+GROUNDING_PATTERNS = [
+    r'vertexaisearch\\.cloud\\.google\\.com',
+    r'google\\.com/url\\?',
+    r'search\\.app\\.goo\\.gl',
+]
+
+def sanitize_url(url: str) -> str | None:
+    if not url:
+        return None
+    for pattern in GROUNDING_PATTERNS:
+        if re.search(pattern, url):
+            # Extract the real URL from the redirect
+            parsed = urlparse(url)
+            params = parse_qs(parsed.query)
+            if 'url' in params:
+                return params['url'][0]
+            return None  # can't resolve — reject
+    return url  # already clean`},
+  {id:'06',cat:'LLM Output Cleanup',title:'Citation Marker Stripper',
+   prob:'Gemini\'s grounding citations [1], [2] leaked into Neptune\'s Outreach_Bite when the model referenced grounding sources in its reasoning before generating the Bite. The brackets broke the tone.',
+   app:'Strip citation markers and grounding artifacts from all string fields before they leave the Python validation layer. Run the stripper on every string in NeptuneRecord, not just Outreach_Bite.',
+   code:`import re
+
+CITATION_PATTERN = re.compile(r'\\[\\d+\\]|\\[\\d+,\\s*\\d+\\]')
+GROUNDING_ARTIFACT = re.compile(r'According to \\[.*?\\]:|Source: \\[.*?\\]')
+
+def strip_citations(text: str | None) -> str | None:
+    if not text:
+        return text
+    text = CITATION_PATTERN.sub('', text)
+    text = GROUNDING_ARTIFACT.sub('', text)
+    return re.sub(r'\\s+', ' ', text).strip()
+
+class NeptuneRecord(BaseModel):
+    Outreach_Bite: str
+
+    @validator('Outreach_Bite')
+    def clean_bite(cls, v):
+        return strip_citations(v)`},
+  {id:'07',cat:'IPC Bridge',title:'Node.js Writes. Python Validates.',
+   prob:'The Node.js pipeline writes neptune_output.json to GCS. Python reads it. Without a formal contract, a Node.js change (e.g., renaming friction_type to frictionType) could break the Python consumer silently.',
+   app:'Define a schema version field in every GCS output file. The Python Pydantic model uses Literal["2.1"] for the schema_version field — it will refuse to read a file written with schema version "2.0" or "3.0".',
+   code:`// Node.js writes the schema version (agents/neptune.js)
+const payload = {
+  Company_Name:   lead.Company_Name,
+  friction_type:  extractFrictionType(nemoOutput),
+  Outreach_Bite:  neptuneResult.Outreach_Bite,
+  funding_signal: neptuneResult.funding_signal,
+  schema_version: "2.1",    // versioned handshake
+  written_at:     new Date().toISOString()
+};
+
+# Python refuses to read anything that isn't schema_version 2.1
+class NeptuneRecord(BaseModel):
+    schema_version: Literal["2.1"]  # ValidationError on mismatch`},
+  {id:'08',cat:'IPC Bridge',title:'GCS Contract Reader with Retry',
+   prob:'GCS writes are eventually consistent. In rare cases, the Python reader can start before the Node.js write is fully committed, reading a partial or empty file. The validation error is misleading.',
+   app:'Add a retry loop with backoff specifically for GCS read operations. If the file is empty or validation fails on the first read, retry up to 3 times before declaring a gate failure.',
+   code:`import time
+from google.cloud import storage
+
+def read_with_retry(bucket, blob_name: str, model, retries=3, delay=2.0):
+    client = storage.Client()
+    b = client.bucket(bucket)
+
+    for attempt in range(retries):
+        blob = b.blob(blob_name)
+        if not blob.exists():
+            time.sleep(delay * (attempt + 1))
+            continue
+
+        raw = json.loads(blob.download_as_text())
+        if not raw:
+            time.sleep(delay * (attempt + 1))
+            continue
+
+        return [model(**r) for r in raw]
+
+    raise RuntimeError(f"Gate failed after {retries} attempts: {blob_name}")`}
+];
+
+(function initPatternExplorer() {
+  const catGrid = document.getElementById('cat-grid');
+  const patList = document.getElementById('pat-list');
+  const patDetail = document.getElementById('pat-detail');
+  let currentCat = 'all';
+  let currentPat = null;
+
+  function renderList() {
+    const filtered = currentCat === 'all' ? patterns : patterns.filter(p => p.cat === currentCat);
+    const groups = {};
+    filtered.forEach(p => { (groups[p.cat] = groups[p.cat] || []).push(p); });
+    patList.innerHTML = Object.entries(groups).map(([c, ps]) =>
+      `<div class="pattern-group-header">${c}</div>` +
+      ps.map(p => `<div class="pattern-row${p.id === currentPat ? ' on' : ''}" data-id="${p.id}">
+        <span class="pattern-num">${p.id}</span>
+        <div><div class="pattern-row-title">${p.title}</div><div class="pattern-row-cat">${p.cat}</div></div>
+      </div>`).join('')
+    ).join('');
+    patList.querySelectorAll('.pattern-row').forEach(r => {
+      r.addEventListener('click', () => { currentPat = r.dataset.id; renderList(); renderPatDetail(currentPat); });
+    });
+  }
+
+  function renderPatDetail(id) {
+    const p = patterns.find(x => x.id === id);
+    if (!p) return;
+    patDetail.innerHTML = `
+      <div class="pat-label">${p.cat}</div>
+      <div class="pat-title">${p.title}</div>
+      <div class="pat-card prob"><div class="pat-card-label">Problem</div><div class="pat-body">${p.prob}</div></div>
+      <div class="pat-card app"><div class="pat-card-label">Approach</div><div class="pat-body">${p.app}</div></div>
+      <div class="pat-card code"><div class="pat-card-label">Code</div><pre class="pat-code">${p.code}</pre></div>`;
+  }
+
+  catGrid.querySelectorAll('.cat-card').forEach(c => {
+    c.addEventListener('click', () => {
+      catGrid.querySelectorAll('.cat-card').forEach(x => x.classList.remove('on'));
+      c.classList.add('on');
+      currentCat = c.dataset.cat;
+      currentPat = null;
+      renderList();
+      patDetail.innerHTML = '<div style="font-size:10px;color:var(--muted);text-align:center;padding:80px 0;line-height:2;">// select a pattern<br>to open the field notes</div>';
+    });
+  });
+
+  renderList();
+})();
 </script>
 </body>
 </html>
