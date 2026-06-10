@@ -1,4 +1,4 @@
-<!-- Agent: Echo -->
+<!-- Agent: Claude Code -->
 # 00-a: Curriculum Archaeology
 
 Map the existing site, codebase, and auth layer before anything is built.

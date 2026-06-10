@@ -1,4 +1,4 @@
-<!-- Agent: Newton -->
+<!-- Agent: Claude Code -->
 # 00-b: GTM Content Mapping
 
 Map GTM concepts to the existing 20-phase curriculum using a Perplexity-powered research loop.

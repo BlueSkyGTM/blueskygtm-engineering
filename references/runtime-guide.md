@@ -66,7 +66,7 @@ gbrain persists structured knowledge across sessions. In this workspace it store
 
 | What | Written by | Read by |
 |---|---|---|
-| Course identity + thesis | 00-e-seed | All Bu (Lyra) stages as standing context |
+| Course identity + thesis | 00-e-seed | All Lyra stages as standing context |
 | GTM source citations | 00-b (Newton) | Stage 09 accuracy check |
 | Agent brief summaries | 00-c | Stage 08 wiring |
 | Audit findings | Stage 09 (Hypatia) | Stage 10 validation |
