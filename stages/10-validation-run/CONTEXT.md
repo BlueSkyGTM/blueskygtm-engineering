@@ -29,8 +29,18 @@ Walk one complete student path end-to-end and report failures with reproduction 
 | Flag triggers Helix | Copy-paste flag causes Helix to respond with correct recall card |
 | State persists | Student progress survives a session reload |
 
+## The Transfer Moment
+
+When all gates clear and operator mode is confirmed, Stage 10 writes one final beat into the validation report — not a technical checklist item, a designed moment:
+
+> The Albatross is yours. Rename it.
+
+This is the macro loop payoff. The student built the system. They ran it against a real business. The loop reveal is here too — a short paragraph in the validation report, unforced, that names what just happened: the course they completed was itself a loop. The quiz factory, the manifest, the operator kit running Lyra — they were inside it the entire time. It can be spoiled. It doesn't matter. You still have to earn it.
+
+After this moment: operator mode engaged, naming unlocked, Helix ready to answer to whatever they call it.
+
 ## Outputs
 
 | Artifact | Location | Format |
 |----------|----------|--------|
-| `validation-report.md` | `output/` | Pass/fail per checkpoint, reproduction steps for any failure |
+| `validation-report.md` | `output/` | Pass/fail per checkpoint, reproduction steps for any failure, transfer moment |

@@ -11,6 +11,15 @@ Student state does not live on the site's servers. It lives in `progress/progres
 
 This also solves the anti-cheat problem structurally: cloning someone else's completed repo gives you their business, their ICP, their scrapers targeting their signals. There is nothing to gain. Progress is only meaningful in the context of the business the student configured.
 
+## The Naming Mechanic
+
+The command center is called the Albatross — BlueSkyGTM's mascot. Every student starts with the same name. When operator mode is earned (Stage 10 validation complete, all gates cleared), two things unlock simultaneously and never before:
+
+1. The student can rename their command center. Whatever they call it, that name propagates through their CLAUDE.md, STATE.md header, and Helix's self-references.
+2. The student can rename Helix. Same propagation. Their instance, their co-pilot, their name.
+
+The gate is hard. The course author does not get operator mode until they complete the validation run on their own instance. Nobody earns it by building the course — they earn it by running it. The distinction matters.
+
 ## How Locking Works
 
 Helix reads `progress/progress.json` before routing any request. Gate checks are artifact-based, not certificate-based:
