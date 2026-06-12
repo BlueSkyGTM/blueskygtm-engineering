@@ -53,19 +53,24 @@ No page code changes needed — all screens call `store.read()` and `store.write
 
 ## Stage 07 implications
 
-1. **OAuth env guard**: add `GITHUB_CLIENT_ID` + `SITE_URL` existence check at API startup. Fail loudly with a readable error, not a silent broken redirect.
+**Architecture decision (resolved in 00-d):** The site auth backend is gutted. The site is read-only content delivery. Progress lives in `progress/progress.json` inside the student's mission command fork (the Albatross). Helix reads filesystem state, not a site API.
 
-2. **Student identity in Helix**: `sa_user` cookie carries `login` (GitHub username) + `avatar` URL. Helix student state needs a stable user ID — GitHub username is stable enough, but Stage 07 must decide: use raw GitHub login as the Helix user key, or hash it. Decision belongs in `student-state-options.md` (output of 00-d).
+1. **DELETE the auth backend**: `api/auth.js`, `api/progress.js`, `api/_lib/auth.js` are removed. No GitHub OAuth. No Vercel KV. No sa_user cookie.
 
-3. **Progress schema**: current `/api/progress` stores `{ v: 1, done: {}, days: [], updatedAt: 0 }`. Helix FSRS state is additive — extend the schema, do not replace it. Stage 07 must design a non-breaking extension.
+2. **Simplify store.js**: Remove `vercelAdapter` entirely. If `localAdapter` is kept at all, it is cosmetic only (lesson visit log) — not canonical state. The student's canonical state is in their repo.
 
-4. **Logout resets Helix state**: current `adapter.clear()` zeroes progress. Must NOT zero FSRS card state on logout — FSRS state is long-term memory, not session state. Stage 07 must separate session progress (cleared on logout) from FSRS state (persistent).
+3. **Gut auth.js**: `site-new/js/auth.js` is removed or replaced with a no-op stub. No cookie parsing, no header button rendering for OAuth, no adapter swapping.
 
-## Auth files reference
+4. **FSRS state location**: `progress/progress.json → fsrs: {}` in the mission command fork. Never on the site server. The schema from the current `/api/progress` endpoint is superseded — see `stages/00-d-helix-design/output/fsrs-integration-spec.md` for the new schema.
 
-| File | Role |
-|------|------|
-| `api/auth.js` | Initiates GitHub OAuth — reads `GITHUB_CLIENT_ID`, `SITE_URL` env vars |
-| `api/_lib/auth.js` | OAuth callback handler (inferred — not read in this audit; extend this audit if needed) |
-| `site-new/js/auth.js` | Client cookie reader + adapter swapper + header button renderer |
-| `site-new/js/store.js` | Progress persistence — adapter pattern (localStorage ↔ Vercel) |
+5. **The unhandled failure modes are moot**: `GITHUB_CLIENT_ID` missing and `SITE_URL` missing are no longer concerns — the OAuth flow does not exist after Stage 07.
+
+## Auth files reference (post-Stage-07 state)
+
+| File | Action | Reason |
+|------|--------|--------|
+| `api/auth.js` | DELETE | OAuth backend removed |
+| `api/progress.js` | DELETE | Vercel KV progress removed |
+| `api/_lib/auth.js` | DELETE | OAuth callback removed |
+| `site-new/js/auth.js` | DELETE or stub | Cookie reader no longer needed |
+| `site-new/js/store.js` | SIMPLIFY — remove vercelAdapter | localAdapter only (or remove if site tracks nothing) |

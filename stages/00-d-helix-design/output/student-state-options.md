@@ -1,116 +1,93 @@
-# Student State Options
-<!-- Stage 00-d output | 2026-06-12 -->
-<!-- HUMAN GATE: Review this file and record the mechanism decision before running 00-e-full. -->
-<!-- Decision field at bottom of this file — fill it in before proceeding. -->
+# Student State — Architecture Decision
+<!-- Stage 00-d output | 2026-06-12 (revised) -->
+<!-- STATUS: DECIDED — repo-as-save-file. See Stage 07 CONTEXT.md for implementation spec. -->
 
-## What Must Persist
+## The Model: The Repo Is the Save File
 
-Student state has two distinct layers that must be stored separately:
+Student state lives in `progress/progress.json` inside the student's **mission command fork** (the Albatross). Helix writes to it. The student commits it. Their fork is the cartridge — progress travels with the repo, not with the site.
 
-| Layer | Data | Lifecycle |
-|-------|------|-----------|
-| **Progress** | `done` (lesson completions), `days` (streak data), `updatedAt` | Reset on explicit student request. NOT cleared on logout. |
-| **FSRS state** | Per-card stability, difficulty, due date, review count, lapses | NEVER cleared. Long-term memory. Persists across logout, device change, and explicit progress reset. |
-
-These are separate namespaces in the schema (see `fsrs-integration-spec.md` for the full schema shape). Any mechanism that clears both layers together is architecturally incorrect.
-
-## Mechanism Candidates
-
-### Option A: Vercel KV (current path — extend what exists)
-
-**How it works:** The existing `/api/progress` endpoint already reads and writes to Vercel KV when the student is authenticated. FSRS state is a new field in the same KV record. Unauthenticated students use `localStorage` as today.
-
-**What changes:**
-- Extend the KV schema to add `fsrs: {}` field
-- Ensure `adapter.clear()` on logout zeros `done` but not `fsrs`
-- No new infrastructure
-
-**Evaluation:**
-| Criterion | Score |
-|-----------|-------|
-| Persistent across devices | ✓ (authenticated only) |
-| Works unauthenticated | Partial (localStorage, lost on browser clear) |
-| Cost | Vercel KV free tier: 30MB, 3M ops/month — sufficient for beta |
-| Implementation complexity | Low — additive schema extension |
-| FSRS separation from progress | Requires explicit clear() guard (auth-audit.md identified this risk) |
-| Dependency risk | Tied to Vercel platform |
-
-**Stage 07 work required:** env guard for `GITHUB_CLIENT_ID`/`SITE_URL`, non-breaking schema extension, `adapter.clear()` guard.
+This is not an option. It is the architecture. The site auth backend is gutted.
 
 ---
 
-### Option B: Local FSRS + cloud progress sync
+## What This Means for the Site
 
-**How it works:** FSRS state lives exclusively in `localStorage` (never uploaded). Progress (`done`, `days`) syncs to Vercel KV for authenticated users. Two separate adapters for two separate state layers.
+The site (`site-new/`) is **read-only content delivery**. It shows lessons. It does not track who has read them. It does not store quiz answers. It does not know who is logged in.
 
-**What changes:**
-- New `fsrsAdapter` in `store.js` that always reads/writes `localStorage` regardless of auth state
-- Existing `vercelAdapter` handles `done`/`days` only
-- FSRS state never leaves the browser
+**Changes from current state:**
+- `api/auth.js` — REMOVE. GitHub OAuth is not needed.
+- `api/progress.js` — REMOVE. Vercel KV progress sync is not needed.
+- `api/_lib/auth.js` — REMOVE.
+- `site-new/js/auth.js` — REMOVE or gut to a no-op. No cookie parsing, no adapter swap.
+- `site-new/js/store.js` — SIMPLIFY. Remove `vercelAdapter`. `localAdapter` may stay for the lesson visit log if desired — but it is cosmetic, not canonical. The canonical save file is the repo.
+- `js/data.js` — UNCHANGED. Content delivery still needs the PHASES data.
 
-**Evaluation:**
-| Criterion | Score |
-|-----------|-------|
-| Persistent across devices | ✗ (FSRS state is per-browser) |
-| Works unauthenticated | ✓ (localStorage works for both layers) |
-| Cost | No additional Vercel KV ops for FSRS |
-| Implementation complexity | Medium — two adapter types, explicit routing |
-| FSRS separation from progress | Strong — structurally separate by design |
-| Dependency risk | Low — FSRS doesn't require backend |
-
-**Tradeoff:** FSRS is the long-term memory layer. Students who change devices lose their review history. For a solo learner, this may be acceptable in beta.
+**What replaces the auth/progress layer:**
+Nothing on the site. Progress is tracked in the mission command repo. The student's state is their repo. If they want to see their progress, they look at `progress/progress.json` or ask Helix.
 
 ---
 
-### Option C: gbrain student brain (Helix open-brain)
+## What Must Persist (and Where)
 
-**How it works:** Each student gets a gbrain brain instance. FSRS state, progress, and conversation history all live in the student's pglite database. The student carries their brain; Helix reads from it directly via MCP.
-
-**What changes:**
-- Student brain provisioning on first login (not built yet — new infrastructure)
-- Helix reads `next_card` and `review_summary` from gbrain rather than from a JSON field
-- Progress sync via gbrain rather than Vercel KV
-
-**Evaluation:**
-| Criterion | Score |
-|-----------|-------|
-| Persistent across devices | Conditional — requires gbrain sync setup |
-| Works unauthenticated | ✗ (gbrain requires setup) |
-| Cost | gbrain is local (pglite) — no backend cost, but setup friction |
-| Implementation complexity | High — new student provisioning layer, MCP integration |
-| FSRS separation from progress | Excellent — gbrain is designed for this |
-| Dependency risk | Medium — gbrain is a new dependency |
-
-**Note:** Option C is the Helix open-brain vision from the course identity doc. It is not a beta option — it is the target architecture. The question is when, not whether.
+| State Layer | Data | Location | Lifecycle |
+|-------------|------|----------|-----------|
+| **Artifact gates** | Which mission-command components exist and are configured | Filesystem — Helix reads the repo directly | Permanent while the file exists |
+| **Quiz recall (FSRS)** | Per-card stability, difficulty, due date, lapses | `progress/progress.json → fsrs: {}` | Never cleared automatically |
+| **Lesson visits** | Optional visit log for student reference | `progress/progress.json → lessons: {}` | May be cleared on student request |
+| **Business configuration** | `context/company.md`, ICP, signals, playbooks | Mission-command repo context files | Updated by student via weekly-update |
+| **Rename** | Student's name for their command center + Helix | `CLAUDE.md` header + `STATE.md` | Written once when operator mode is earned |
 
 ---
 
-## Evaluation Criteria
+## Gate Logic (How Helix Knows What's Unlocked)
 
-When making the mechanism decision, weight these criteria:
-
-1. **FSRS state survives logout** — this is non-negotiable. See auth-audit.md, Stage 07 implication 4.
-2. **Works for a solo learner in beta** — the first student is the course author. Infrastructure complexity is a real cost.
-3. **Path to multi-device FSRS sync** — the mechanism should not require a rewrite to add multi-device support later.
-4. **Non-breaking from current auth flow** — the adapter pattern must not be replaced, only extended.
-5. **Vercel KV schema extension is additive** — new fields only, no migrations.
-
----
-
-## Decision (HUMAN GATE — fill this in before running 00-e-full)
+Gates are **artifact-based**. Helix checks filesystem state, not a certificate or a checkbox:
 
 ```
-MECHANISM DECISION: [ Option A / Option B / Option C ]
-
-Decided by: ________________
-Date: ________________
-
-Rationale (one sentence):
-________________
-
-Stage 07 scope change (if Option B or C): ________________
+context/company.md — no {{PLACEHOLDERS}}?          → Stage 01 cleared
+signals/scrapers/ — at least one scraper exists?   → Stage 06 cleared
+handlers/research-handler/ — exists + valid?       → Stage 08 cleared
+progress/progress.json — quiz scores present?      → lesson-level recall gates
 ```
 
-**Do not run 00-e-full until this section is filled in.**
+Helix does not say "Stage 06 is locked." It says "your research handler is trying to read from `signals/processors/` but that directory is empty — looks like your signal processor isn't built yet." It redirects to the first missing piece.
 
-00-e-full's `helix-voice.md` includes a section on how Helix communicates state to students ("Your review streak is X" vs "Your cards are synced across devices"). The voice copy changes depending on which mechanism is selected.
+**Anti-cheat is structural.** Cloning someone else's completed repo gives you their business, their ICP, their scrapers targeting their signals. There is nothing to gain. Progress is only meaningful in the context of the business the student configured.
+
+---
+
+## The Naming Mechanic (Operator Mode)
+
+When all gates clear (Stage 10 validation complete):
+
+1. Student can rename their command center. The name propagates through `CLAUDE.md`, `STATE.md` header, and Helix's self-references.
+2. Student can rename Helix. Same propagation.
+
+The gate is hard. Nobody earns operator mode by building the course — they earn it by running it. The course author does not get operator mode until they complete the validation run on their own instance.
+
+---
+
+## What This Means for Stage 07
+
+Stage 07 implements:
+1. Gut the site auth backend (remove the three API files, simplify store.js)
+2. Implement gate-check-spec: artifact existence checks, placeholder detection, quiz score thresholds
+3. Implement Helix redirect logic: missing component → identify first gap → surface to student
+4. Write editor-mode bypass: `.editor-mode` file → all gate checks return `cleared: true` (testing harness, not operator mode)
+5. Write rename mechanic: `/rename <name>` Helix command, available only when `progress.json` shows all Stage 10 gates cleared
+
+See `stages/07-student-state/CONTEXT.md` for the full implementation spec.
+
+---
+
+## What This Does NOT Change
+
+- FSRS-integration-spec.md — algorithm and card format unchanged; only storage location moves to mission command repo
+- Copy-paste flag format — unchanged; Helix still parses `BLUESKYGTM_CHECK: OK` from student CLI output
+- Helix ramp schedule — unchanged; capability levels still unlock per phase
+
+## HUMAN GATE: Resolved
+
+Decision: **Repo-as-save-file (mission-command fork).**
+Site auth backend: **gutted.**
+Decided by: repo architecture (Stage 07 CONTEXT.md pre-specified this model).

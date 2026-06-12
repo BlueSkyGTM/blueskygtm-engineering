@@ -14,9 +14,8 @@ The following properties of the site are locked. Any change that violates one of
 2. **Script load order is mandatory.** Every page loads: `data.js → store.js → game.js → ui.js → [screen].js`. A new screen file must follow this order.
 3. **`data.js` is generated, never hand-edited.** Rebuild by re-running `build.js` in the curriculum repo.
 4. **CSS tokens only.** No hard-coded color values or pixel measurements. Every value comes from `site-new/css/tokens.css`. Adding a new value requires a new token.
-5. **Adapter pattern for storage.** All progress reads/writes go through `AIS.store.adapter`. `localAdapter` for unauthenticated, `vercelAdapter` for authenticated. No direct `localStorage` or API calls from screen files.
-6. **Auth is cookie-based.** `sa_user` cookie = `{login}:{avatar_url}`. No JWT, no session store. `site-new/js/auth.js` is the single entry point for auth state on the client.
-7. **No FSRS state cleared on logout.** FSRS card state is long-term memory. The adapter swap on logout must not zero FSRS state. This is documented in auth-audit.md.
+5. **The site is read-only content delivery.** Progress is NOT tracked by the site. The canonical student state lives in `progress/progress.json` inside the student's mission command fork (the Albatross). The site auth backend (`api/auth.js`, `api/progress.js`, `api/_lib/auth.js`) is gutted in Stage 07. Do not extend it.
+6. **No Vercel KV progress writes.** The `vercelAdapter` in `store.js` is removed in Stage 07. If a screen file currently calls `AIS.store.write()`, it writes to nothing (or a no-op stub). Progress lives in the repo, not the server.
 
 ## What Lyra Code Reads Before Touching Any File
 
@@ -43,23 +42,27 @@ Helix is the student-facing AI tutor (not gstack's gbrain). When implementing He
 - Helix prompt injection: read `vault/helix-voice.md` before writing any Helix-facing UI strings
 - Helix architecture: read `vault/helix-architecture.md` before touching the Helix component layer
 
-## Auth Extension Rules (Stage 07)
+## Auth Gutting Rules (Stage 07)
 
-Stage 07 adds two env guards to `api/auth.js`:
-- `GITHUB_CLIENT_ID` missing → respond with 500 + readable error message, not a silent redirect
-- `SITE_URL` missing → fall back to `https://learn.blueskygtm.engineer`, not `undefined`
+Stage 07 removes the site auth backend entirely:
+- `api/auth.js`, `api/progress.js`, `api/_lib/auth.js` — DELETE these files
+- `site-new/js/auth.js` — REMOVE or replace with a stub that does nothing
+- `site-new/js/store.js` — REMOVE `vercelAdapter`; keep `localAdapter` only if needed for cosmetic visit log
 
-These are additive changes only. Do not refactor the existing auth flow.
+The site becomes a pure static site. No GitHub OAuth. No Vercel KV. No sa_user cookie.
+
+Do not add guards to the auth API — the auth API does not exist after Stage 07.
 
 ## What NOT To Do
 
 - Do not add a build step, bundler, or transpiler
 - Do not hard-code color values or pixel measurements
-- Do not write direct `localStorage` calls in screen files — always use `AIS.store.adapter`
-- Do not clear FSRS state on logout
 - Do not modify `data.js` by hand — always via `build.js`
+- Do not extend or fix the auth backend — it is being removed, not improved
+- Do not add Vercel KV progress writes — progress lives in the mission command repo
 - Do not add third-party JavaScript libraries without explicit approval — each addition requires a performance audit
 - Do not implement Helix behavior in a screen file — Helix logic belongs in its own component
+- Do not add site-side gate checks — gates are enforced by Helix reading the student's filesystem, not by the site
 
 ## Invocation Pattern
 

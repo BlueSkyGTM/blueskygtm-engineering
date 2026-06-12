@@ -99,12 +99,14 @@ This definition is intentionally permissive — "Hard but recalled" counts as a 
 
 ## FSRS State Storage
 
-FSRS state lives in a separate field in the progress schema, never mixed with lesson completion state:
+FSRS state lives in `progress/progress.json` inside the student's **mission command fork** (the Albatross). This is not a site API — it is a file in a git repo. The student commits it. Their fork is the cartridge.
 
 ```json
 {
   "v": 1,
-  "done": { "01:0": true },
+  "lessons": {
+    "phases/05/03-llm-prompting": { "visitedAt": 1749744000000, "completedAt": null }
+  },
   "fsrs": {
     "phases/05/03-llm-prompting:pre-q0": {
       "stability": 2.9,
@@ -115,12 +117,11 @@ FSRS state lives in a separate field in the progress schema, never mixed with le
       "lapses": 0
     }
   },
-  "days": [],
   "updatedAt": 1749744000000
 }
 ```
 
-`fsrs` is a flat map keyed by `card_id`. It must NOT be cleared on logout — this is the long-term memory layer. Only `done` and `days` may be cleared on a user reset.
+`fsrs` is a flat map keyed by `card_id`. It must NEVER be cleared — this is the long-term memory layer. It is separate from `lessons` (visit log, optional) and from artifact gate state (which Helix reads from the filesystem, not from this file).
 
 ## What FSRS Does NOT Apply To
 
