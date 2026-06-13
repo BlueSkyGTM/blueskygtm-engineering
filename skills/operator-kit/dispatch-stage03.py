@@ -81,15 +81,16 @@ RULES:
 # ── Global rate control (identical to Stage 02 dispatcher) ───────────────────
 
 _global_pause = threading.Event()
+_global_pause.set()  # starts in "go" state (SET=go, CLEAR=pause)
 _global_pause_lock = threading.Lock()
 
 
 def global_rate_pause(duration: int = 30) -> None:
     with _global_pause_lock:
-        if not _global_pause.is_set():
-            print(f"  [GLOBAL BACKOFF] Rate limit cascade — all threads pausing {duration}s")
-            _global_pause.set()
-            threading.Timer(duration, _global_pause.clear).start()
+        if _global_pause.is_set():  # only pause if currently going
+            print(f"  [GLOBAL BACKOFF] Rate limit — all threads pausing {duration}s")
+            _global_pause.clear()
+            threading.Timer(duration, _global_pause.set).start()
 
 
 def wait_if_paused() -> None:
@@ -213,6 +214,7 @@ Follow the EXERCISE FORMAT exactly. Output only the ## Exercises section — not
                 ],
                 max_tokens=2000,
                 stream=True,
+                timeout=120,
             )
             chunks = []
             for chunk in response:
@@ -226,7 +228,9 @@ Follow the EXERCISE FORMAT exactly. Output only the ## Exercises section — not
 
             # Write header + exercises
             content = f"# Exercises — {topic}\n\n{result}\n"
-            output_file.write_text(content, encoding="utf-8")
+            tmp = output_file.with_suffix(".tmp")
+            tmp.write_text(content, encoding="utf-8")
+            tmp.replace(output_file)
             return lesson_id, "done", str(output_file)
 
         except RateLimitError:
@@ -322,9 +326,9 @@ def main():
             print(f"  [{i}/{total}] {lesson_id} -> {status} | {rate:.1f} req/s | ETA {eta/60:.1f}min | fail_rate={failure_rate:.0%}")
 
             if len(_window) == 10 and failure_rate > 0.30:
-                print(f"  [CIRCUIT BREAKER] {failure_rate:.0%} failure in last 10 jobs — pausing 60s")
-                time.sleep(60)
+                print(f"  [CIRCUIT BREAKER] {failure_rate:.0%} failure in last 10 jobs — pausing all workers 60s")
                 _window.clear()
+                global_rate_pause(60)
 
             if i % 10 == 0 and not args.dry_run:
                 STATUS_PATH.write_text(json.dumps({

@@ -56,1532 +56,1532 @@
   },
   {
     "id": "00-setup-and-tooling/06-python-environments",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "00-setup-and-tooling",
     "lesson": "06-python-environments",
     "topic": "Python Environments",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\python-environments-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\06-python-environments\\docs\\en.md",
+    "updated_at": "2026-06-13T15:16:33Z"
   },
   {
     "id": "00-setup-and-tooling/07-docker-for-ai",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "00-setup-and-tooling",
     "lesson": "07-docker-for-ai",
     "topic": "Docker for AI",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\docker-for-ai-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\07-docker-for-ai\\docs\\en.md",
+    "updated_at": "2026-06-13T15:16:45Z"
   },
   {
     "id": "00-setup-and-tooling/08-editor-setup",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "00-setup-and-tooling",
     "lesson": "08-editor-setup",
     "topic": "Editor Setup",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\editor-setup-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:14:58Z"
   },
   {
     "id": "00-setup-and-tooling/09-data-management",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "00-setup-and-tooling",
     "lesson": "09-data-management",
     "topic": "Data Management",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\data-management-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\09-data-management\\docs\\en.md",
+    "updated_at": "2026-06-13T15:16:00Z"
   },
   {
     "id": "00-setup-and-tooling/10-terminal-and-shell",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "00-setup-and-tooling",
     "lesson": "10-terminal-and-shell",
     "topic": "Terminal & Shell",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\terminal--shell-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\10-terminal-and-shell\\docs\\en.md",
+    "updated_at": "2026-06-13T15:15:37Z"
   },
   {
     "id": "00-setup-and-tooling/11-linux-for-ai",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "00-setup-and-tooling",
     "lesson": "11-linux-for-ai",
     "topic": "Linux for AI",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\linux-for-ai-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\11-linux-for-ai\\docs\\en.md",
+    "updated_at": "2026-06-13T15:16:39Z"
   },
   {
     "id": "00-setup-and-tooling/12-debugging-and-profiling",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "00-setup-and-tooling",
     "lesson": "12-debugging-and-profiling",
     "topic": "Debugging and Profiling",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\debugging-and-profiling-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:14:58Z"
   },
   {
     "id": "01-math-foundations/01-linear-algebra-intuition",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "01-linear-algebra-intuition",
     "topic": "Linear Algebra Intuition",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\linear-algebra-intuition-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\01-linear-algebra-intuition\\docs\\en.md",
+    "updated_at": "2026-06-13T15:16:19Z"
   },
   {
     "id": "01-math-foundations/02-vectors-matrices-operations",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "02-vectors-matrices-operations",
     "topic": "Vectors, Matrices & Operations",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\vectors-matrices--operations-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:15:41Z"
   },
   {
     "id": "01-math-foundations/03-matrix-transformations",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "03-matrix-transformations",
     "topic": "Matrix Transformations",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\matrix-transformations-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:15:41Z"
   },
   {
     "id": "01-math-foundations/04-calculus-for-ml",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "04-calculus-for-ml",
     "topic": "Calculus for Machine Learning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\calculus-for-machine-learning-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\04-calculus-for-ml\\docs\\en.md",
+    "updated_at": "2026-06-13T15:18:02Z"
   },
   {
     "id": "01-math-foundations/05-chain-rule-and-autodiff",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "05-chain-rule-and-autodiff",
     "topic": "Chain Rule & Automatic Differentiation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\chain-rule--automatic-differentiation-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:16:21Z"
   },
   {
     "id": "01-math-foundations/06-probability-and-distributions",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "06-probability-and-distributions",
     "topic": "Probability and Distributions",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\probability-and-distributions-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:16:21Z"
   },
   {
     "id": "01-math-foundations/07-bayes-theorem",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "07-bayes-theorem",
     "topic": "Bayes' Theorem",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\bayes-theorem-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:16:40Z"
   },
   {
     "id": "01-math-foundations/08-optimization",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "08-optimization",
     "topic": "Optimization",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\optimization-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\08-optimization\\docs\\en.md",
+    "updated_at": "2026-06-13T15:18:21Z"
   },
   {
     "id": "01-math-foundations/09-information-theory",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "09-information-theory",
     "topic": "Information Theory",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\information-theory-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\09-information-theory\\docs\\en.md",
+    "updated_at": "2026-06-13T15:18:37Z"
   },
   {
     "id": "01-math-foundations/10-dimensionality-reduction",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "10-dimensionality-reduction",
     "topic": "Dimensionality Reduction",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\dimensionality-reduction-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:17:02Z"
   },
   {
     "id": "01-math-foundations/11-singular-value-decomposition",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "11-singular-value-decomposition",
     "topic": "Singular Value Decomposition",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\singular-value-decomposition-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:17:14Z"
   },
   {
     "id": "01-math-foundations/12-tensor-operations",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "12-tensor-operations",
     "topic": "Tensor Operations",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\tensor-operations-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\12-tensor-operations\\docs\\en.md",
+    "updated_at": "2026-06-13T15:18:01Z"
   },
   {
     "id": "01-math-foundations/13-numerical-stability",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "13-numerical-stability",
     "topic": "Numerical Stability",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\numerical-stability-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:17:20Z"
   },
   {
     "id": "01-math-foundations/14-norms-and-distances",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "14-norms-and-distances",
     "topic": "Norms and Distances",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\norms-and-distances-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\14-norms-and-distances\\docs\\en.md",
+    "updated_at": "2026-06-13T15:18:43Z"
   },
   {
     "id": "01-math-foundations/15-statistics-for-ml",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "15-statistics-for-ml",
     "topic": "Statistics for Machine Learning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\statistics-for-machine-learning-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:17:43Z"
   },
   {
     "id": "01-math-foundations/16-sampling-methods",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "16-sampling-methods",
     "topic": "Sampling Methods",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\sampling-methods-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:17:55Z"
   },
   {
     "id": "01-math-foundations/17-linear-systems",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "17-linear-systems",
     "topic": "Linear Systems",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\linear-systems-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:18:02Z"
   },
   {
     "id": "01-math-foundations/18-convex-optimization",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "18-convex-optimization",
     "topic": "Convex Optimization",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\convex-optimization-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:18:25Z"
   },
   {
     "id": "01-math-foundations/19-complex-numbers",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "19-complex-numbers",
     "topic": "Complex Numbers for AI",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\complex-numbers-for-ai-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:18:36Z"
   },
   {
     "id": "01-math-foundations/20-fourier-transform",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "20-fourier-transform",
     "topic": "The Fourier Transform",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\the-fourier-transform-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\20-fourier-transform\\docs\\en.md",
+    "updated_at": "2026-06-13T15:19:32Z"
   },
   {
     "id": "01-math-foundations/21-graph-theory",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "21-graph-theory",
     "topic": "Graph Theory for Machine Learning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\graph-theory-for-machine-learning-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\21-graph-theory\\docs\\en.md",
+    "updated_at": "2026-06-13T15:20:13Z"
   },
   {
     "id": "01-math-foundations/22-stochastic-processes",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "01-math-foundations",
     "lesson": "22-stochastic-processes",
     "topic": "Stochastic Processes",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\stochastic-processes-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:18:42Z"
   },
   {
     "id": "02-ml-fundamentals/01-what-is-machine-learning",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "01-what-is-machine-learning",
     "topic": "What Is Machine Learning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\what-is-machine-learning-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\01-what-is-machine-learning\\docs\\en.md",
+    "updated_at": "2026-06-13T15:20:09Z"
   },
   {
     "id": "02-ml-fundamentals/02-linear-regression",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "02-linear-regression",
     "topic": "Linear Regression",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\linear-regression-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:19:05Z"
   },
   {
     "id": "02-ml-fundamentals/03-logistic-regression",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "03-logistic-regression",
     "topic": "Logistic Regression",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\logistic-regression-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\03-logistic-regression\\docs\\en.md",
+    "updated_at": "2026-06-13T15:20:16Z"
   },
   {
     "id": "02-ml-fundamentals/04-decision-trees",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "04-decision-trees",
     "topic": "Decision Trees and Random Forests",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\decision-trees-and-random-forests-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\04-decision-trees\\docs\\en.md",
+    "updated_at": "2026-06-13T15:20:50Z"
   },
   {
     "id": "02-ml-fundamentals/05-support-vector-machines",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "05-support-vector-machines",
     "topic": "Support Vector Machines",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\support-vector-machines-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:19:23Z"
   },
   {
     "id": "02-ml-fundamentals/06-knn-and-distances",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "06-knn-and-distances",
     "topic": "K-Nearest Neighbors and Distances",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\k-nearest-neighbors-and-distances-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:19:24Z"
   },
   {
     "id": "02-ml-fundamentals/07-unsupervised-learning",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "07-unsupervised-learning",
     "topic": "Unsupervised Learning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\unsupervised-learning-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:19:46Z"
   },
   {
     "id": "02-ml-fundamentals/08-feature-engineering",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "08-feature-engineering",
     "topic": "Feature Engineering & Selection",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\feature-engineering--selection-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:20:03Z"
   },
   {
     "id": "02-ml-fundamentals/09-model-evaluation",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "09-model-evaluation",
     "topic": "Model Evaluation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\model-evaluation-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:20:03Z"
   },
   {
     "id": "02-ml-fundamentals/10-bias-variance",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "10-bias-variance",
     "topic": "Bias-Variance Tradeoff",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\bias-variance-tradeoff-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\10-bias-variance\\docs\\en.md",
+    "updated_at": "2026-06-13T15:21:19Z"
   },
   {
     "id": "02-ml-fundamentals/11-ensemble-methods",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "11-ensemble-methods",
     "topic": "Ensemble Methods",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\ensemble-methods-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\11-ensemble-methods\\docs\\en.md",
+    "updated_at": "2026-06-13T15:22:13Z"
   },
   {
     "id": "02-ml-fundamentals/12-hyperparameter-tuning",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "12-hyperparameter-tuning",
     "topic": "Hyperparameter Tuning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\hyperparameter-tuning-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:20:44Z"
   },
   {
     "id": "02-ml-fundamentals/13-ml-pipelines",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "13-ml-pipelines",
     "topic": "ML Pipelines",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\ml-pipelines-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:20:44Z"
   },
   {
     "id": "02-ml-fundamentals/14-naive-bayes",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "14-naive-bayes",
     "topic": "Naive Bayes",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\naive-bayes-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\14-naive-bayes\\docs\\en.md",
+    "updated_at": "2026-06-13T15:22:14Z"
   },
   {
     "id": "02-ml-fundamentals/15-time-series",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "15-time-series",
     "topic": "Time Series Fundamentals",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\time-series-fundamentals-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\15-time-series\\docs\\en.md",
+    "updated_at": "2026-06-13T15:22:21Z"
   },
   {
     "id": "02-ml-fundamentals/16-anomaly-detection",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "16-anomaly-detection",
     "topic": "Anomaly Detection",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\anomaly-detection-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:20:56Z"
   },
   {
     "id": "02-ml-fundamentals/17-imbalanced-data",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "17-imbalanced-data",
     "topic": "Handling Imbalanced Data",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\handling-imbalanced-data-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:21:24Z"
   },
   {
     "id": "02-ml-fundamentals/18-feature-selection",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "02-ml-fundamentals",
     "lesson": "18-feature-selection",
     "topic": "Feature Selection",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\feature-selection-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:21:24Z"
   },
   {
     "id": "03-deep-learning-core/01-the-perceptron",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "01-the-perceptron",
     "topic": "The Perceptron",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\the-perceptron-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\01-the-perceptron\\docs\\en.md",
+    "updated_at": "2026-06-13T15:22:18Z"
   },
   {
     "id": "03-deep-learning-core/02-multi-layer-networks",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "02-multi-layer-networks",
     "topic": "Multi-Layer Networks and Forward Pass",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\multi-layer-networks-and-forward-pass-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:21:36Z"
   },
   {
     "id": "03-deep-learning-core/03-backpropagation",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "03-backpropagation",
     "topic": "Backpropagation from Scratch",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\backpropagation-from-scratch-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\03-backpropagation\\docs\\en.md",
+    "updated_at": "2026-06-13T15:22:53Z"
   },
   {
     "id": "03-deep-learning-core/04-activation-functions",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "04-activation-functions",
     "topic": "Activation Functions",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\activation-functions-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:22:04Z"
   },
   {
     "id": "03-deep-learning-core/05-loss-functions",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "05-loss-functions",
     "topic": "Loss Functions",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\loss-functions-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:22:05Z"
   },
   {
     "id": "03-deep-learning-core/06-optimizers",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "06-optimizers",
     "topic": "Optimizers",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\optimizers-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:22:16Z"
   },
   {
     "id": "03-deep-learning-core/07-regularization",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "07-regularization",
     "topic": "Regularization",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\regularization-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:22:44Z"
   },
   {
     "id": "03-deep-learning-core/08-weight-initialization",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "08-weight-initialization",
     "topic": "Weight Initialization and Training Stability",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\weight-initialization-and-training-stability-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:24:40Z"
   },
   {
     "id": "03-deep-learning-core/09-learning-rate-schedules",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "09-learning-rate-schedules",
     "topic": "Learning Rate Schedules and Warmup",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\learning-rate-schedules-and-warmup-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\09-learning-rate-schedules\\docs\\en.md",
+    "updated_at": "2026-06-13T15:24:21Z"
   },
   {
     "id": "03-deep-learning-core/10-mini-framework",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "10-mini-framework",
     "topic": "Build Your Own Mini Framework",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\build-your-own-mini-framework-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\10-mini-framework\\docs\\en.md",
+    "updated_at": "2026-06-13T15:24:28Z"
   },
   {
     "id": "03-deep-learning-core/11-intro-to-pytorch",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "11-intro-to-pytorch",
     "topic": "Introduction to PyTorch",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\introduction-to-pytorch-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:22:58Z"
   },
   {
     "id": "03-deep-learning-core/12-intro-to-jax",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "12-intro-to-jax",
     "topic": "Introduction to JAX",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\introduction-to-jax-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\12-intro-to-jax\\docs\\en.md",
+    "updated_at": "2026-06-13T15:24:43Z"
   },
   {
     "id": "03-deep-learning-core/13-debugging-neural-networks",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "03-deep-learning-core",
     "lesson": "13-debugging-neural-networks",
     "topic": "Debugging Neural Networks",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\debugging-neural-networks-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:23:01Z"
   },
   {
     "id": "04-computer-vision/01-image-fundamentals",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "01-image-fundamentals",
     "topic": "Image Fundamentals â€” Pixels, Channels, Color Spaces",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\image-fundamentals--pixels-channels-color-spaces-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:23:24Z"
   },
   {
     "id": "04-computer-vision/02-convolutions-from-scratch",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "02-convolutions-from-scratch",
     "topic": "Convolutions from Scratch",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\convolutions-from-scratch-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\02-convolutions-from-scratch\\docs\\en.md",
+    "updated_at": "2026-06-13T15:24:48Z"
   },
   {
     "id": "04-computer-vision/03-cnns-lenet-to-resnet",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "03-cnns-lenet-to-resnet",
     "topic": "CNNs â€” LeNet to ResNet",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\cnns--lenet-to-resnet-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:23:38Z"
   },
   {
     "id": "04-computer-vision/04-image-classification",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "04-image-classification",
     "topic": "Image Classification",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\image-classification-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:23:41Z"
   },
   {
     "id": "04-computer-vision/05-transfer-learning",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "05-transfer-learning",
     "topic": "Transfer Learning & Fine-Tuning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\transfer-learning--fine-tuning-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:24:05Z"
   },
   {
     "id": "04-computer-vision/06-object-detection-yolo",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "06-object-detection-yolo",
     "topic": "Object Detection â€” YOLO from Scratch",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\object-detection--yolo-from-scratch-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:24:18Z"
   },
   {
     "id": "04-computer-vision/07-semantic-segmentation-unet",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "07-semantic-segmentation-unet",
     "topic": "Semantic Segmentation â€” U-Net",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\semantic-segmentation--u-net-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:24:20Z"
   },
   {
     "id": "04-computer-vision/08-instance-segmentation-mask-rcnn",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "08-instance-segmentation-mask-rcnn",
     "topic": "Instance Segmentation â€” Mask R-CNN",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\instance-segmentation--mask-r-cnn-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:24:44Z"
   },
   {
     "id": "04-computer-vision/09-image-generation-gans",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "09-image-generation-gans",
     "topic": "Image Generation â€” GANs",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\image-generation--gans-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:24:58Z"
   },
   {
     "id": "04-computer-vision/10-image-generation-diffusion",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "10-image-generation-diffusion",
     "topic": "Image Generation â€” Diffusion Models",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\image-generation--diffusion-models-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\10-image-generation-diffusion\\docs\\en.md",
+    "updated_at": "2026-06-13T15:28:14Z"
   },
   {
     "id": "04-computer-vision/11-stable-diffusion",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "11-stable-diffusion",
     "topic": "Stable Diffusion â€” Architecture & Fine-Tuning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\stable-diffusion--architecture--fine-tuning-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\11-stable-diffusion\\docs\\en.md",
+    "updated_at": "2026-06-13T15:26:45Z"
   },
   {
     "id": "04-computer-vision/12-video-understanding",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "12-video-understanding",
     "topic": "Video Understanding â€” Temporal Modeling",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\video-understanding--temporal-modeling-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\12-video-understanding\\docs\\en.md",
+    "updated_at": "2026-06-13T15:28:54Z"
   },
   {
     "id": "04-computer-vision/13-3d-vision-nerf",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "13-3d-vision-nerf",
     "topic": "3D Vision â€” Point Clouds & NeRFs",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\3d-vision--point-clouds--nerfs-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:25:21Z"
   },
   {
     "id": "04-computer-vision/14-vision-transformers",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "14-vision-transformers",
     "topic": "Vision Transformers (ViT)",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\vision-transformers-vit-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\14-vision-transformers\\docs\\en.md",
+    "updated_at": "2026-06-13T15:26:40Z"
   },
   {
     "id": "04-computer-vision/15-real-time-edge",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "15-real-time-edge",
     "topic": "Real-Time Vision â€” Edge Deployment",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\real-time-vision--edge-deployment-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:25:25Z"
   },
   {
     "id": "04-computer-vision/16-vision-pipeline-capstone",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "16-vision-pipeline-capstone",
     "topic": "Build a Complete Vision Pipeline â€” Capstone",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\build-a-complete-vision-pipeline--capstone-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\16-vision-pipeline-capstone\\docs\\en.md",
+    "updated_at": "2026-06-13T15:27:04Z"
   },
   {
     "id": "04-computer-vision/17-self-supervised-vision",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "17-self-supervised-vision",
     "topic": "Self-Supervised Vision â€” SimCLR, DINO, MAE",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\self-supervised-vision--simclr-dino-mae-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:25:39Z"
   },
   {
     "id": "04-computer-vision/18-open-vocab-clip",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "18-open-vocab-clip",
     "topic": "Open-Vocabulary Vision â€” CLIP",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\open-vocabulary-vision--clip-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:26:01Z"
   },
   {
     "id": "04-computer-vision/19-ocr-document-understanding",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "19-ocr-document-understanding",
     "topic": "OCR & Document Understanding",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\ocr--document-understanding-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:26:05Z"
   },
   {
     "id": "04-computer-vision/20-image-retrieval-metric",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "20-image-retrieval-metric",
     "topic": "Image Retrieval & Metric Learning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\image-retrieval--metric-learning-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:26:19Z"
   },
   {
     "id": "04-computer-vision/21-keypoint-pose",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "21-keypoint-pose",
     "topic": "Keypoint Detection & Pose Estimation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\keypoint-detection--pose-estimation-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:26:41Z"
   },
   {
     "id": "04-computer-vision/22-3d-gaussian-splatting",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "22-3d-gaussian-splatting",
     "topic": "3D Gaussian Splatting from Scratch",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\3d-gaussian-splatting-from-scratch-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:26:45Z"
   },
   {
     "id": "04-computer-vision/23-diffusion-transformers-rectified-flow",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "23-diffusion-transformers-rectified-flow",
     "topic": "Diffusion Transformers & Rectified Flow",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\diffusion-transformers--rectified-flow-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\23-diffusion-transformers-rectified-flow\\docs\\en.md",
+    "updated_at": "2026-06-13T15:28:45Z"
   },
   {
     "id": "04-computer-vision/24-sam3-open-vocab-segmentation",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "24-sam3-open-vocab-segmentation",
     "topic": "SAM 3 & Open-Vocabulary Segmentation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\sam-3--open-vocabulary-segmentation-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:29:27Z"
   },
   {
     "id": "04-computer-vision/25-vision-language-models",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "25-vision-language-models",
     "topic": "Vision-Language Models â€” The ViT-MLP-LLM Pattern",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\vision-language-models--the-vit-mlp-llm-pattern-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\04-computer-vision\\25-vision-language-models\\docs\\en.md",
+    "updated_at": "2026-06-13T15:29:28Z"
   },
   {
     "id": "04-computer-vision/26-monocular-depth",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "26-monocular-depth",
     "topic": "Monocular Depth & Geometry Estimation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\monocular-depth--geometry-estimation-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:27:25Z"
   },
   {
     "id": "04-computer-vision/27-multi-object-tracking",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "27-multi-object-tracking",
     "topic": "Multi-Object Tracking & Video Memory",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\multi-object-tracking--video-memory-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:27:25Z"
   },
   {
     "id": "04-computer-vision/28-world-models-video-diffusion",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "04-computer-vision",
     "lesson": "28-world-models-video-diffusion",
     "topic": "World Models & Video Diffusion",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\world-models--video-diffusion-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:27:44Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/01-text-processing",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "01-text-processing",
     "topic": "Text Processing â€” Tokenization, Stemming, Lemmatization",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\text-processing--tokenization-stemming-lemmatization-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:28:06Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/02-bag-of-words-tfidf",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "02-bag-of-words-tfidf",
     "topic": "Bag of Words, TF-IDF, and Text Representation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\bag-of-words-tf-idf-and-text-representation-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:28:05Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/03-word-embeddings-word2vec",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "03-word-embeddings-word2vec",
     "topic": "Word Embeddings â€” Word2Vec from Scratch",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\word-embeddings--word2vec-from-scratch-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:28:25Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/04-glove-fasttext-subword",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "04-glove-fasttext-subword",
     "topic": "GloVe, FastText, and Subword Embeddings",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\glove-fasttext-and-subword-embeddings-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:28:45Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/05-sentiment-analysis",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "05-sentiment-analysis",
     "topic": "Sentiment Analysis",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\sentiment-analysis-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:28:46Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/06-named-entity-recognition",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "06-named-entity-recognition",
     "topic": "Named Entity Recognition",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\named-entity-recognition-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\06-named-entity-recognition\\docs\\en.md",
+    "updated_at": "2026-06-13T15:30:30Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/07-pos-tagging-parsing",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "07-pos-tagging-parsing",
     "topic": "POS Tagging and Syntactic Parsing",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\pos-tagging-and-syntactic-parsing-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:29:04Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/08-cnns-rnns-for-text",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "08-cnns-rnns-for-text",
     "topic": "CNNs and RNNs for Text",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\cnns-and-rnns-for-text-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\08-cnns-rnns-for-text\\docs\\en.md",
+    "updated_at": "2026-06-13T15:32:37Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/09-sequence-to-sequence",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "09-sequence-to-sequence",
     "topic": "Sequence-to-Sequence Models",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\sequence-to-sequence-models-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:31:27Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/10-attention-mechanism",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "10-attention-mechanism",
     "topic": "Attention Mechanism â€” The Breakthrough",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\attention-mechanism--the-breakthrough-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:29:26Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/11-machine-translation",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "11-machine-translation",
     "topic": "Machine Translation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\machine-translation-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\11-machine-translation\\docs\\en.md",
+    "updated_at": "2026-06-13T15:30:21Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/12-text-summarization",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "12-text-summarization",
     "topic": "Text Summarization",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\text-summarization-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:29:45Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/13-question-answering",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "13-question-answering",
     "topic": "Question Answering Systems",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\question-answering-systems-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:30:06Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/14-information-retrieval-search",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "14-information-retrieval-search",
     "topic": "Information Retrieval and Search",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\information-retrieval-and-search-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:30:07Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/15-topic-modeling",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "15-topic-modeling",
     "topic": "Topic Modeling â€” LDA and BERTopic",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\topic-modeling--lda-and-bertopic-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\15-topic-modeling\\docs\\en.md",
+    "updated_at": "2026-06-13T15:31:53Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/16-text-generation-pre-transformer",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "16-text-generation-pre-transformer",
     "topic": "Text Generation Before Transformers â€” N-gram Language Models",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\text-generation-before-transformers--n-gram-language-models-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:30:25Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/17-chatbots-rule-to-neural",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "17-chatbots-rule-to-neural",
     "topic": "Chatbots â€” Rule-Based to Neural to LLM Agents",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\chatbots--rule-based-to-neural-to-llm-agents-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\17-chatbots-rule-to-neural\\docs\\en.md",
+    "updated_at": "2026-06-13T15:32:45Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/18-multilingual-nlp",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "18-multilingual-nlp",
     "topic": "Multilingual NLP",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\multilingual-nlp-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:32:53Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/19-subword-tokenization",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "19-subword-tokenization",
     "topic": "Subword Tokenization â€” BPE, WordPiece, Unigram, SentencePiece",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\subword-tokenization--bpe-wordpiece-unigram-sentencepiece-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:31:01Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/20-structured-outputs-constrained-decoding",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "20-structured-outputs-constrained-decoding",
     "topic": "Structured Outputs & Constrained Decoding",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\structured-outputs--constrained-decoding-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\20-structured-outputs-constrained-decoding\\docs\\en.md",
+    "updated_at": "2026-06-13T15:32:22Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/21-nli-textual-entailment",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "21-nli-textual-entailment",
     "topic": "Natural Language Inference â€” Textual Entailment",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\natural-language-inference--textual-entailment-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:31:11Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/22-embedding-models-deep-dive",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "22-embedding-models-deep-dive",
     "topic": "Embedding Models â€” The 2026 Deep Dive",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\embedding-models--the-2026-deep-dive-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:31:42Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/23-chunking-strategies-rag",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "23-chunking-strategies-rag",
     "topic": "Chunking Strategies for RAG",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\chunking-strategies-for-rag-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:31:51Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/24-coreference-resolution",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "24-coreference-resolution",
     "topic": "Coreference Resolution",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\coreference-resolution-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:32:08Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/25-entity-linking",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "25-entity-linking",
     "topic": "Entity Linking & Disambiguation",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\entity-linking--disambiguation-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\25-entity-linking\\docs\\en.md",
+    "updated_at": "2026-06-13T15:33:43Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/26-relation-extraction-kg",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "26-relation-extraction-kg",
     "topic": "Relation Extraction & Knowledge Graph Construction",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\relation-extraction--knowledge-graph-construction-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\26-relation-extraction-kg\\docs\\en.md",
+    "updated_at": "2026-06-13T15:34:13Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/27-llm-evaluation-frameworks",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "27-llm-evaluation-frameworks",
     "topic": "LLM Evaluation â€” RAGAS, DeepEval, G-Eval",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\llm-evaluation--ragas-deepeval-g-eval-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:32:33Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/28-long-context-evaluation",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "28-long-context-evaluation",
     "topic": "Long-Context Evaluation â€” NIAH, RULER, LongBench, MRCR",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\long-context-evaluation--niah-ruler-longbench-mrcr-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:32:48Z"
   },
   {
     "id": "05-nlp-foundations-to-advanced/29-dialogue-state-tracking",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "05-nlp-foundations-to-advanced",
     "lesson": "29-dialogue-state-tracking",
     "topic": "Dialogue State Tracking",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\dialogue-state-tracking-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\05-nlp-foundations-to-advanced\\29-dialogue-state-tracking\\docs\\en.md",
+    "updated_at": "2026-06-13T15:34:00Z"
   },
   {
     "id": "06-speech-and-audio/01-audio-fundamentals",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "01-audio-fundamentals",
     "topic": "Audio Fundamentals â€” Waveforms, Sampling, Fourier Transform",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\audio-fundamentals--waveforms-sampling-fourier-transform-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\06-speech-and-audio\\01-audio-fundamentals\\docs\\en.md",
+    "updated_at": "2026-06-13T15:34:32Z"
   },
   {
     "id": "06-speech-and-audio/02-spectrograms-mel-features",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "02-spectrograms-mel-features",
     "topic": "Spectrograms, Mel Scale & Audio Features",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\spectrograms-mel-scale--audio-features-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\06-speech-and-audio\\02-spectrograms-mel-features\\docs\\en.md",
+    "updated_at": "2026-06-13T15:34:14Z"
   },
   {
     "id": "06-speech-and-audio/03-audio-classification",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "03-audio-classification",
     "topic": "Audio Classification â€” From k-NN on MFCCs to AST and BEATs",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\audio-classification--from-k-nn-on-mfccs-to-ast-and-beats-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:33:25Z"
   },
   {
     "id": "06-speech-and-audio/04-speech-recognition-asr",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "04-speech-recognition-asr",
     "topic": "Speech Recognition (ASR) â€” CTC, RNN-T, Attention",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\speech-recognition-asr--ctc-rnn-t-attention-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:33:30Z"
   },
   {
     "id": "06-speech-and-audio/05-whisper-architecture-finetuning",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "05-whisper-architecture-finetuning",
     "topic": "Whisper â€” Architecture & Fine-Tuning",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\whisper--architecture--fine-tuning-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:33:34Z"
   },
   {
     "id": "06-speech-and-audio/06-speaker-recognition-verification",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "06-speaker-recognition-verification",
     "topic": "Speaker Recognition & Verification",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\speaker-recognition--verification-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:34:06Z"
   },
   {
     "id": "06-speech-and-audio/07-text-to-speech",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "07-text-to-speech",
     "topic": "Text-to-Speech (TTS) â€” From Tacotron to F5 and Kokoro",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\text-to-speech-tts--from-tacotron-to-f5-and-kokoro-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:34:10Z"
   },
   {
     "id": "06-speech-and-audio/08-voice-cloning-conversion",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "08-voice-cloning-conversion",
     "topic": "Voice Cloning & Voice Conversion",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\voice-cloning--voice-conversion-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:34:15Z"
   },
   {
     "id": "06-speech-and-audio/09-music-generation",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "09-music-generation",
     "topic": "Music Generation â€” MusicGen, Stable Audio, Suno, and the Licensing Earthquake",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\music-generation--musicgen-stable-audio-suno-and-the-licensi-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\06-speech-and-audio\\09-music-generation\\docs\\en.md",
+    "updated_at": "2026-06-13T15:36:12Z"
   },
   {
     "id": "06-speech-and-audio/10-audio-language-models",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "10-audio-language-models",
     "topic": "Audio-Language Models â€” Qwen2.5-Omni, Audio Flamingo, GPT-4o Audio",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\audio-language-models--qwen25-omni-audio-flamingo-gpt-4o-aud-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\06-speech-and-audio\\10-audio-language-models\\docs\\en.md",
+    "updated_at": "2026-06-13T15:36:10Z"
   },
   {
     "id": "06-speech-and-audio/11-real-time-audio-processing",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "11-real-time-audio-processing",
     "topic": "Real-Time Audio Processing",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\real-time-audio-processing-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:36:55Z"
   },
   {
     "id": "06-speech-and-audio/12-voice-assistant-pipeline",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "12-voice-assistant-pipeline",
     "topic": "Build a Voice Assistant Pipeline â€” The Phase 6 Capstone",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\build-a-voice-assistant-pipeline--the-phase-6-capstone-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:34:51Z"
   },
   {
     "id": "06-speech-and-audio/13-neural-audio-codecs",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "13-neural-audio-codecs",
     "topic": "Neural Audio Codecs â€” EnCodec, SNAC, Mimi, DAC and the Semantic-Acoustic Split",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\neural-audio-codecs--encodec-snac-mimi-dac-and-the-semantic--draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\06-speech-and-audio\\13-neural-audio-codecs\\docs\\en.md",
+    "updated_at": "2026-06-13T15:36:45Z"
   },
   {
     "id": "06-speech-and-audio/14-voice-activity-detection-turn-taking",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "14-voice-activity-detection-turn-taking",
     "topic": "Voice Activity Detection & Turn-Taking â€” Silero, Cobra, and the Flush Trick",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\voice-activity-detection--turn-taking--silero-cobra-and-the--draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:34:54Z"
   },
   {
     "id": "06-speech-and-audio/15-streaming-speech-to-speech-moshi-hibiki",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "15-streaming-speech-to-speech-moshi-hibiki",
     "topic": "Streaming Speech-to-Speech â€” Moshi, Hibiki, and Full-Duplex Dialogue",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\streaming-speech-to-speech--moshi-hibiki-and-full-duplex-dia-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:34:55Z"
   },
   {
     "id": "06-speech-and-audio/16-anti-spoofing-audio-watermarking",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "16-anti-spoofing-audio-watermarking",
     "topic": "Voice Anti-Spoofing & Audio Watermarking â€” ASVspoof 5, AudioSeal, WaveVerify",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\voice-anti-spoofing--audio-watermarking--asvspoof-5-audiosea-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\06-speech-and-audio\\16-anti-spoofing-audio-watermarking\\docs\\en.md",
+    "updated_at": "2026-06-13T15:37:02Z"
   },
   {
     "id": "06-speech-and-audio/17-audio-evaluation-metrics",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "06-speech-and-audio",
     "lesson": "17-audio-evaluation-metrics",
     "topic": "Audio Evaluation â€” WER, MOS, UTMOS, MMAU, FAD, and the Open Leaderboards",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\audio-evaluation--wer-mos-utmos-mmau-fad-and-the-open-leader-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:35:31Z"
   },
   {
     "id": "07-transformers-deep-dive/01-why-transformers",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "01-why-transformers",
     "topic": "Why Transformers â€” The Problems with RNNs",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\why-transformers--the-problems-with-rnns-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:35:34Z"
   },
   {
     "id": "07-transformers-deep-dive/02-self-attention-from-scratch",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "02-self-attention-from-scratch",
     "topic": "Self-Attention from Scratch",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\self-attention-from-scratch-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:35:35Z"
   },
   {
     "id": "07-transformers-deep-dive/03-multi-head-attention",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "03-multi-head-attention",
     "topic": "Multi-Head Attention",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\multi-head-attention-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:36:12Z"
   },
   {
     "id": "07-transformers-deep-dive/04-positional-encoding",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "04-positional-encoding",
     "topic": "Positional Encoding â€” Sinusoidal, RoPE, ALiBi",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\positional-encoding--sinusoidal-rope-alibi-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:36:14Z"
   },
   {
     "id": "07-transformers-deep-dive/05-full-transformer",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "05-full-transformer",
     "topic": "The Full Transformer â€” Encoder + Decoder",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\the-full-transformer--encoder--decoder-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:36:16Z"
   },
   {
     "id": "07-transformers-deep-dive/06-bert-masked-language-modeling",
@@ -1596,69 +1596,69 @@
   },
   {
     "id": "07-transformers-deep-dive/07-gpt-causal-language-modeling",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "07-gpt-causal-language-modeling",
     "topic": "GPT â€” Causal Language Modeling",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\gpt--causal-language-modeling-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\07-transformers-deep-dive\\07-gpt-causal-language-modeling\\docs\\en.md",
+    "updated_at": "2026-06-13T15:38:29Z"
   },
   {
     "id": "07-transformers-deep-dive/08-t5-bart-encoder-decoder",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "08-t5-bart-encoder-decoder",
     "topic": "T5, BART â€” Encoder-Decoder Models",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\t5-bart--encoder-decoder-models-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\07-transformers-deep-dive\\08-t5-bart-encoder-decoder\\docs\\en.md",
+    "updated_at": "2026-06-13T15:38:41Z"
   },
   {
     "id": "07-transformers-deep-dive/09-vision-transformers",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "09-vision-transformers",
     "topic": "Vision Transformers (ViT)",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\vision-transformers-vit-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:36:55Z"
   },
   {
     "id": "07-transformers-deep-dive/10-audio-transformers-whisper",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "10-audio-transformers-whisper",
     "topic": "Audio Transformers â€” Whisper Architecture",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\audio-transformers--whisper-architecture-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:36:56Z"
   },
   {
     "id": "07-transformers-deep-dive/11-mixture-of-experts",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "11-mixture-of-experts",
     "topic": "Mixture of Experts (MoE)",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\mixture-of-experts-moe-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\07-transformers-deep-dive\\11-mixture-of-experts\\docs\\en.md",
+    "updated_at": "2026-06-13T15:38:38Z"
   },
   {
     "id": "07-transformers-deep-dive/12-kv-cache-flash-attention",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "12-kv-cache-flash-attention",
     "topic": "KV Cache, Flash Attention & Inference Optimization",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\kv-cache-flash-attention--inference-optimization-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:37:36Z"
   },
   {
     "id": "07-transformers-deep-dive/13-scaling-laws",
@@ -1673,58 +1673,58 @@
   },
   {
     "id": "07-transformers-deep-dive/14-build-a-transformer-capstone",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "14-build-a-transformer-capstone",
     "topic": "Build a Transformer from Scratch â€” The Capstone",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\build-a-transformer-from-scratch--the-capstone-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:37:36Z"
   },
   {
     "id": "07-transformers-deep-dive/15-attention-variants",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "15-attention-variants",
     "topic": "Attention Variants â€” Sliding Window, Sparse, Differential",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\attention-variants--sliding-window-sparse-differential-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:37:42Z"
   },
   {
     "id": "07-transformers-deep-dive/16-speculative-decoding",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "07-transformers-deep-dive",
     "lesson": "16-speculative-decoding",
     "topic": "Speculative Decoding â€” Draft, Verify, Repeat",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\speculative-decoding--draft-verify-repeat-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:38:17Z"
   },
   {
     "id": "08-generative-ai/01-generative-models-taxonomy-history",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "08-generative-ai",
     "lesson": "01-generative-models-taxonomy-history",
     "topic": "Generative Models â€” Taxonomy & History",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\generative-models--taxonomy--history-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:38:16Z"
   },
   {
     "id": "08-generative-ai/02-autoencoders-vae",
-    "status": "pending",
+    "status": "failed",
     "stage": "02",
     "phase": "08-generative-ai",
     "lesson": "02-autoencoders-vae",
     "topic": "Autoencoders & Variational Autoencoders (VAE)",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\autoencoders--variational-autoencoders-vae-draft.md",
     "output_file": "",
-    "updated_at": ""
+    "updated_at": "2026-06-13T15:38:21Z"
   },
   {
     "id": "08-generative-ai/03-gans-generator-discriminator",
@@ -3961,14 +3961,14 @@
   },
   {
     "id": "17-infrastructure-and-production/01-managed-llm-platforms",
-    "status": "pending",
+    "status": "done",
     "stage": "02",
     "phase": "17-infrastructure-and-production",
     "lesson": "01-managed-llm-platforms",
     "topic": "Managed LLM Platforms â€” Bedrock, Vertex AI, Azure OpenAI",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\managed-llm-platforms--bedrock-vertex-ai-azure-openai-draft.md",
-    "output_file": "",
-    "updated_at": ""
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\17-infrastructure-and-production\\01-managed-llm-platforms\\docs\\en.md",
+    "updated_at": "2026-06-13T14:23:35Z"
   },
   {
     "id": "17-infrastructure-and-production/02-inference-platform-economics",

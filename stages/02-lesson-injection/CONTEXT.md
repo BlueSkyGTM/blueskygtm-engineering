@@ -50,3 +50,16 @@ Draft full hybrid lessons — GTM strand woven into AI engineering lessons as ap
 | Artifact | Location | Format |
 |----------|----------|--------|
 | `hybrid-lessons/` | `output/` | Full lesson drafts, one per slot, matching existing path structure |
+
+## Dispatcher
+
+Stage 02 is run via the automated dispatcher, not by Lyra directly.
+
+**Reference:** `skills/operator-kit/DISPATCHERS.md` — CLI flags, status monitoring, failure recovery, worker count guidelines, and the full how-to for running all three stages.
+
+```powershell
+.\run.ps1 stage02 --sample 5          # human gate (review 5 before full run)
+.\run.ps1 stage02 --workers 5         # full run
+.\run.ps1 stage02 --retry-failed      # recover failed rows
+.\run.ps1 status                      # pipeline health
+```

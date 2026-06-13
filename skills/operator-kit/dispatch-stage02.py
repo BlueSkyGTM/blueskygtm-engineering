@@ -92,23 +92,24 @@ Rules:
 - IMPORTANT: Do NOT include any "## GTM Redirect Rules" section in your output. That is input context only. Your output must contain only the heading structure listed above."""
 
 # ── Global rate control ──────────────────────────────────────────────────────
-# Shared pause event: when set, ALL threads wait before their next API call.
-# Set by any thread that hits a 429; cleared after the global backoff window.
+# Shared pause event: SET = go, CLEAR = pause. All workers check before each API call.
+# Rate limit or circuit breaker CLEARs the event; a Timer SETs it again after backoff.
 _global_pause = threading.Event()
+_global_pause.set()  # starts in "go" state
 _global_pause_lock = threading.Lock()
 
 
 def global_rate_pause(duration: int = 30) -> None:
-    """Signal all threads to back off for `duration` seconds (idempotent)."""
+    """Pause all worker threads for `duration` seconds (idempotent)."""
     with _global_pause_lock:
-        if not _global_pause.is_set():
-            print(f"  [GLOBAL BACKOFF] Rate limit cascade detected — all threads pausing {duration}s")
-            _global_pause.set()
-            threading.Timer(duration, _global_pause.clear).start()
+        if _global_pause.is_set():  # only pause if currently going
+            print(f"  [GLOBAL BACKOFF] Rate limit — all threads pausing {duration}s")
+            _global_pause.clear()
+            threading.Timer(duration, _global_pause.set).start()
 
 
 def wait_if_paused() -> None:
-    """Block the calling thread until the global pause clears."""
+    """Block the calling thread while the global pause is active."""
     _global_pause.wait()
 
 
@@ -263,6 +264,7 @@ End with:
                 ],
                 max_tokens=8000,  # full lesson needs more room
                 stream=True,
+                timeout=120,
             )
             chunks = []
             for chunk in response:
@@ -274,7 +276,9 @@ End with:
             if len(result) < 500:
                 raise ValueError(f"Output too short ({len(result)} chars)")
 
-            output_file.write_text(result, encoding="utf-8")
+            tmp = output_file.with_suffix(".tmp")
+            tmp.write_text(result, encoding="utf-8")
+            tmp.replace(output_file)
             return lesson_id, "done", str(output_file)
 
         except RateLimitError:
@@ -368,11 +372,11 @@ def main():
             failure_rate = sum(_window) / len(_window) if _window else 0
             print(f"  [{i}/{total}] {lesson_id} -> {status} | {rate:.1f} req/s | ETA {eta/60:.1f}min | fail_rate={failure_rate:.0%}")
 
-            # Circuit breaker: pause all workers if failure rate exceeds 30% in last 10 jobs
+            # Circuit breaker: pause ALL workers (not just main thread) if failure rate > 30%
             if len(_window) == 10 and failure_rate > 0.30:
-                print(f"  [CIRCUIT BREAKER] {failure_rate:.0%} failure in last 10 jobs — pausing 60s")
-                time.sleep(60)
+                print(f"  [CIRCUIT BREAKER] {failure_rate:.0%} failure in last 10 jobs — pausing all workers 60s")
                 _window.clear()
+                global_rate_pause(60)
 
             # Status file: write every 10 completions so Claude Code can query health mid-run
             if i % 10 == 0 and not args.dry_run:
