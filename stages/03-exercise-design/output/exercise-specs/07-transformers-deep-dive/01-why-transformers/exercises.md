@@ -1,0 +1,15 @@
+# Exercises — Why Transformers â€” The Problems with RNNs
+
+## Exercises
+
+1. **Run the toy RNN from the lesson and locate the gradient decay threshold.** Execute the RNN implementation on a 64-token sequence. After each training step, print the gradient magnitude at every timestep as a list. Identify and print the index of the first timestep where the gradient norm drops below `1e-4`. Your terminal output should show the full gradient list and the threshold index.
+
+2. **Compare sequential operation counts between RNN and self-attention.** Write a script that takes a sequence length `n` and batch size `b`, then prints two numbers: the count of sequential cell evaluations an RNN requires, and the count of sequential matrix multiplications a single self-attention layer requires. Run the script for `n = [32, 128, 512]` with `b = 32` and print the results in a formatted table.
+
+3. **Implement a dependency-graph tracer for both architectures.** Write a function that accepts either `"rnn"` or `"attention"` and a sequence length `n`. For the RNN, print each `(h_{t-1}, x_t) → h_t` dependency in chronological order. For attention, print the set of matrix operations (`QK^T`, `softmax`, `scale`, `multiply V`) and note which can execute concurrently. The terminal output should make the serial-vs-parallel structure visible at a glance.
+
+4. **Measure bottleneck information loss on CRM account descriptions.** Create a CSV of 20 company descriptions sourced from an Apollo or Clay export (or hand-authored equivalents of varying lengths: 10, 50, 100, 200 tokens). Implement a fixed-width encoder that compresses each description into a 64-dimensional vector, then a decoder that reconstructs the token sequence. Compute and print reconstruction accuracy (exact token match rate) for each description, grouped by input length. Print a summary showing the accuracy drop as description length grows.
+
+5. **Build a gradient diagnostic tool that produces a persistent report.** Implement a script that accepts a recurrent cell type (`vanilla`, `lstm`, or `gru`), a list of sequence lengths `[16, 32, 64, 128, 256]`, and an activation function (`tanh`, `relu`, `sigmoid`). For each combination, run forward and backward passes, record the mean gradient magnitude per timestep, and identify the timestep where the gradient first falls below `1e-3`. Write the full results table — including a "max useful sequence length" column per cell+activation pair — to `outputs/skill-rnn-gradient-analysis.md`.
+
+6. **Prove the bottleneck constraint holds for any fixed encoding width.** Write a proof-of-concept script that generates synthetic token sequences of increasing length over a fixed vocabulary, encodes each into a vector of dimension `d ∈ [16, 32, 64, 128]`, then measures the theoretical maximum number of distinct input sequences representable by that vector versus the actual number of possible inputs. Print a table showing the representation ratio (representable / possible) collapsing toward zero as sequence length grows. Save the script and a one-paragraph interpretation of the results to `signals/examples/bottleneck-proof.py`.

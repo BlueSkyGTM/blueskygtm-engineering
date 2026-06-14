@@ -1,0 +1,15 @@
+# Exercises — CrewAI: Role-Based Crews and Flows
+
+## Exercises
+
+1. **Configure a CrewAI Agent for ICP research.** Create an Agent whose role is "B2B ICP Analyst," whose goal is to identify firmographic and technographic patterns in target accounts, and whose backstory references experience building ICP models for Series B SaaS companies. Bind it to an LLM backend of your choice. Print the agent's `role`, `goal`, `backstory`, and `llm` attributes to the terminal to confirm every field is populated.
+
+2. **Define and execute a Task with a structured output contract.** Create a Task assigned to the agent from Exercise 1. The description should instruct the agent to produce a one-paragraph ICP summary for a company named "Acme Logistics." Set `expected_output` to require exactly three bullet points: target industry, employee range, and must-have integration. Execute the task standalone (`.execute()`) and print the result. Verify the output matches the three-bullet contract.
+
+3. **Assemble a two-agent sequential Crew for account enrichment.** Build a Crew with two agents: a "Lead Researcher" who gathers public data about a target company, and a "Scoring Analyst" who assigns a 1–10 fit score based on the researcher's output. Create one Task per agent, wire them in sequential order, and run the Crew on a target company of your choice. Print each agent's contribution by iterating over the crew's task outputs.
+
+4. **Implement a Flow that branches on agent output.** Build a CrewAI Flow that runs a single "Qualification Agent" on a short prospect description. After the agent returns, parse its output to detect whether it contains the word "enterprise" or "SMB." If "enterprise," route to an "Enterprise AE Briefing" agent that drafts a multi-stakeholder outreach plan. If "SMB," route to a "Self-Serve Nurturer" agent that drafts a three-email sequence. Print which branch was taken and the downstream agent's full output.
+
+5. **Compare sequential vs. hierarchical processes and produce a benchmark report.** Build the same two-agent crew from Exercise 3 twice—once with `Process.sequential` and once with `Process.hierarchical`. Run both on the same target company and measure wall-clock execution time for each using `time.time()`. Print both durations and the difference. Then write your findings, including which process was faster and your hypothesis for why, to `outputs/skill-sequential-vs-hierarchical.md`.
+
+6. **Design and build a multi-agent crew that consumes Apollo or Clay enrichment data.** Create a Crew with three agents: (1) a "Data Fetcher" that takes a CSV of company domains from `inputs/sample_companies.csv` and simulates pulling enrichment data (you may stub the API call or use a real Apollo/Clay endpoint if you have an API key), (2) a "Technographic Analyzer" that identifies the prospect's likely integration gaps, and (3) a "Personalized Outreach Writer" that drafts a cold email referencing one specific gap. Run the crew end-to-end and persist the full agent output trace as a runnable, importable module at `handlers/outbound-crew.py`. Print the final cold email to the terminal.

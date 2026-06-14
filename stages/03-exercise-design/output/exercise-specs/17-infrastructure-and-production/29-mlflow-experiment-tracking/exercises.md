@@ -1,0 +1,15 @@
+# Exercises — MLflow Experiment Tracking
+
+## Exercises
+
+1. **Configure** an MLflow tracking server backed by a local SQLite store (`sqlite:///mlflow.db`) and a local artifact directory. **Create** an experiment named `mlflow-basics` programmatically via `mlflow.set_experiment()`. Inside a single run, **log** two parameters (`alpha=0.1`, `iterations=100`) and one metric (`rmse=0.85`). **Print** the experiment ID, run ID, and artifact URI to the terminal. Confirm the experiment appears by running `mlflow experiments list` from the command line.
+
+2. **Implement** a training script that fits a scikit-learn `LinearRegression` on the built-in diabetes dataset. **Log** the model itself with `mlflow.sklearn.log_model()`, log the `R²` score as a metric, and save the model coefficients to a JSON file logged as an artifact. After the run completes, **print** the full artifact file list for the run using `MlflowClient().list_artifacts(run_id)` to verify both the model and the JSON were persisted.
+
+3. **Build** a filter query using `MlflowClient().search_runs()` that retrieves all runs in your experiment where the metric `rmse < 0.5`, sorted ascending by `rmse`. Write the filter string and order-by clause from scratch — no scaffold. **Print** each matching run's ID, parameter dictionary, and metric values to the terminal in a readable table format.
+
+4. **Implement** a hyperparameter sweep over `max_depth` ∈ {3, 5, 10} and `n_estimators` ∈ {50, 100, 200} for a `RandomForestClassifier` on any classification dataset (Wine, Breast Cancer, or a CSV of your choice). Each combination is a separate run with automated logging of `accuracy` and `f1_score`. After all nine runs finish, **write** a search query that identifies the best configuration by F1 and **print** the winning parameter combination with its score.
+
+5. **Build** a lead-scoring model training pipeline at `handlers/lead_scorer.py` that ingests CRM lead export data (CSV from HubSpot, Salesforce, or an Apollo export), trains a classifier to predict lead-to-opportunity conversion, and logs the full experiment to MLflow. Include at least three enrichment-derived features as logged parameters (e.g., `firmographic_source`, `intent_signal_enabled`, `company_size_bucket`). Save the trained model and a feature-importance JSON as artifacts. After training, the handler must accept new lead records via command-line argument and score them using the best MLflow run's model, printing predicted conversion probabilities.
+
+6. **Design** and **verify** a proof that MLflow's metric history is append-only. Within a single run, **log** the metric `loss` twenty times across simulated training steps. **Retrieve** the full metric history with `MlflowClient().get_metric_history()` and confirm all twenty timestamped values are preserved without overwrites. **Write** your findings — including the raw metric history, a statement of whether immutability held, and implications for reproducible experiment comparison — to `outputs/skill-mlflow-metric-proofs.md`.

@@ -1,0 +1,11 @@
+# Exercises — Frontier Safety Frameworks â€” RSP, PF, FSF
+
+## Exercises
+
+1. **Classify a mock model under all three frameworks.** Create a Python script that defines mock evaluation scores for a model across four capability areas (CBRN assistance, cyber-offense, autonomous R&D, persuasion). Implement threshold-check functions for each framework — ASL levels for Anthropic's RSP, risk levels for OpenAI's PF, and criticality ratings for DeepMind's FSF. Run the script and verify the terminal prints three distinct classification labels and three deployment decisions (deploy, deploy-with-mitigations, defer, or block).
+
+2. **Trace competitor-adjustment gate logic.** Write a function that accepts a base deployment decision plus a competitor signal (boolean indicating whether a peer lab shipped a model at equivalent capability without equivalent safeguards). Implement the adjustment rule for each framework: Anthropic permits conditional deferral when the ASL gap would be 2+ levels; OpenAI's PF allows waiving mitigations proportionate to peer posture; DeepMind's FSF permits deployment if competitor-adjusted risk stays below threshold. Feed at least three scenarios through the function and print the before-and-after decision for each framework.
+
+3. **Map the three-pillar safety case to concrete mitigations.** Implement a function that takes a list of proposed mitigations (e.g., "rate limiting", "output filtering", "capability sandboxing", "human-in-the-loop review", "distillation reduction") and checks whether each pillar — monitoring, illegibility, and incapability — is satisfied. Define your own mapping rules for which mitigations satisfy which pillar (a single mitigation may satisfy more than one). Print which pillars are covered, which are missing, and a final boolean for whether the overall safety case passes.
+
+4. **Apply framework classification to an autonomous coding agent profile.** Define a new mock evaluation profile for a model specialized in autonomous software engineering — high cyber-offense and autonomous-R&D scores, low CBRN, moderate persuasion. Run your classification logic from Exercise 1 against this profile. Print a side-by-side comparison table showing each framework's classification label and deployment decision. Identify and print whether any framework's decision diverges

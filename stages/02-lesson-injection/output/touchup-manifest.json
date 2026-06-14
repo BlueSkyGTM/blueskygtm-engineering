@@ -5,7 +5,8 @@
     "lesson": "01-dev-environment",
     "topic": "Dev Environment",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\01-dev-environment\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:28:47Z"
   },
   {
     "id": "00-setup-and-tooling/02-git-and-collaboration",
@@ -13,7 +14,8 @@
     "lesson": "02-git-and-collaboration",
     "topic": "Git & Collaboration",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\02-git-and-collaboration\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:28:47Z"
   },
   {
     "id": "00-setup-and-tooling/03-gpu-setup-and-cloud",
@@ -21,7 +23,8 @@
     "lesson": "03-gpu-setup-and-cloud",
     "topic": "GPU Setup & Cloud",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\03-gpu-setup-and-cloud\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:28:47Z"
   },
   {
     "id": "00-setup-and-tooling/04-apis-and-keys",
@@ -29,7 +32,8 @@
     "lesson": "04-apis-and-keys",
     "topic": "APIs & Keys",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\04-apis-and-keys\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:29:20Z"
   },
   {
     "id": "00-setup-and-tooling/05-jupyter-notebooks",
@@ -37,7 +41,8 @@
     "lesson": "05-jupyter-notebooks",
     "topic": "Jupyter Notebooks",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\05-jupyter-notebooks\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:29:20Z"
   },
   {
     "id": "00-setup-and-tooling/06-python-environments",
@@ -45,7 +50,8 @@
     "lesson": "06-python-environments",
     "topic": "Python Environments",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\06-python-environments\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:29:20Z"
   },
   {
     "id": "00-setup-and-tooling/07-docker-for-ai",
@@ -53,7 +59,8 @@
     "lesson": "07-docker-for-ai",
     "topic": "Docker for AI",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\07-docker-for-ai\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:29:54Z"
   },
   {
     "id": "00-setup-and-tooling/08-editor-setup",
@@ -61,7 +68,8 @@
     "lesson": "08-editor-setup",
     "topic": "Editor Setup",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\08-editor-setup\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:29:53Z"
   },
   {
     "id": "00-setup-and-tooling/09-data-management",
@@ -69,7 +77,8 @@
     "lesson": "09-data-management",
     "topic": "Data Management",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\09-data-management\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:29:53Z"
   },
   {
     "id": "00-setup-and-tooling/10-terminal-and-shell",
@@ -77,7 +86,8 @@
     "lesson": "10-terminal-and-shell",
     "topic": "Terminal & Shell",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\10-terminal-and-shell\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:30:27Z"
   },
   {
     "id": "00-setup-and-tooling/11-linux-for-ai",
@@ -85,7 +95,8 @@
     "lesson": "11-linux-for-ai",
     "topic": "Linux for AI",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\11-linux-for-ai\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:30:27Z"
   },
   {
     "id": "00-setup-and-tooling/12-debugging-and-profiling",
@@ -93,7 +104,8 @@
     "lesson": "12-debugging-and-profiling",
     "topic": "Debugging and Profiling",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\12-debugging-and-profiling\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:30:27Z"
   },
   {
     "id": "01-math-foundations/01-linear-algebra-intuition",
@@ -101,7 +113,8 @@
     "lesson": "01-linear-algebra-intuition",
     "topic": "Linear Algebra Intuition",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\01-linear-algebra-intuition\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:31:01Z"
   },
   {
     "id": "01-math-foundations/02-vectors-matrices-operations",
@@ -109,7 +122,8 @@
     "lesson": "02-vectors-matrices-operations",
     "topic": "Vectors, Matrices & Operations",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\02-vectors-matrices-operations\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:31:00Z"
   },
   {
     "id": "01-math-foundations/03-matrix-transformations",
@@ -117,7 +131,8 @@
     "lesson": "03-matrix-transformations",
     "topic": "Matrix Transformations",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\03-matrix-transformations\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:31:01Z"
   },
   {
     "id": "01-math-foundations/04-calculus-for-ml",
@@ -125,7 +140,8 @@
     "lesson": "04-calculus-for-ml",
     "topic": "Calculus for Machine Learning",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\04-calculus-for-ml\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:31:34Z"
   },
   {
     "id": "01-math-foundations/05-chain-rule-and-autodiff",
@@ -133,7 +149,8 @@
     "lesson": "05-chain-rule-and-autodiff",
     "topic": "Chain Rule & Automatic Differentiation",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\05-chain-rule-and-autodiff\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:31:34Z"
   },
   {
     "id": "01-math-foundations/06-probability-and-distributions",
@@ -141,7 +158,8 @@
     "lesson": "06-probability-and-distributions",
     "topic": "Probability and Distributions",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\06-probability-and-distributions\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:31:34Z"
   },
   {
     "id": "01-math-foundations/07-bayes-theorem",
@@ -149,7 +167,8 @@
     "lesson": "07-bayes-theorem",
     "topic": "Bayes' Theorem",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\07-bayes-theorem\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:32:08Z"
   },
   {
     "id": "01-math-foundations/08-optimization",
@@ -157,7 +176,8 @@
     "lesson": "08-optimization",
     "topic": "Optimization",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\08-optimization\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:32:07Z"
   },
   {
     "id": "01-math-foundations/09-information-theory",
@@ -165,7 +185,8 @@
     "lesson": "09-information-theory",
     "topic": "Information Theory",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\09-information-theory\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:32:07Z"
   },
   {
     "id": "01-math-foundations/10-dimensionality-reduction",
@@ -173,7 +194,8 @@
     "lesson": "10-dimensionality-reduction",
     "topic": "Dimensionality Reduction",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\10-dimensionality-reduction\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:32:40Z"
   },
   {
     "id": "01-math-foundations/11-singular-value-decomposition",
@@ -181,7 +203,8 @@
     "lesson": "11-singular-value-decomposition",
     "topic": "Singular Value Decomposition",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\11-singular-value-decomposition\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:32:40Z"
   },
   {
     "id": "01-math-foundations/12-tensor-operations",
@@ -189,7 +212,8 @@
     "lesson": "12-tensor-operations",
     "topic": "Tensor Operations",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\12-tensor-operations\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:32:41Z"
   },
   {
     "id": "01-math-foundations/13-numerical-stability",
@@ -197,7 +221,8 @@
     "lesson": "13-numerical-stability",
     "topic": "Numerical Stability",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\13-numerical-stability\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:33:14Z"
   },
   {
     "id": "01-math-foundations/14-norms-and-distances",
@@ -205,7 +230,8 @@
     "lesson": "14-norms-and-distances",
     "topic": "Norms and Distances",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\14-norms-and-distances\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:33:14Z"
   },
   {
     "id": "01-math-foundations/15-statistics-for-ml",
@@ -213,7 +239,8 @@
     "lesson": "15-statistics-for-ml",
     "topic": "Statistics for Machine Learning",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\15-statistics-for-ml\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:33:14Z"
   },
   {
     "id": "01-math-foundations/16-sampling-methods",
@@ -221,7 +248,8 @@
     "lesson": "16-sampling-methods",
     "topic": "Sampling Methods",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\16-sampling-methods\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:33:49Z"
   },
   {
     "id": "01-math-foundations/17-linear-systems",
@@ -229,7 +257,8 @@
     "lesson": "17-linear-systems",
     "topic": "Linear Systems",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\17-linear-systems\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:33:49Z"
   },
   {
     "id": "01-math-foundations/18-convex-optimization",
@@ -237,7 +266,8 @@
     "lesson": "18-convex-optimization",
     "topic": "Convex Optimization",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\18-convex-optimization\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:33:49Z"
   },
   {
     "id": "01-math-foundations/19-complex-numbers",
@@ -245,7 +275,8 @@
     "lesson": "19-complex-numbers",
     "topic": "Complex Numbers for AI",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\19-complex-numbers\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:34:23Z"
   },
   {
     "id": "01-math-foundations/20-fourier-transform",
@@ -253,7 +284,8 @@
     "lesson": "20-fourier-transform",
     "topic": "The Fourier Transform",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\20-fourier-transform\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:34:23Z"
   },
   {
     "id": "01-math-foundations/21-graph-theory",
@@ -261,7 +293,8 @@
     "lesson": "21-graph-theory",
     "topic": "Graph Theory for Machine Learning",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\21-graph-theory\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:34:23Z"
   },
   {
     "id": "01-math-foundations/22-stochastic-processes",
@@ -269,7 +302,8 @@
     "lesson": "22-stochastic-processes",
     "topic": "Stochastic Processes",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\22-stochastic-processes\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:34:57Z"
   },
   {
     "id": "02-ml-fundamentals/01-what-is-machine-learning",
@@ -277,7 +311,8 @@
     "lesson": "01-what-is-machine-learning",
     "topic": "What Is Machine Learning",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\01-what-is-machine-learning\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:34:56Z"
   },
   {
     "id": "02-ml-fundamentals/02-linear-regression",
@@ -285,7 +320,8 @@
     "lesson": "02-linear-regression",
     "topic": "Linear Regression",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\02-linear-regression\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:34:56Z"
   },
   {
     "id": "02-ml-fundamentals/03-logistic-regression",
@@ -293,7 +329,8 @@
     "lesson": "03-logistic-regression",
     "topic": "Logistic Regression",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\03-logistic-regression\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:35:29Z"
   },
   {
     "id": "02-ml-fundamentals/04-decision-trees",
@@ -301,7 +338,8 @@
     "lesson": "04-decision-trees",
     "topic": "Decision Trees and Random Forests",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\04-decision-trees\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:35:29Z"
   },
   {
     "id": "02-ml-fundamentals/05-support-vector-machines",
@@ -309,7 +347,8 @@
     "lesson": "05-support-vector-machines",
     "topic": "Support Vector Machines",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\05-support-vector-machines\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:35:29Z"
   },
   {
     "id": "02-ml-fundamentals/06-knn-and-distances",
@@ -317,7 +356,8 @@
     "lesson": "06-knn-and-distances",
     "topic": "K-Nearest Neighbors and Distances",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\06-knn-and-distances\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:36:03Z"
   },
   {
     "id": "02-ml-fundamentals/07-unsupervised-learning",
@@ -325,7 +365,8 @@
     "lesson": "07-unsupervised-learning",
     "topic": "Unsupervised Learning",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\07-unsupervised-learning\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:36:03Z"
   },
   {
     "id": "02-ml-fundamentals/08-feature-engineering",
@@ -333,7 +374,8 @@
     "lesson": "08-feature-engineering",
     "topic": "Feature Engineering & Selection",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\08-feature-engineering\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:36:03Z"
   },
   {
     "id": "02-ml-fundamentals/09-model-evaluation",
@@ -341,7 +383,8 @@
     "lesson": "09-model-evaluation",
     "topic": "Model Evaluation",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\09-model-evaluation\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:36:36Z"
   },
   {
     "id": "02-ml-fundamentals/10-bias-variance",
@@ -349,7 +392,8 @@
     "lesson": "10-bias-variance",
     "topic": "Bias-Variance Tradeoff",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\10-bias-variance\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:36:36Z"
   },
   {
     "id": "02-ml-fundamentals/11-ensemble-methods",
@@ -357,7 +401,8 @@
     "lesson": "11-ensemble-methods",
     "topic": "Ensemble Methods",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\11-ensemble-methods\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:36:36Z"
   },
   {
     "id": "02-ml-fundamentals/12-hyperparameter-tuning",
@@ -365,7 +410,8 @@
     "lesson": "12-hyperparameter-tuning",
     "topic": "Hyperparameter Tuning",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\12-hyperparameter-tuning\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:37:10Z"
   },
   {
     "id": "02-ml-fundamentals/13-ml-pipelines",
@@ -373,7 +419,8 @@
     "lesson": "13-ml-pipelines",
     "topic": "ML Pipelines",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\13-ml-pipelines\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:37:10Z"
   },
   {
     "id": "02-ml-fundamentals/14-naive-bayes",
@@ -381,7 +428,8 @@
     "lesson": "14-naive-bayes",
     "topic": "Naive Bayes",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\14-naive-bayes\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:37:10Z"
   },
   {
     "id": "02-ml-fundamentals/15-time-series",
@@ -389,7 +437,8 @@
     "lesson": "15-time-series",
     "topic": "Time Series Fundamentals",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\15-time-series\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:37:44Z"
   },
   {
     "id": "02-ml-fundamentals/16-anomaly-detection",
@@ -397,7 +446,8 @@
     "lesson": "16-anomaly-detection",
     "topic": "Anomaly Detection",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\16-anomaly-detection\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:37:44Z"
   },
   {
     "id": "02-ml-fundamentals/17-imbalanced-data",
@@ -405,7 +455,8 @@
     "lesson": "17-imbalanced-data",
     "topic": "Handling Imbalanced Data",
     "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\17-imbalanced-data\\docs\\en.md",
-    "status": "pending"
+    "status": "failed",
+    "updated_at": "2026-06-14T01:37:44Z"
   },
   {
     "id": "02-ml-fundamentals/18-feature-selection",

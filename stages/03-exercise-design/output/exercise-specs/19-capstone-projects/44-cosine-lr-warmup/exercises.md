@@ -1,0 +1,15 @@
+# Exercises — Cosine LR with Linear Warmup
+
+## Exercises
+
+1. Implement a cosine annealing schedule with linear warmup using `torch.optim.lr_scheduler.LambdaLR`. Use `base_lr=1e-3`, `warmup_steps=10`, `total_steps=100`, `eta_min=1e-6`. Build a dummy `torch.optim.Adam` over a single parameter, attach your scheduler, then `.step()` it 100 times while printing the optimizer's learning rate at steps 0, 5, 10, 50, and 100. Verify the value printed at step 10 equals exactly `1e-3`.
+
+2. Compute the expected learning rate by hand for steps 0, 5, 10, 50, and 100 using the linear-warmup formula for phase 1 and `eta_min + 0.5*(base_lr-eta_min)*(1+cos(pi*progress))` for phase 2. Write assertions (tolerance `1e-8`) comparing each hand-computed value to what your scheduler from Exercise 1 produced. The assertion at step 0 must confirm `lr == 0.0`; the assertion at step 50 must exercise the cosine branch.
+
+3. Build a synthetic classification task: train a small MLP on `sklearn.datasets.make_classification(n_samples=1000, n_features=20, n_classes=3)` with `CrossEntropyLoss` and `Adam(base_lr=1e-3)`. Train twice with identical seeds — once with `warmup_steps=0` (peak LR applied immediately) and once with `warmup_steps=20` — for 100 steps each. Print the per-step training loss for the first 30 steps of both runs side by side. Report which run has the smoother early-loss curve and the magnitude of the largest loss spike in each.
+
+4. Diagnose early-training instability: take the same MLP from Exercise 3 but set `base_lr=0.1` (10× the stable value) and run 50 steps with `warmup_steps=0`, then again with `warmup_steps=15`. Print per-step loss for both runs. Identify the first step where the no-warmup run diverges (loss > 10, `inf`, or `NaN`). Print a single line stating whether warmup prevented the divergence and by how many steps the divergence was delayed.
+
+5. Extend a training loop with automated LR assertions: at every checkpoint (every 10 steps over a 100-step run), compute the expected LR from the closed-form formula and assert it matches the scheduler's actual `get_last_lr()` within tolerance `1e-6`. On assertion failure, raise with a message containing the failing step, expected LR, and actual LR. Train the Exercise 3 MLP under this loop and print a final confirmation line listing how many checkpoints passed. Persist the assertion logic as a reusable module at `handlers/lr_assertions.py`.
+
+6. Apply the cosine+warmup schedule to a GTM-relevant fine-tuning task: train a small text classifier on a labeled lead-scoring dataset exported from Apollo or Clay (CSV with columns such as `company_name`, `industry`, `employee_count`, `headline`, `lead_score`). Use `base_lr=5e-4`, `warmup_steps=20`, `total_steps=200`, `eta_min=1e-6`. Run the loop under your `handlers/lr_assertions.py` checks from Exercise 5. Persist a report to `outputs/skill-cosine-lr-gtm-finetune.md` containing the hyperparameters used, peak LR reached and at which step, final training loss, and confirmation that all LR assertions passed.

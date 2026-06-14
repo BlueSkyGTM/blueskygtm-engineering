@@ -151,6 +151,12 @@
     const prev = flat[flatIdx - 1], next = flat[flatIdx + 1];
     if (prev) nav.appendChild(navBtn('prev', 'Previous', prev));
     if (next) nav.appendChild(navBtn('next', 'Next', next));
+
+    const cue = document.createElement('p');
+    cue.className = 'lz-terminal-cue';
+    cue.textContent = 'Done reading? Return to your terminal — your tutor picks up from here.';
+    nav.appendChild(cue);
+
     return nav;
   }
   function navBtn(cls, label, f) {

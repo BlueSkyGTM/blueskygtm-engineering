@@ -1,0 +1,13 @@
+# Exercises — Regularization
+
+## Exercises
+
+1. **Compare L1 and L2 coefficient sparsity.** Generate a synthetic regression dataset with 30 features where only 5 carry signal and the rest are noise (use `make_regression` with `n_informative=5, n_features=30`). Fit a Lasso (`L1`) and a Ridge (`L2`) model on the same data with `alpha=0.1`. Print the coefficient vector for each model and count how many coefficients are exactly zero. Your terminal output should clearly show which model produces sparse weights and which does not.
+
+2. **Implement regularized polynomial regression and observe the overfitting shrink.** Using the polynomial regression setup from the lesson, expand a single feature into degree-10 polynomial terms. Fit three Ridge regression models with `alpha` values of `[0, 1, 100]` and for each, compute and print the train MSE and test MSE. Your output should be a formatted table showing how increasing λ shrinks the train–test gap.
+
+3. **Configure λ using cross-validated grid search.** Load the California Housing dataset from `sklearn.datasets`. Create polynomial features (degree 2), then run `LassoCV` and `RidgeCV` with a lambda grid of your choice (at least 8 values spanning 0.001 to 1000 on a log scale). Print the optimal λ for each model, the resulting CV-averaged MSE, and the held-out test MSE. Report which regularizer won and by how much.
+
+4. **Apply regularized regression to enriched company data.** Fetch a dataset of company attributes (use the `Apollo` API or a local CSV of firmographic data containing columns like employee_count, funding_total, revenue_estimate, tech_stack_count, and similar numeric features) and predict a target such as `annual_contract_value`. Standardize all features, then fit Lasso with `alpha=0.01` and print the non-zero coefficients sorted by magnitude. These surviving features represent the signals most predictive of contract value — print them as a ranked list.
+
+5. **Build a production drift monitor for the train–test gap.** Simulate 12 monthly snapshots of model performance by splitting a dataset into overlapping time windows (use any regression dataset with a temporal column, or simulate drift by injecting progressive noise into the test set). For each month, fit a Ridge model on that month's training slice and evaluate MSE on both the train slice and the corresponding test slice. Write a script `handlers/drift_monitor.py` that prints a month-by-month table of train MSE, test MSE, and the gap, and writes a markdown summary to `outputs/skill-drift-report.md` flagging any month where the gap exceeds 2× the baseline gap. This is the artifact a GTM team would use to decide when a lead-scoring model needs retraining.

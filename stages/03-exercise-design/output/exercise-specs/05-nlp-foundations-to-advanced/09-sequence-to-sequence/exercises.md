@@ -1,0 +1,15 @@
+# Exercises — Sequence-to-Sequence Models
+
+## Exercises
+
+1. **Implement** a character-level encoder-decoder that reverses short strings (e.g., `"hello"` → `"olleh"`). Build the encoder GRU, decoder GRU, and the autoregressive decoding loop from scratch. Feed at least five test strings through the untrained model and print each input, the predicted output tokens, and the raw logits at the first decoding step so you can inspect what the model produces before any training.
+
+2. **Compare** teacher forcing against autoregressive decoding by training two identical seq2seq models on the same reversal dataset — one using teacher forcing (feeding ground-truth tokens during training) and one using free-running decoding (feeding its own predictions). Print the per-epoch loss for both modes to a table in the terminal. After 20 epochs, generate predictions on held-out strings for both models and report which mode trained faster and which produced more errors on longer inputs.
+
+3. **Diagnose** the fixed-length context vector bottleneck by building a seq2seq copy task (where the model must reproduce its input exactly). Sweep over hidden sizes `[16, 64, 256]` and input lengths `[10, 30, 50, 100]` characters. For each of the nine combinations, train briefly and print exact-match accuracy in a grid. Identify the input length at which each hidden size begins to degrade and report the threshold.
+
+4. **Compute** exact-match accuracy and character-error rate (CER) from scratch — no external metric libraries. Implement CER as the minimum edit distance between predicted and target strings divided by target length, and implement exact-match as a strict string equality check. Evaluate a trained seq2seq model on a domain-transfer task: normalizing informal company suffixes (`"google llc"` → `"Google, LLC"`, `"amazon com inc"` → `"Amazon.com, Inc."`). Print a per-example table showing input, prediction, target, CER, and match/no-match.
+
+5. **Build** a complete seq2seq normalization pipeline on real CRM export data. Pull a sample of 500 messy company names from a Clay or Apollo export CSV (or generate synthetic CRM entries with inconsistent casing, missing suffixes, and extraneous whitespace). Train a character-level encoder-decoder to canonicalize them, evaluate on a held-out 100-entry split using exact-match accuracy and mean CER, and save a markdown report with your architecture choices, training configuration, metrics table, and ten sample predictions to `outputs/skill-seq2seq-gtm.md`.
+
+6. **Evaluate** whether seq2seq is the right architecture for three GTM transformation tasks: (a) company name normalization, (b) generating a personalized cold-email opener from a prospect's job title and company, (c) classifying a lead as SQL/SQL/MQL from firmographic features. For each task, analyze input/output sequence lengths, context-vector bottleneck risk, and whether the transformation is deterministic enough that a rules-based approach or lookup table would outperform a learned model. Write your

@@ -1,0 +1,11 @@
+# Exercises — Many-Shot Jailbreaking
+
+## Exercises
+
+1. **Construct a many-shot jailbreak prompt and measure its context-window footprint.** Write a script that reads a CSV file containing faux `(user_turn, assistant_turn)` pairs, assembles them into a single chat-formatted string, appends a final target question, and prints: the shot count, the estimated token count (using `tiktoken` or an equivalent tokenizer), and the percentage of an 8,192-token context window consumed. Run it with 25, 100, and 500 faux pairs. Verify that the 500-shot variant exceeds the 8K window.
+
+2. **Demonstrate structural equivalence between benign ICL and many-shot jailbreaking.** Write a script that generates two prompts using the *same* Jinja-style template: (a) a 3-shot sentiment-classification prompt with benign examples, and (b) a 3-shot prompt where the assistant turns demonstrate compliance with harmful requests. Extract the turn-structure signature (the ordered sequence of `Human:`/`Assistant:` labels) from each. Print both signatures and compute whether they are identical. Then generate a 256-shot version of (b) and print its signature alongside the others. The output should show that structure is invariant to content and scale.
+
+3. **Reproduce the shot-count-to-compliance power law.** Build a harness that sends many-shot prompts to an available model endpoint (local or API) at shot counts `[0, 5, 15, 32, 64, 128, 256]`. At each shot count, run 10 trials with a fixed target question and log how many responses are non-refusals (compliance). Fit the data to a power law `y = a * x^b` using `numpy.polyfit` on log-log values. Print the fitted exponent `b` and a table of shot-count vs. observed compliance rate. Compare your exponent to the range Anthropic reported (roughly 0.3–0.7 depending on model and target question).
+
+4. **Implement a classifier-based prompt screener.** Build `screen_prompt(prompt_text: str) -> dict` that detects many-shot jailbreak patterns using at least three signals: (1) count of alternating `Human:`/`Assistant:` or `User:`/`Assistant:` turn delimiters, (2) average Levenshtein distance across consecutive user turns (low distance indicates templated repetition), and (3) total token count exceeding a threshold. Return a dict with `{flag: bool, turn_count: int, avg_turn_similarity: float, estimated_tokens: int, reason: str

@@ -1,0 +1,15 @@
+# Exercises — APIs & Keys
+
+## Exercises
+
+1. **Configure** a `.env` file with a dummy `ANTHROPIC_API_KEY` value (e.g., `sk-test-1234567890abcdef`). Write a Python script that loads the key using `python-dotenv`, prints the first 8 and last 4 characters (e.g., `sk-test...cdef`), and exits with an error message if the variable is unset. Run the script with the key present, then unset it and run again to confirm both paths produce observable terminal output.
+
+2. **Implement** an `APIClient` class whose constructor accepts a `base_url` string and an `api_key` string. Include a `get(path)` method that injects the key into the `Authorization` header as a Bearer token and returns the parsed JSON on success. Define `AuthError`, `RateLimitError`, and `ServerError` exception classes. Point the client at `https://httpbin.org/status/401`, `429`, and `500` and print which exception each URL raises. Your terminal output should show three distinct exception types.
+
+3. **Build** a retry wrapper that catches `RateLimitError`, waits using exponential backoff (base delay of 1 second, doubling each retry, max 3 attempts), then re-issues the request. Test it against a local mock server or `https://httpbin.org/status/429` — your script should print each attempt number, the wait duration, and a final failure message if all retries are exhausted. The timing between printed lines should be visibly observable.
+
+4. **Compare** two approaches for the same operation: call the Anthropic Messages API using the official `anthropic` SDK, then call it again using raw `requests` with manually constructed headers and a JSON body. Print the response text length and the first 100 characters from each approach. Then write a short comment block in your script (printed to stdout) noting three differences you observed in error messages, verbosity, or debugging effort between the two paths.
+
+5. **Extend** your `APIClient` into a reusable Clay or Apollo enrichment client. The client must support key-in-header auth, raise typed exceptions for non-200 responses, and retry on 429s. Point it at a live enrichment endpoint (people search, company lookup, or contact enrichment) using your real API key from `.env`. Save the client class as `handlers/gtm_api_client.py` and run a script that imports it, performs one enrichment request, and prints the parsed result fields to the terminal.
+
+6. **Design** a script that demonstrates all three authentication patterns covered in the lesson. Implement a `HeaderAuthClient` (Bearer token in `Authorization` header), a `QueryAuthClient` (key appended as a URL query parameter), and an `OAuthClient` (performs client-credentials token exchange, then uses the returned token for a follow-up request). For each client, print the exact outgoing headers or URL so a reader can visually confirm where the credential lives. Save the script as `signals/examples/auth_patterns.py` and run it end-to-end — the terminal output should show three labeled sections, one per pattern, each displaying the credential location.

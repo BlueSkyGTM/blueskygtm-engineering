@@ -1,0 +1,15 @@
+# Exercises — Hybrid Retrieval with BM25 and Dense Embeddings
+
+## Exercises
+
+1. **Implement BM25 sparse retrieval** on a corpus of 20 short sales-playbook snippets (or reuse the lesson's toy corpus). Tokenize with a simple lowercase split, build the inverted index, compute BM25 scores with `k1=1.5` and `b=0.75`, and print the top-5 document IDs with scores for the query `"enterprise onboarding workflow"`. Confirm that documents containing all three terms rank highest.
+
+2. **Implement dense retrieval** on the same corpus using a sentence-transformer model (e.g., `all-MiniLM-L6-v2`). Encode all documents and the query, compute cosine similarity, and print the top-5 document IDs. Compare this ranking to Exercise 1's BM25 ranking side by side — identify at least one document that appears in one top-5 but not the other and explain in a comment why the retrievers disagree.
+
+3. **Implement Reciprocal Rank Fusion** from scratch (no library calls to RRF utilities). Fuse the BM25 and dense ranked lists from Exercises 1–2 with `k=60`. Print the fused top-5 and verify that a document ranked #1 by one retriever but absent from the other's top-10 still appears in the fused top-3. Then run the same fusion with `k=1` and print the result — observe and comment on how the `k` parameter shifts the balance between high-rank agreement and deep-list recovery.
+
+4. **Evaluate hybrid retrieval** on a GTM dataset: build a corpus from 50 Clay-enriched company profiles (use the mock enrichment data from `signals/data/companies.jsonl` or pull live via Apollo's people/companies endpoint). Create 10 labeled queries each with 2–5 known-relevant company IDs (e.g., `"Series B fintech in Europe"` → relevant company IDs). Compute recall@5 and precision@5 for BM25-only, dense-only, and RRF-fused retrieval. Sweep the RRF `k` parameter over `[1, 10, 30, 60, 100]` and print a table showing which `k` maximizes recall@5 and which maximizes precision@5. Report whether the optimal `k` differs between the two metrics.
+
+5. **Build a cross-encoder reranker stage** on top of your fused retriever. Retrieve top-20 candidates via RRF, then rerank with a cross-encoder model (e.g., `cross-encoder/ms-marco-MiniLM-L-6-v2`). Measure end-to-end latency for the full pipeline (BM25 + dense + RRF + reranker) versus the fused-only pipeline across all 10 queries from Exercise 4. Print mean latency per query and the change in precision@5. Save the complete pipeline as a reusable module at `handlers/hybrid_retriever.py` with a `retrieve(query: str, top_k: int = 5, rerank: bool = True)` entry point.
+
+6. **Design a query-routing strategy** that selects sparse-only, dense-only, or hybrid retrieval based on query characteristics (e.g., keyword-heavy → sparse, semantic/natural-language → dense, ambiguous → hybrid). Implement the router, classify each of the 10 queries from Exercise 4 into a lane, and compare overall recall@5 and precision@5 against always-hybrid. Write a one-page design memo documenting the routing heuristics, evaluation results, and recommended operating point, saved to `outputs/skill-hybrid-routing.md`.

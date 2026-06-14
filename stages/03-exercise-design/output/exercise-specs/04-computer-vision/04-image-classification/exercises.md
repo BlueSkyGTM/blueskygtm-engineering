@@ -1,0 +1,15 @@
+# Exercises — Image Classification
+
+## Exercises
+
+1. **Classify a sample image and print the top-5 predicted labels with confidence scores.** Load a pre-trained ResNet50 (or equivalent) from `torchvision.models`, run inference on any image from `torchvision.datasets.CIFAR10` or a local file, and print the top-5 class names and their probabilities to the terminal. Use `torch.nn.functional.softmax` to convert logits to confidence scores.
+
+2. **Run the same classifier on five different images and report which prediction has the highest confidence.** Iterate over a small batch of images (your choice of source), classify each, and print a ranked table showing image index, predicted label, and confidence. Identify and print which image received the highest certainty and which received the lowest.
+
+3. **Implement feature extraction and fine-tuning on a small custom dataset and compare their accuracy.** Using a pre-trained ResNet50, set up two transfer learning strategies: (a) freeze all convolutional layers and train only a new classification head, and (b) unfreeze the last convolutional block and train it alongside the new head. Train both on a 5-class subset of any image dataset (e.g., `torchvision.datasets.Flowers102` or a folder of downloaded images). Print the final validation accuracy for each strategy and state which performed better.
+
+4. **Compute and apply a confidence threshold to filter low-certainty predictions.** Run inference across a validation set of at least 100 images. For threshold values `[0.3, 0.5, 0.7, 0.9]`, compute and print: (a) the number of predictions retained above the threshold, (b) the accuracy of those retained predictions, and (c) the number of predictions discarded. Determine which threshold gives the best precision-recall tradeoff and print your conclusion.
+
+5. **Build a logo-detection classifier for company enrichment in a Clay-style GTM pipeline.** Train a transfer-learned classifier on screenshots of company homepages or logo images (use at least 10 companies across 3+ industry categories — scrape logos via Clearbit Logo API at `https://logo.clearbit.com/{domain}` or collect manually). Save the trained model and write a Python script that takes a domain as input, fetches the logo, classifies it, and outputs the predicted industry category with confidence. Persist the script to `handlers/logo_classifier.py`. Run it on 5 company domains and print the results.
+
+6. **Diagnose misclassifications by inspecting per-class probability distributions.** Using your trained logo classifier from Exercise 5 (or the fine-tuned model from Exercise 3), identify the 5 most confident *incorrect* predictions and the 5 least confident *correct* predictions. For each, print the full top-5 probability distribution and write a short analysis to `outputs/skill-misclassification-diagnosis.md` explaining what confusable class pairs exist, whether certain industries are systematically over-predicted, and what data or architecture changes would likely help.

@@ -1,0 +1,15 @@
+# Exercises — Chunking Strategies, Compared
+
+## Exercises
+
+1. **Implement** fixed-size chunking at 200 characters on the lesson's sample document. Print chunk count, the character length of each chunk, and the final 20 characters of each chunk followed by the first 20 characters of the next. Then **run** the same document through recursive character splitting with the separator hierarchy `\n\n` → `\n` → `. ` → ` ` and print identical metrics. Visually compare which strategy breaks sentences at boundaries more often.
+
+2. **Implement** sentence-based chunking using `nltk.sent_tokenize` or `spacy` on the same document. Print chunk count, sentence count per chunk, and the final sentence of each chunk alongside the first sentence of the next. Compare the boundary coherence you observe here against the fixed-size output from Exercise 1 — print a one-line summary of which strategy preserves more semantic units intact.
+
+3. **Apply** chunking to a real GTM dataset: export 10–15 company descriptions from Apollo as a CSV (or use a sample Apollo export). Inspect the document structure, then **implement** the chunking strategy you believe best fits this document type. Print chunk count, size distribution (min, mean, max), and the text spanning each boundary. Print a one-sentence justification for your strategy choice based on the structural properties you observed.
+
+4. **Configure** recursive character chunking with `chunk_size=300` and test overlap values of 0, 50, 100, and 150 characters on a multi-paragraph document. For each overlap setting, count and print how many chunks end mid-sentence (the final character is not a period, question mark, or exclamation point). Print your prediction for which overlap setting maximizes retrieval recall and explain the tradeoff in one or two printed lines.
+
+5. **Build** a chunking evaluation harness in `handlers/chunk_evaluator.py` that accepts a directory of documents and runs all four strategies (fixed-size, recursive, sentence-based, semantic). For each strategy, compute and print chunk count, mean chunk size, size standard deviation, and the percentage of chunks that break mid-sentence. Output a formatted comparison table to the terminal. Write a structured analysis of which strategy wins on each metric to `outputs/skill-chunking-comparison.md`, including a recommendation table mapping document types to strategies.
+
+6. **Design and implement** an experiment that runs semantic chunking on two contrasting document types: (a) a well-structured doc with clear headers and short paragraphs, and (b) an unstructured sales call transcript. For each document type, count the embedding or similarity API calls consumed by semantic chunking and measure how many chunk boundaries land at natural paragraph or sentence breaks. Print a cost-benefit table showing API calls vs. boundary coherence for each document type. Write your findings — including the specific conditions under which semantic chunking adds cost without retrieval improvement — to `outputs/skill-semantic-cost-analysis.md`.

@@ -1,0 +1,15 @@
+# Exercises — Video Generation
+
+## Exercises
+
+1. **Compute** the latent volume shape for a given video input. Write a function that takes `frames`, `height`, `width`, `channels`, and VAE compression factors (`temporal_compression=8`, `spatial_compression=8`) and prints the pixel-tensor shape, the latent-tensor shape, and the compression ratio (pixel elements divided by latent elements). Call it for a 128-frame, 1080p, 3-channel clip and print all results to the terminal.
+
+2. **Trace** the four-stage inference pipeline for a text prompt of your choice. Write a script that prints each stage in order — (1) text encoding, (2) latent initialization / 3D VAE encoding, (3) iterative denoising loop, (4) VAE decode to pixel frames — along with the tensor shape you'd expect at each stage for a 5-second, 24 fps, 720p generation. Run the script and verify the output lists all four stages with shapes.
+
+3. **Call** a hosted video generation API of your choice (Runway, Replicate, Luma, or a mock server you stand up locally) with three controlled parameters: `seed=42`, `motion_bucket_id=127`, and `fps=24`. Write a script that submits the request, polls until completion, downloads the resulting video file, and then inspects the downloaded file (using `ffmpeg` or `cv2`) to print the actual fps and total frame count. Verify the printed fps matches what you requested.
+
+4. **Compare** frame-interpolation against full-sequence latent diffusion for a specific scenario: generating a 10-second product demo video where the camera orbits a physical object. Write a script that prints a structured comparison table (use tabular formatting or aligned strings) covering: coherence quality, compute cost estimate (in GPU-seconds), motion control granularity, and which approach you'd recommend for this scenario. Print the table to the terminal with a one-paragraph justification at the bottom.
+
+5. **Build** a batch generation pipeline that reads a CSV file containing at least the columns `company_name` and `personalization_text`, calls a video generation API once per row with a reproducible seed derived from the company name (e.g., `hash(company_name) % (2**32)`), and saves each output video to `outputs/videos/<company_slug>.mp4`. Write a run manifest JSON file to `outputs/videos/manifest.json` recording each company, its seed, its API parameters, and its output path. Use at least 5 rows of sample company data. The pipeline must be re-runnable and produce identical seeds on subsequent runs. Save the pipeline to `handlers/batch_video_gen.py`.
+
+6. **Design** a temporal coherence evaluator that takes two decoded video files (one from a frame-interpolation approach, one from a full-sequence latent diffusion approach) and computes a per-frame structural similarity score (SSIM or a simpler pixel-difference metric) between consecutive frames. Print the mean and standard deviation of the coherence metric for each video, then print which video has higher frame-to-frame consistency. Save the evaluator to `signals/examples/temporal_coherence.py`. Run it on two sample videos (they can be short clips you generate or download) and print the comparison results.

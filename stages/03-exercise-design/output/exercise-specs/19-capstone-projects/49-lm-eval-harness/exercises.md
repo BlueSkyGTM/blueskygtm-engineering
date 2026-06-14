@@ -1,0 +1,15 @@
+# Exercises — Language Model Evaluation Harness
+
+## Exercises
+
+1. **Run `lm-eval` with a development limit.** Configure and execute `lm-eval` against the model `hf` with `--model_args pretrained=sshleifer/tiny-gpt2` on the `arc_easy` task using `--limit 10`. Capture stdout to a file in `outputs/`. Print the `acc` and `stderr` values for the task from the terminal output. Re-run with `--limit 50` and print the same two metrics so you can observe how stderr changes with sample size.
+
+2. **Parse and interpret metrics from a result JSON.** Write a Python script that loads a `lm-eval` result JSON file (from `--output_path`) and prints a table of every task with its `acc`, `acc_norm`, `perplexity` (if present), and `stderr`. Pick two tasks whose stderr ranges overlap (i.e., the confidence intervals intersect) and two whose ranges do not. Print all four task names and whether each pair overlaps — the output should make it obvious which deltas are within statistical noise.
+
+3. **Create a custom task YAML.** Build a task definition file that loads the HuggingFace dataset `lukaemon/mmlu` configured for the `all_tasks` split (or any subset), uses a `multiple_choice` task type, applies zero few-shot examples, and defines a prompt template that presents the question followed by labeled answer choices (A–D). Register the task with the harness and run it with `--limit 5` against any small model. Confirm the harness prints an `acc` score for your custom task.
+
+4. **Compare two models across shared tasks.** Run `lm-eval` twice against the same task list (e.g., `arc_easy,hellaswag` with `--limit 100`) using two different models (e.g., `sshleifer/tiny-gpt2` and `distilgpt2`). Write a script that parses both result JSONs, computes the per-task `acc` delta, and prints each task name, both scores, the delta, and a `WITHIN_NOISE` or `SIGNIFICANT` flag based on whether the stderr ranges overlap.
+
+5. **Build and evaluate a GTM classification task.** Create a custom `lm-eval` task YAML in `signals/examples/intent_classify.py` (as a companion YAML plus loader) that loads a local CSV of B2B email subject lines paired with a binary intent label (`meeting_request` vs. `newsletter`). Configure the task as `multiple_choice` with two continuations. Register it, run it against two models, and write a comparison report to `outputs/skill-intent-eval.md` that includes both models' `acc`, the delta, and a noise-overlap verdict. The CSV should contain at least 20 rows you author yourself — realistic subject lines drawn from sales outreach patterns.
+
+6. **Design a perplexity-based quality gate.** Implement a Python script that takes a directory of `lm-eval` result JSONs (one per model), extracts every task's `perplexity` and `stderr`, ranks models by average normalized perplexity across shared tasks, and writes a markdown leaderboard to `outputs/skill-perplexity-gate.md`. Include a column that marks any model whose stderr range overlaps with the top-ranked model as `TIED`. Use `--limit 200` runs on at least three tasks (e.g., `wikitext`, `lambada_openai`, `hellaswag`) and two or more models.

@@ -1,0 +1,13 @@
+# Exercises — Image Generation â€” GANs
+
+## Exercises
+
+1. **Implement a minimal GAN on a 2D mixture-of-Gaussians.** Build a generator (noise dim 2 → hidden 64 → output 2) and a discriminator (input 2 → hidden 64 → output 1 with sigmoid) as PyTorch MLPs. Construct a real-data sampler that draws from a mixture of three Gaussians at fixed means (e.g., `[(-3,0), (3,0), (0,3)]`, each with std 0.3). Train for 5000 steps using the standard minimax loss, alternating one D update per one G update. Every 500 steps, print the mean and standard deviation of 500 generated samples alongside the true mixture statistics. Convergence is confirmed when generated means cluster near all three modes.
+
+2. **Compare minimax vs. non-saturating generator loss with a gradient-magnitude probe.** Implement both generator loss formulations — `BCELoss(D(G(z)), 0)` (minimax) and `BCELoss(D(G(z)), 1)` (non-saturating) — behind a function that accepts a `loss_type` string. Instrument the generator's backward pass to capture `torch.norm([p.grad for p in G.parameters()])` after each generator update during the first 200 steps. Run both variants with the same random seed and print the average generator gradient norm per 50-step window. Verify numerically that the non-saturating formulation maintains larger gradients when the discriminator is confident early in training.
+
+3. **Build a mode-coverage detector and run a mode-collapse stress test.** Extend the mixture from Exercise 1 to eight Gaussians arranged on a circle of radius 4. After training for 3000 steps, generate 2000 samples and compute, for each true mode, whether at least 5% of generated samples fall within a 1.0-radius ball around that mode center. Print a boolean array of length 8 indicating covered modes and the total coverage fraction. Run the experiment with five different seeds and print a table showing which seeds exhibit mode collapse (coverage < 6/8 modes). No starter code — design the coverage computation yourself.
+
+4. **Instrument a GAN training loop to classify all three canonical pathologies.** Log per-step: discriminator accuracy on real samples, discriminator accuracy on fake samples, generator loss, and the pairwise distance variance among 200 generated samples (a diversity proxy). Run three configurations that deliberately induce each pathology: (a) `D` with 4× the capacity of `G` to trigger vanishing generator gradients, (b) `G` with a single output mode bias to trigger mode collapse, and (c) equal learning rates set 10× too high to trigger oscillatory training. For each run, print the final 500-step averages of all four metrics and state which pathology each configuration exhibits, justified by the numbers.
+
+5. **Build a synthetic

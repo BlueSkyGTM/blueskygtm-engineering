@@ -1,0 +1,11 @@
+# Exercises — Speech Recognition (ASR) â€” CTC, RNN-T, Attention
+
+## Exercises
+
+1. **Implement CTC collapse from scratch.** Write a function that accepts a list of integer token indices (where `0` is the blank token) and applies the two-step collapse rule: first merge consecutive duplicate tokens into one, then remove all blanks. Feed it the sequence `[0, 1, 1, 0, 2, 2, 2, 0, 3, 0, 1]` and three other sequences of your choosing. Print each input sequence, the post-collapse token list, and confirm the output length is strictly less than or equal to the input length.
+
+2. **Enumerate and verify valid CTC alignments for a toy target.** For the target string `"HE"` over `T = 5` frames with blank at index 0, enumerate every possible frame-level sequence of length 5 that collapses to `"HE"`. For each alignment, print the raw sequence and run it through your collapse function from Exercise 1 to verify it produces `H, E`. Print the total count of valid alignments. Then repeat for target `"HH"` (two identical characters) and explain why blanks are now mandatory between the two H's.
+
+3. **Implement the CTC forward algorithm and compute loss.** Construct a toy logit matrix of shape `(T=6, V+1=4)` where the vocabulary is `{blank=0, H=1, E=2, L=3}`. Implement the dynamic-programming forward pass that sums the probability of all alignments collapsing to the target `H, E, L` (representing `"HEL"`). Use softmax to convert logits to per-frame probabilities, work in log-space to avoid underflow, and print the final `log P(y|x)` and the CTC loss `-log P(y|x)`. Cross-check your answer by brute-force enumerating all valid alignments for the same `(T=6, U=3)` case and summing their probabilities — the two values should match.
+
+4. **Build an ASR architecture selector for CRM call data.** You are given a CSV at `data/call_log.csv` with columns `call_id`, `duration_seconds`, `live_coaching` (bool), `language_count`, and `latency_budget_ms`. Write a script that reads the CSV and, for each row, selects one of `CTC`, `RNN-T`, or `Attention` with a one-line justification based on the tradeoffs from the lesson: streaming requirement (latency budget ≤ 300 ms → streaming), training-data availability, multilingual needs, and accuracy priority. Print a summary table of the first 10 rows with their assigned architecture and justification, then

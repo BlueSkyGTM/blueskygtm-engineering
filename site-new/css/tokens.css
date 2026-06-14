@@ -5,27 +5,27 @@
    ============================================================ */
 
 :root {
-  /* — surfaces (warm charcoal terminal) — */
-  --bg:        #14110f;
-  --panel:     #1d1916;
-  --panel-2:   #241f1b;
-  --well:      #0d0b0a;
+  /* — surfaces (Mega Man X stage select) — */
+  --bg:        #06080F;
+  --panel:     #0C1428;
+  --panel-2:   #112040;
+  --well:      #040609;
 
   /* — ink — */
-  --cream:     #e9e1d2;
-  --cream-dim: #9a9184;
-  --cream-mute:#6c655b;
+  --cream:     #D6EEFF;
+  --cream-dim: #7AAED4;
+  --cream-mute:#3D6A8A;
 
-  /* — accents (Claude Code terracotta + retro gold/green) — */
-  --terra:     #d97757;
-  --terra-deep:#b45c40;
-  --terra-tint:rgba(217,119,87,0.14);
-  --gold:      #d2a85c;
-  --green:     #8fae6b;
+  /* — accents (Zero red primary · X blue splash) — */
+  --terra:     #CC1A1A;
+  --terra-deep:#8C0F0F;
+  --terra-tint:rgba(204,26,26,0.12);
+  --gold:      #4AB4FF;
+  --green:     #2ECBCB;
 
   /* — lines — */
-  --line:      rgba(233,225,210,0.14);
-  --line-soft: rgba(233,225,210,0.07);
+  --line:      rgba(74,180,255,0.14);
+  --line-soft: rgba(74,180,255,0.06);
 
   /* — type — */
   --pix:  'VT323', ui-monospace, monospace;

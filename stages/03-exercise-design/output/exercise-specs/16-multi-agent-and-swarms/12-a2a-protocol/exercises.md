@@ -1,0 +1,15 @@
+# Exercises — A2A â€” The Agent-to-Agent Protocol
+
+## Exercises
+
+1. **Fetch and parse an Agent Card.** Write a Python script that performs an HTTP GET against `http://localhost:8001/.well-known/agent.json`, parses the response, and prints each skill's `name` and `description` to the terminal, one per line. Verify your output lists every skill declared in the card.
+
+2. **Serve your own Agent Card.** Build a minimal HTTP server (using `http.server` or FastAPI) that responds to `GET /.well-known/agent.json` with a JSON document advertising at least two skills. Start the server, then `curl` the endpoint from a second terminal and confirm the returned JSON validates against the Agent Card structure (fields: `name`, `description`, `url`, `version`, `capabilities`, `skills`).
+
+3. **Implement a Remote Agent that processes JSON-RPC `tasks/send`.** Build a server that accepts a POST containing a JSON-RPC 2.0 envelope with method `tasks/send`, a `message` with a text part, and returns a response whose `result.artifacts` array contains a single text artifact. Echo the input text uppercased as the artifact content. Verify by sending a curl request and inspecting the JSON-RPC response.
+
+4. **Trace Task lifecycle transitions.** Extend your Remote Agent so that every accepted task is assigned a UUID, stored in an in-memory dict, and transitioned through `submitted → working → completed`. Each state change must append a timestamped log line to stdout. Send three tasks in sequence and confirm your terminal shows nine transitions (three per task) in the correct order. Introduce a simulated failure path: if the incoming message text contains the word `"abort"`, transition the task to `failed` instead of `completed` and verify the log reflects it.
+
+5. **Build an enrichment-to-outreach GTM pipeline using A2A delegation.** Implement two Remote Agents: one that takes a company domain and returns firmographic data (industry, employee count, inferred ICP tier) as a JSON artifact, and one that takes firmographic data plus a contact name and returns a personalized cold-email draft as a text artifact. Then implement a Client Agent that reads both Agent Cards, sends the enrichment task, feeds the result into the outreach agent, and prints the final email. Seed the enrichment agent with a small dict of real or mock company data. Run the pipeline for three companies and confirm each produces a distinct, personalized email. Save the Client Agent code to `handlers/outreach_pipeline.py`.
+
+6. **Reimplement the same GTM task using MCP and document the tradeoffs.** Take the enrichment-to-outreach flow from Exercise 5 and rebuild it as a single MCP server exposing two tools (`enrich_company` and `draft_outreach`) that an LLM calls sequentially via tool-use. Run both implementations against the same three seed companies. Write a comparison document that covers: delegation topology, who decides task ordering, how discovery works, and where state lives. Save the document to `outputs/skill-a2a-vs-mcp.md`.

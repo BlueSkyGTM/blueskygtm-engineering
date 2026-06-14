@@ -1,0 +1,15 @@
+# Exercises — Automated Alignment Research (Anthropic AAR)
+
+## Exercises
+
+1. **Implement** a generate-then-evaluate loop as a Python script that calls an LLM twice: once with a generator prompt (produce 5 alignment research proposals) and once with an evaluator prompt (score each proposal on three rubric dimensions: testability, novelty, scalability, each weighted 1–5). Print a ranked table of proposals with per-dimension scores and a weighted total. Run the script and confirm the terminal shows all 5 candidates sorted by total score descending.
+
+2. **Modify** the rubric weights from Exercise 1 so that `testability` carries 60% of the total weight and the other two dimensions split the remaining 40%. Re-run the loop on the same generator prompt (seed the generator to reproduce the same candidates). **Compare** the new ranking to the original ranking and print which candidates changed position and by how many ranks.
+
+3. **Build** an ICP scoring pipeline that treats a list of 10 company dicts (include fields like `employees`, `funding_round`, `tech_stack`, `hiring_velocity`) as "candidates" and scores them against a weighted rubric with at least 4 dimensions you define. Filter to companies scoring above a threshold you set via a CLI argument (e.g., `--threshold 70`). Print the survivors sorted by score. No scaffold — design the rubric dimensions and weights yourself.
+
+4. **Trace** misalignment propagation by constructing a deliberately broken evaluator: write a generator-then-evaluator loop where the evaluator's rubric rewards proposal length and fluency instead of substance (use word count and adjective density as proxy scores). Run 3 iterations where the top-2 candidates from each round are fed back into the generator's prompt as "approved examples." Print the average word count and adjective-per-sentence ratio of candidates at iteration 1 vs iteration 3. Report the drift in a printed summary table.
+
+5. **Build** a configurable account prioritization pipeline that reads a CSV of 25+ accounts exported from a CRM or enrichment tool (Apollo, Clay, or a provided sample at `data/accounts_sample.csv`), scores each account against a weighted ICP rubric defined in a YAML config file (`configs/icp_rubric.yaml`), filters by a configurable threshold, and writes the top 15 prioritized accounts to `outputs/account_priority_ranked.csv` with columns for each rubric dimension score, total score, and rank. Include a `--dry-run` flag that prints results to the terminal without writing the file. Verify by checking the output CSV exists and contains the expected columns.
+
+6. **Design** a two-page analysis document at `outputs/skill-aar-vs-icp-bootstrapping.md` that answers the following: if your ICP scoring pipeline from Exercise 5 were used to automatically label "good fit" accounts — and those labels were then used to retrain the scoring model — describe three concrete ways the rubric could drift over 6 months of automated feedback. For each drift scenario, specify which stage of the loop the misalignment originates in and what human-checkpoint intervention would catch it. Write the doc, then print its contents to the terminal.

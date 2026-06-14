@@ -1,0 +1,15 @@
+# Exercises — End-to-End Eval Runner
+
+## Exercises
+
+1. **Run** the eval runner from the lesson against the provided dataset and print the aggregate score table to your terminal. Then modify the pass-rate threshold in the config from `0.8` to `0.95` and re-run. Confirm that the exit code changes from `0` to `1` and that the terminal output explains which scorer fell below threshold.
+
+2. **Add** two new cases to the eval dataset — one that the system-under-test will pass and one designed to fail a string-matching scorer. Re-run the eval and confirm both cases appear in the per-case output with their individual scores. Verify the aggregate pass rate shifted in the expected direction by comparing the JSON output to your previous run.
+
+3. **Implement** a `ContainsAllKeywords` string-matching scorer that checks whether every keyword from a provided list appears in the output. Register it behind the same scorer interface used by the lesson's runners. Run the eval with three test cases — one containing all keywords, one missing one, one missing all — and print the per-case scores. All three scores must differ from each other in the terminal output.
+
+4. **Apply** the eval runner to a GTM enrichment workflow. Write a system-under-test function that takes a company name string and returns a JSON object with fields `company_name`, `domain`, `employee_count`, and `industry`. Build a JSON schema validation scorer that checks each output against the expected schema, and a second scorer that verifies the `domain` field matches a regex pattern for valid domains. Run the eval against five companies of your choice using data pulled from the Apollo API or a CSV export. Print the aggregate report showing pass rates for both scorers.
+
+5. **Build** a CI gate script at `handlers/eval_ci_gate.py` that accepts a config file path and a git SHA as CLI arguments. The script must run the eval runner, write a JSON report to `outputs/eval-report-{sha}.json`, write a markdown summary to `outputs/eval-report-{sha}.md` with a table of per-scorer pass rates, and exit with code `1` if any scorer's pass rate falls below its configured threshold. Include the git SHA in both the JSON metadata block and the markdown header. Run the script twice — once with a threshold your system passes and once with a threshold it fails — and show that the exit codes and generated files differ between the two runs.
+
+6. **Design** a regression comparison tool at `handlers/eval_diff.py` that takes two eval JSON report paths and prints a diff table showing each scorer's pass rate in run A versus run B, the delta, and a `REGRESSION` flag for any scorer where the pass rate dropped by more than 5 percentage points. Generate two eval reports by changing a prompt in your system-under-test between runs, then feed both report paths into the diff tool. Confirm the terminal output correctly flags at least one scorer as regressed or improved and that the deltas are non-zero for scorers sensitive to the prompt change.

@@ -1,0 +1,15 @@
+# Exercises — K-Nearest Neighbors and Distances
+
+## Exercises
+
+1. **Implement and verify the four distance metrics.** Write four standalone NumPy functions — `euclidean(a, b)`, `manhattan(a, b)`, `cosine(a, b)`, and `minkowski(a, b, p)` — that each accept two 1-D arrays and return a float. Run all four on the pair `a = [3, 0, 5]`, `b = [0, 4, 1]` and print a labeled table of results. Confirm that Minkowski with `p=2` matches Euclidean and `p=1` matches Manhattan.
+
+2. **Build a configurable KNN classifier.** Implement `knn_classify(query, X_train, y_train, k, metric)` where `metric` is one of `"euclidean"`, `"manhattan"`, `"cosine"`, `"minkowski"`. Fit it on the included `signals/data/churn_sample.csv` (features: `tenure_months`, `monthly_spend`, `support_tickets`; label: `churned`). Classify three new points and print each prediction with the K neighbor labels used for the vote. Run once with `k=3` and once with `k=7` and print how predictions change.
+
+3. **Compare metric sensitivity on the same dataset.** Using the classifier from Exercise 2, take the first 20 rows of `churn_sample.csv` as training data and query five held-out prospects. For each prospect, print the neighbor indices selected by each of the four metrics (`k=5`). Count and print how many of the five prospects have at least one differing neighbor across metrics. State in a comment which metric pair diverges most and why.
+
+4. **Demonstrate the scaling failure.** Load `signals/data/firmographics.csv` containing `employee_count` (range 10–50000), `funding_musd` (range 0.1–200), and `tech_stack_count` (range 1–40). Fit your KNN with `k=3` and Euclidean distance on the raw data, then fit again after z-score standardizing each column. For a query prospect `[4500, 15.0, 12]`, print the neighbor indices and distances from both runs. Compute and print what percentage of the raw-data distance comes from `employee_count` alone and explain in a comment why that distorts neighbor selection.
+
+5. **Build a lookalike account model.** Implement `handlers/lookalike_knn.py` that loads `signals/data/closed_won_accounts.csv` (firmographic vectors with a `win_value` target), accepts a new prospect's firmographics from `sys.argv`, and retrieves the K nearest closed-won accounts using cosine distance. Print the account IDs, distances, and the median win value of the neighbors. Run it with the prospect `200, 5.0, 8, 3` (employees, funding M, tech count, support seats) and `k=5`. Verify the handler produces correctly sorted output and exits cleanly from the terminal.
+
+6. **Measure the curse of dimensionality.** Implement `signals/examples/curse_of_dimensionality.py` that generates 200 random points uniformly in `[0, 1)` for `d = 2, 5, 10, 20, 50, 100` dimensions. For each `d`, compute the ratio of the average farthest-neighbor distance to the average nearest-neighbor distance across all 200 points using Euclidean distance. Print a two-column table of `d` vs. ratio. Save the table to `outputs/skill-curse-of-dimensionality.md` with a one-paragraph interpretation of how the ratio trends and what it implies for KNN reliability in high-dimensional firmographic feature spaces.

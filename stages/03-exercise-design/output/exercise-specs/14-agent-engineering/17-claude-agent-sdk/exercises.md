@@ -1,0 +1,15 @@
+# Exercises — Claude Agent SDK: Subagents and Session Store
+
+## Exercises
+
+1. **Implement a `SessionStore` wrapper class** around the SDK's session store surface that exposes all five operations: `append`, `load`, `list_sessions`, `delete`, and `list_subkeys`. Write a driver script that creates a session, appends three key-value pairs, lists the subkeys, loads one back, then deletes the session and confirms it is gone. Run the script and verify the terminal output shows each operation succeeding in order.
+
+2. **Spawn a single subagent** using the SDK `query` function with scoped instructions to research a given company's public funding history. Have the subagent write its findings to the session store under a key called `funding_research`. Back in the parent context, load that key and print the subagent's output. Confirm the parent never printed intermediate reasoning — only the final stored result.
+
+3. **Build a sequential two-subagent GTM enrichment pipeline.** Subagent A receives a company name, calls Apollo's company enrichment API (or a local JSON fixture of Apollo-shaped data), and writes the enriched profile to the session store under `company_profile`. Subagent B loads `company_profile`, applies an ICP scoring rubric, and writes the result to `fit_score`. Print the final score. No scaffold — wire up both subagent invocations and the session store handoff yourself.
+
+4. **Implement the same three-step enrichment pipeline twice — once sequential, once parallel — and compare.** Use three subagents that each write a different analysis key (e.g., `tech_stack`, `firmographics`, `intent_signals`) to the session store. Run both versions, print wall-clock timing for each, and then introduce a deliberate collision: have two parallel subagents write to the same key. Print the resulting session state and identify which write won and which was lost.
+
+5. **Build a token-budget-aware orchestration handler** that accepts a total token budget (e.g., 50,000 tokens) and a list of subagent task specs, then allocates the budget across subagents using a weighting strategy you design. Each subagent logs its allocated budget, actual consumption, and remaining balance to the session store. Run the handler on a four-subagent enrichment workflow against a list of 10 accounts from a CRM export (CSV). Print the per-subagent budget report. Save the handler to `handlers/budget_orchestrator.py`.
+
+6. **Design and implement a session store provenance layer** that wraps every `append` call to record: which subagent wrote the key, the key name, a value hash, and an ISO-8601 timestamp — stored in a separate `_audit` subkey namespace. Run a multi-subagent pipeline (at least three subagents writing to overlapping keys) through this layer. Then implement a `trace` command that reconstructs the full write-order timeline from the audit log and prints it. Demonstrate it by debugging a synthetic stale-read scenario where Subagent B read a key before Subagent A finished writing. Save the provenance module to `signals/examples/session_audit.py`.

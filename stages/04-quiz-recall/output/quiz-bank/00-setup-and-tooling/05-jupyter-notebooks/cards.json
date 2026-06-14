@@ -1,0 +1,122 @@
+{
+  "lesson_id": "00-setup-and-tooling/05-jupyter-notebooks",
+  "topic": "Jupyter Notebooks",
+  "questions": [
+    {
+      "id": "pre-q0",
+      "type": "pre",
+      "stem": "You have a Python script that pulls 5,000 CRM records via an API call, then filters them. Each time you edit the filter logic and re-run the script, what happens that makes this workflow painful?",
+      "choices": [
+        "A) Python recompiles the entire script, which is slow for large files",
+        "B) The script re-executes from the top, re-fetching all 5,000 records on every filter iteration",
+        "C) The API rejects repeated calls from the same script within an hour",
+        "D) The filter function loses its compiled bytecode between runs"
+      ],
+      "answer": "B",
+      "explanation": "A standard script re-runs from the beginning every time, meaning the API call that fetches records executes again on each iteration — wasting time and hitting rate limits.",
+      "strand": "ai-engineering",
+      "tags": [
+        "jupyter-notebooks",
+        "kernel-state"
+      ]
+    },
+    {
+      "id": "check-q0",
+      "type": "check",
+      "stem": "In a Jupyter notebook, Cell 1 defines `companies = load_csv(...)`. Cell 5 references `companies` without redefining it. What must be true for Cell 5 to execute without a NameError?",
+      "choices": [
+        "A) Cell 5 must be located immediately after Cell 1 in the notebook document",
+        "B) The kernel must have executed Cell 1 at some point and must not have been restarted since",
+        "C) The notebook file must be saved to disk after running Cell 1",
+        "D) Cell 1 must use the `global` keyword when defining `companies`"
+      ],
+      "answer": "B",
+      "explanation": "The kernel maintains an in-memory namespace across cells. As long as Cell 1 has been executed and the kernel hasn't been restarted, `companies` is available in any cell regardless of document position.",
+      "strand": "ai-engineering",
+      "tags": [
+        "jupyter-notebooks",
+        "kernel-state",
+        "namespace"
+      ]
+    },
+    {
+      "id": "check-q1",
+      "type": "check",
+      "stem": "You write four cells in order: (1) `names = ['Acme', 'Initech', 'Hooli']`, (2) `filtered = [n for n in names if len(n) > 4]`, (3) `count = len(filtered)`, (4) `print(names)`. You then edit Cell 2 to filter on `len(n) > 5` and run only Cell 2. What is the value of `count`?",
+      "choices": [
+        "A) 2, because the filter now only keeps 'Initech' and 'Hooli'",
+        "B) 1, because only 'Initech' has length greater than 5",
+        "C) Still the value from the previous run, because Cell 3 has not been re-executed",
+        "D) Undefined, because editing Cell 2 clears the kernel namespace"
+      ],
+      "answer": "C",
+      "explanation": "Running only Cell 2 updates `filtered` in the kernel, but `count` is not recalculated until Cell 3 is run again. The kernel holds stale state — this is the classic hidden-state bug.",
+      "strand": "ai-engineering",
+      "tags": [
+        "jupyter-notebooks",
+        "execution-order",
+        "hidden-state"
+      ]
+    },
+    {
+      "id": "check-q2",
+      "type": "check",
+      "stem": "A GTM analyst loads 10,000 Salesforce opportunity records into a DataFrame in Cell 1, then spends an hour iterating on a win-rate calculation in Cells 2–8, running only the cells she edits. She notices the win-rate numbers look inconsistent. What is the most efficient first diagnostic step?",
+      "choices": [
+        "A) Add print statements to every cell and re-run each one manually in order",
+        "B) Use 'Restart & Run All' to replay every cell from a clean kernel, ensuring state is consistent",
+        "C) Export the notebook to a .py script and run it from the terminal to see if the bug reproduces",
+        "D) Reload the Salesforce data in a new cell to make sure the DataFrame isn't corrupted"
+      ],
+      "answer": "B",
+      "explanation": "Restart & Run All clears the kernel and executes every cell in document order, eliminating stale-state bugs. If the numbers are consistent after this, the problem was execution order, not logic.",
+      "strand": "gtm-application",
+      "tags": [
+        "jupyter-notebooks",
+        "restart-and-run-all",
+        "debugging",
+        "salesforce"
+      ]
+    },
+    {
+      "id": "post-q0",
+      "type": "post",
+      "stem": "A teammate shares a notebook where Cell 3 reads `result = transform(data)` and Cell 5 reads `final = result * scaling_factor`. Running top-to-bottom produces `final = 480`. But when you open it and run Cell 5 first, then Cell 3, then Cell 5 again, you get `final = 960`. What is the most likely cause?",
+      "choices": [
+        "A) The JSON in the .ipynb file is corrupted, causing cells to execute in reverse",
+        "B) Cell 5's first execution set `result` to an old value, and Cell 3 overwrote it, so the second Cell 5 run used a different `result` than the first",
+        "C) The scaling_factor variable was redefined by the kernel between the two runs of Cell 5",
+        "D) Running Cell 5 before Cell 3 causes the kernel to interpret Python differently"
+      ],
+      "answer": "B",
+      "explanation": "When you ran Cell 5 first, `result` held whatever value was left from a previous kernel session. Cell 3 then overwrote `result` with a new value, so the second execution of Cell 5 used a different `result`, producing a different output. Kernel state depends on execution order, not document order.",
+      "strand": "ai-engineering",
+      "tags": [
+        "jupyter-notebooks",
+        "kernel-state",
+        "execution-order",
+        "hidden-state"
+      ]
+    },
+    {
+      "id": "post-q1",
+      "type": "post",
+      "stem": "You have a notebook that pulls 50,000 contact records from HubSpot (Cell 1, ~30 seconds), enriches them with Clearbit (Cell 2, ~5 minutes), and computes a lead-scoring model (Cell 3, ~2 seconds). You want to extract this into a standalone Python script for a scheduled job. What is the key structural change you must make?",
+      "choices": [
+        "A) Wrap each cell's code in a `try/except` block so failures don't stop execution",
+        "B) Ensure the code runs correctly when executed linearly from top to bottom with no interactive kernel state, since the script will not have cell-by-cell execution",
+        "C) Add `time.sleep()` calls between sections to simulate the notebook's cell boundaries",
+        "D) Convert all variable names to camelCase since standalone scripts require a different naming convention"
+      ],
+      "answer": "B",
+      "explanation": "A standalone script executes top-to-bottom in a single pass with no persistent interactive kernel. All implicit ordering dependencies and stale-state workarounds from the notebook must be resolved so the linear execution path is correct.",
+      "strand": "gtm-application",
+      "tags": [
+        "jupyter-notebooks",
+        "script-extraction",
+        "deployment",
+        "hubspot"
+      ]
+    }
+  ]
+}

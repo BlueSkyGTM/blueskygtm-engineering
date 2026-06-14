@@ -1,0 +1,15 @@
+# Exercises — Gradient Clipping and Mixed Precision
+
+## Exercises
+
+1. **Compute the global L2 gradient norm.** Implement a function that takes a `nn.Module`, runs `loss.backward()`, then computes `sqrt(sum(p.grad.norm()**2 for p in model.parameters()))`. Build a 3-layer MLP, feed it a small batch from `torch.randn(8, 10)`, and print the global norm as a float to two decimal places. Verify the value matches what `torch.nn.utils.clip_grad_norm_(model, max_norm=float('inf'))` returns.
+
+2. **Compare direction distortion.** Create a synthetic gradient vector `g = torch.tensor([47.3, 3.1, -22.0, 0.5, 8.7])`. Apply clip-by-value with `max_val=5.0` and clip-by-norm with `max_norm=5.0`. Print both results and the cosine similarity of each to the original `g`. Run the script and confirm that clip-by-norm preserves cosine similarity at 1.000 while clip-by-value drops it.
+
+3. **Configure a full AMP training loop.** Build a 20-step training loop on a small synthetic regression dataset (`y = 3x + noise`, 256 samples, 4 features). Use `torch.amp.autocast(device_type='cpu', dtype=torch.bfloat16)` and `torch.amp.GradScaler` is unnecessary for CPU/BF16 — document why. For each step, print `step, loss, current_scale`. Verify loss decreases over the 20 steps.
+
+4. **Compare FP16, BF16, FP32 numerical behavior.** Generate a tensor of magnitudes `torch.tensor([1e-8, 1e-7, 1e-6, 1e-4, 1.0, 1e2, 1e4, 1e6])`. For each dtype in `{torch.float16, torch.bfloat16, torch.float32}`, cast the tensor, then cast back to FP32, and print a table showing original value, round-tripped value, and whether the value survived (nonzero, finite). Count representation failures per dtype and print the totals.
+
+5. **Build a combined gradient-clipping + AMP trainer with diagnostics.** Implement a training handler that accepts a model, dataloader, optimizer, and a config dict specifying `precision` (one of `fp32`, `fp16_amp`, `bf16_amp`) and `clip_norm` (float or `None`). For FP16-AMP, use `GradScaler` with dynamic loss scaling. At each step, log to `stdout`: `step | loss | grad_norm | scale_factor | overflow_bool`. Run it for 100 steps on a synthetic binary classification task (lead-score-style tabular features sampled from a Gaussian mixture). Persist the handler to `handlers/amp_clipping_trainer.py`. Demonstrate it runs by invoking it as `python handlers/amp_clipping_trainer.py` and showing the first 5 and last 5 log lines.
+
+6. **Evaluate training stability across configurations.** Using the handler from Exercise 5, run four configurations on a lead-scoring dataset derived from CRM-style fields (revenue band, employee count, industry code, engagement score — synthetically generated is fine if no real API is available): `{fp32, fp16_amp, fp16_amp+clip=1.0, bf16_amp}`. For each, record final loss, number of overflow events (steps where `overflow_bool=True`), and whether training diverged (loss went to NaN/Inf). Produce a markdown comparison report with a results table and a one-paragraph recommendation for which configuration to ship in production. Persist the report to `outputs/skill-amp-stability-report.md`.

@@ -1,0 +1,15 @@
+# Exercises — Audio-Language Models â€” Qwen2.5-Omni, Audio Flamingo, GPT-4o Audio
+
+## Exercises
+
+1. **Compare** the three audio-language model architectures by implementing a Python script that encodes Qwen2.5-Omni, Audio Flamingo, and GPT-4o Audio as structured dictionaries containing `encoder_type`, `token_bridge`, and `output_modalities`. Print a formatted comparison table to the terminal showing all three models side by side. Run the script and confirm the table renders correctly.
+
+2. **Implement** audio-to-text inference using Qwen2.5-Omni via Hugging Face `transformers`. Load the model with `Qwen2_5OmniForConditionalGeneration`, feed it a short `.wav` file containing human speech, and print the generated text response to the terminal. Then run the same pipeline on a non-speech audio clip (e.g., a recording of a doorbell or keyboard typing) and print that response separately. Verify that both outputs are non-empty and differ from each other.
+
+3. **Evaluate** model information loss across three audio categories. Gather or synthesize three audio files: (a) a spoken sentence, (b) an environmental sound such as rain or traffic, and (c) a synthetic tone such as a sine sweep or DTMF dial tone. Run each through Qwen2.5-Omni's audio-to-text pipeline, print the model's response for each, then write a brief structured assessment — as printed JSON — labeling which category shows the most compression-related information loss and why based on the response quality.
+
+4. **Configure** an audio ingestion pipeline that accepts a directory of `.wav` or `.mp3` recordings and outputs a single JSON array to the terminal. Each element should contain `filename`, `detected_audio_type` (speech, environmental, synthetic), `transcription_or_description`, and `confidence_signal` derived from response length or repetition. Run the pipeline against a folder with at least three mixed audio files and verify the JSON is valid and parseable.
+
+5. **Build** a GTM enrichment handler that processes recorded sales calls or voicemails, extracts structured intent signals (e.g., `company_name`, `pain_points`, `buying_stage`, `next_action`), and emits a payload formatted for ingestion into a Clay or Apollo enrichment workflow. Use Qwen2.5-Omni for audio understanding and format the output as a list of enrichment-ready dictionaries keyed by prospect identifier. Write the handler so it reads from a configurable audio directory and outputs both to the terminal and to a JSON file. Save the implementation to `handlers/audio_enrichment_handler.py`.
+
+6. **Design** and implement a benchmark harness that runs Qwen2.5-Omni against all three audio categories (speech, environmental, synthetic) with at least two samples each, records response latency and qualitative fidelity rating per sample, and generates a Markdown report comparing where the architecture's audio compression strategy succeeds versus fails. The report must include a summary table and a section of recommendations for which audio categories are safe for automated GTM signal extraction versus which require human review. Save the report to `outputs/skill-audio-model-comparison.md`.

@@ -1,0 +1,15 @@
+# Exercises — Moderation Systems â€” OpenAI, Perspective, Llama Guard
+
+## Exercises
+
+1. **Implement** a script that sends three test strings through the OpenAI Moderation API (`openai.moderations.create`) and prints each input alongside its category flags and scores in a readable table. Use one clearly benign string, one clearly toxic string, and one ambiguous string. Run the script and confirm the terminal shows structured category data with boolean flags and numeric scores.
+
+2. **Parse** Llama Guard's response format for the same three inputs. Load `meta-llama/LlamaGuard-3-8b` via the Hugging Face `transformers` pipeline, submit each string, and print the raw model output. Write a parser function that extracts the `safe/unsafe` label and the violated category list. Print both the raw and parsed output side by side so you can verify your parser handles all three cases correctly.
+
+3. **Compare** toxicity score distributions across OpenAI Moderation, Perspective API, and Llama Guard. Build a script that feeds a list of 15 inputs (mix of clean company descriptions, mildly aggressive sales copy, and overtly toxic text) through all three providers. For each provider, compute the mean and max score across the corpus and print a comparison table showing which provider is most sensitive per input. Run the script and capture the terminal output.
+
+4. **Configure** category-specific blocking rules for three GTM content types: scraped company data, AI-generated outbound emails, and LinkedIn connection messages. Define a Python dict mapping each content type to per-category thresholds (e.g., scraped data allows higher violence tolerance because security firms appear naturally; generated emails require near-zero sexual content threshold). Run 10 sample inputs through your rule engine and print which inputs are blocked, which category triggered the block, and which content type rule was applied.
+
+5. **Build** a moderation waterfall in `handlers/moderation_waterfall.py` that tries OpenAI Moderation first, falls back to Perspective API if OpenAI returns `safe` but the input exceeds a minimum length, and falls back to Llama Guard if Perspective's score is ambiguous (between 0.3 and 0.7). The waterfall must stop on the first definitive result (clear pass or clear fail) and log which provider made the final decision. Feed it 20 mixed inputs and print a summary showing the decision distribution across providers. Artifact: `handlers/moderation_waterfall.py`.
+
+6. **Evaluate** false positive and false negative rates for your waterfall against a labeled test corpus. Create a JSONL file with 50 entries, each containing a `text` field, a `label` field (`toxic` or `clean`), and a `source` field (`scraped`, `email`, `linkedin`). Run every entry through the waterfall from Exercise 5 and compute precision, recall, and F1 per content type. Write the results as a markdown report to `outputs/skill-moderation-eval.md` including a confusion matrix table and a one-paragraph analysis of which content type produces the most errors. Artifact: `outputs/skill-moderation-eval.md`.

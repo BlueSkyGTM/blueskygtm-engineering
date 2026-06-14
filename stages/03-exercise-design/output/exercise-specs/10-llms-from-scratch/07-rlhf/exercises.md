@@ -1,0 +1,13 @@
+# Exercises — RLHF: Reward Model + PPO
+
+## Exercises
+
+1. **Compute the Bradley-Terry ranking loss for a single preference pair.** Given reward scores `r_chosen = 2.3` and `r_rejected = 0.7` for a cold-email outreach prompt, implement a script that prints: (a) the reward difference, (b) the sigmoid probability that the chosen response is preferred, and (c) the binary cross-entropy loss. Then recompute with `r_chosen = 0.9`, `r_rejected = 0.8` and observe how the loss changes when the model barely separates the pair. Print both sets of results side by side.
+
+2. **Implement the PPO clipped surrogate objective for a batch of samples.** Write a function that accepts arrays of `old_log_prob`, `new_log_prob`, and `advantage` (with `clip_epsilon=0.2`), computes the probability ratio for each sample, applies the clip, and returns the per-sample objective as the minimum of the clipped and unclipped versions. Feed it 8 synthetic samples where two have large ratio shifts (>1.4 or <0.6). Print each sample's ratio, clipped ratio, final objective value, and a boolean flag indicating whether it was clipped.
+
+3. **Train a reward model on synthetic GTM preference pairs and measure held-out accuracy.** Generate 200 pairs of `(prompt, chosen_outreach, rejected_outreach)` where chosen emails have moderate length, include a value prop, and avoid hype words — rejected emails are either too short, stuffed with buzzwords, or use aggressive CTAs. Extract features such as `[word_count, num_buzzwords, has_value_prop, has_question]` and train a logistic model on `(chosen_features − rejected_features)` with label 1. Report accuracy on 50 held-out pairs. Then generate 50 adversarial pairs where the rejected email is longer but lower quality — report whether accuracy drops and by how much.
+
+4. **Implement a full PPO update step for a toy policy with a KL penalty against a frozen reference model.** Initialize a policy (a small MLP or logistic head), copy it as the frozen reference, and define a simple reward function. For a batch of 32 samples: compute rewards, compute advantages using mean-centered baseline, compute the clipped surrogate loss plus KL divergence penalty (coefficient 0.1), and execute one gradient step. Print pre-update mean reward, post-update mean reward, the loss value, KL divergence, and the count of clipped samples.
+
+5. **Build a reward-hacking diagnostic that compares reward model scores against held-out quality judgments.** Create a synthetic enrichment scenario using Apollo-style company profiles: generate 100 sales email responses where 50 are genuinely high-quality (ground truth quality = 1, based on personalization and relevance) and 50 are reward-hacked (

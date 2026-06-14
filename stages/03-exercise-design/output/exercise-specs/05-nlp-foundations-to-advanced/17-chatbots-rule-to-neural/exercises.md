@@ -1,0 +1,13 @@
+# Exercises — Chatbots â€” Rule-Based to Neural to LLM Agents
+
+## Exercises
+
+1. **Implement a rule-based state machine chatbot** that runs a SDR discovery qualification flow with five states: `GREETING → ASK_COMPANY → ASK_TEAM_SIZE → ASK_BUDGET → COMPLETE`. Read user input from `stdin`, use keyword matching to extract the relevant slot value from each response, transition states, and print a full state-transition trace at the end of the conversation. Run it through a complete flow and verify the trace shows all five states in order with the extracted slot values.
+
+2. **Build a bag-of-words intent classifier** with at least five GTM intents (`demo_request`, `pricing_inquiry`, `integration_question`, `competitor_comparison`, `support_issue`). Define 3–4 training utterances per intent, vectorize them using bag-of-words, and classify new utterances by computing cosine similarity against each intent's centroid. Route the top-scoring intent to a labeled response handler function that prints a templated reply. Test with three utterances that are paraphrases of your training data but not exact matches, and verify each is classified and routed correctly.
+
+3. **Construct a ReAct loop** that answers prospect-research questions by dispatching to two tool functions: `lookup_company(domain)` (use the Apollo or Clearbit company-enrichment API) and `lookup_contact(email)` (use Apollo's person search). The loop must parse the model's output for a tool-call directive, execute the matching function, append the JSON result back into the message context, and repeat until the model emits a final answer with no tool call. Run it with the query "What does acme.com do and who is their Head of Sales?" and verify both tool calls appear in the execution trace printed to the terminal.
+
+4. **Compare failure modes** across your rule-based bot (Exercise 1) and your intent classifier (Exercise 2) by feeding the same five edge-case inputs through both: a typo-laden utterance, a multi-intent utterance, an out-of-scope question, an empty string, and an adversarial prompt. Print a table to the terminal showing, for each input, which architecture produced a correct routing, which produced a wrong routing, and which produced no routing at all. Identify the single input where the architectures disagree most and explain why in a comment.
+
+5. **Build a hybrid qualification handler** that combines deterministic state-machine flow control (BANT: Budget, Authority, Need, Timeline — asked in a fixed order) with LLM-based slot extraction. The state machine enforces the question sequence; an LLM call parses each free-text user response and extracts the structured slot value. The handler must log every state, every LLM extraction

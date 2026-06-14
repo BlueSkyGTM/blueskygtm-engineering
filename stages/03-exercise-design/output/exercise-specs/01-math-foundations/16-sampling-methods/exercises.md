@@ -1,0 +1,15 @@
+# Exercises — Sampling Methods
+
+## Exercises
+
+1. **Implement** all five sampling methods — simple random, stratified, systematic, reservoir, and weighted — as standalone functions in a single script `samplers.py`. Use a population of 100 accounts with known revenue tiers as your input. Run each function with `n=20` and print the method name, selected IDs, and execution time. Verify that reservoir sampling produces exactly 20 items from a synthetic stream of 10,000 records without holding the full stream in memory.
+
+2. **Compare** proportional and equal allocation on a dataset of 500 accounts split across three verticals (SaaS: 250, FinTech: 150, Healthcare: 100). Compute a stratified sample of 60 accounts using both strategies. Print the per-stratum counts for each method alongside the population percentage. State in a printed summary which method distorts subpopulation proportions and which preserves them.
+
+3. **Build** a token sampler that accepts a list of `(token, probability)` pairs and applies temperature scaling, then top-k filtering, then top-p (nucleus) filtering in sequence. Run it on a distribution of 10 tokens with a known temperature of 0.8, k of 4, and p of 0.9. Print the filtered probability distribution after each step and the final selected token. Re-run with temperature 2.0 and observe how the distribution flattens — print the entropy of the pre- and post-sampling distributions to quantify the change.
+
+4. **Detect** accidental bias by simulating convenience sampling: load a CRM export sorted by annual revenue descending and take the first 50 accounts as your sample. Compute the mean revenue and vertical distribution of this sample against the full population. Print the delta and identify which sampling method would correct the bias. Re-sample using the prescribed method and print the corrected deltas to confirm the bias is reduced.
+
+5. **Compute** stratified sample sizes for an ICP model training set. Build `handlers/icp_sampler.py` that reads a JSON file of 2,000 accounts tagged with three revenue tiers (Enterprise, Mid-Market, SMB) and two geographies (NA, EMEA). Accept `--allocation {proportional,equal}` and `--total_n` as CLI args. Output a JSON file to `outputs/icp_sample_plan.json` containing the per-stratum sample sizes and the reasoning for which allocation strategy suits ICP model training. Print a summary table to the terminal showing population share vs. sample share for each stratum.
+
+6. **Design** and implement a production sampling pipeline `signals/examples/apollo_sampler.py` that pulls 5,000 accounts from an Apollo export CSV, enriches them with a revenue-tier column, and applies stratified sampling with a minimum-per-stratum floor of 30 to ensure rare segments are represented. The script must log which strata hit the floor, apply weighted sampling within Enterprise accounts (weighting by employee count), and write the final sample to `outputs/apollo_training_sample.csv`. Print a bias report showing whether the sample's industry distribution matches the source within a 5% tolerance band.

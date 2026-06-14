@@ -98,6 +98,14 @@
 .lz-nav .lz-nav-t { font-size: 0.84rem; color: var(--cream); }
 .lz-nav .next { text-align: right; margin-left: auto; }
 
+/* ---------- terminal return cue ---------- */
+.lz-terminal-cue {
+  width: 100%; margin-top: var(--s5);
+  font-size: 0.72rem; letter-spacing: 0.06em; text-align: center;
+  color: var(--cream-mute);
+  border-top: 1px solid var(--line-soft); padding-top: var(--s4);
+}
+
 /* ---------- error / fallback ---------- */
 .lz-error { padding: var(--s7) 0; }
 .lz-error h2 { font-family: var(--pix); font-size: 2rem; text-transform: uppercase; color: var(--terra); margin-bottom: var(--s3); }

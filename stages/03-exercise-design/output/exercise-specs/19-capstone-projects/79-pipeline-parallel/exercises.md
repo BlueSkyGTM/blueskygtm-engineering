@@ -1,0 +1,15 @@
+# Exercises — Pipeline Parallel and Bubble Analysis
+
+## Exercises
+
+1. **Implement** a tick-based simulator for the naive (FIFO) pipeline schedule. Given `N=4` stages and `M=8` microbatches, print a grid where rows are stages, columns are ticks, and each cell shows `F{i}` (forward for microbatch `i`), `B{i}` (backward), or `·` (idle). Compute the bubble fraction by counting idle cells divided by total cells. Print the computed value alongside the closed-form `(N-1)/(M+N-1)` and confirm they match.
+
+2. **Compare** GPipe and 1F1B schedules by extending the simulator from Exercise 1 to accept a `--schedule gpipe|1f1b` flag. For `M=8, N=4`, print both timelines and report bubble fraction and peak activation count (maximum number of microbatch activations held in memory at any tick by any single stage). Confirm that bubble fractions are identical but peak activation counts differ, and print the ratio.
+
+3. **Implement** the interleaved 1F1B schedule with `V=2` model chunks per stage. For `N=4, M=8, V=2`, print the tick-based timeline and compute bubble fraction. Then run the same configuration with `V=1` (standard 1F1B) and print both bubble fractions side by side. Verify the interleaved schedule produces a smaller bubble.
+
+4. **Build** a heterogeneous-stage simulator where each stage has a different per-microbatch compute time (e.g., `stage_times = [1, 2, 3, 1, 2]` ticks). Simulate GPipe with `M=10` microbatches across these 5 stages. Compute and print: (a) overall utilization, (b) per-stage utilization, and (c) the utilization floor imposed by the slowest stage. Then re-partition the same total compute into 5 stages with equal per-stage time and print the utilization improvement.
+
+5. **Design** a stage-partitioning optimizer for a transformer with `L=24` layers where odd-numbered layers take 1.5× longer than even-numbered layers (simulating attention-heavy vs. FFN-heavy layers). Implement a greedy or dynamic-programming partitioner that splits the 24 layers into `N=4` stages minimizing the maximum stage compute time. Output the partition to `handlers/stage_partition_optimizer.py` as a callable function `partition_layers(layer_times, num_stages) -> list[tuple[int,int]]`. Print the equal-layer partition vs. your optimized partition, their max-stage-times, and the resulting bubble fractions under 1F1B with `M=16`. Include a docstring arguing why equal-compute beats equal-parameter partitioning.
+
+6. **Apply** pipeline-parallel thinking to a GTM enrichment pipeline. Model four sequential enrichment steps as pipeline stages: Clay email enrichment (300ms), Apollo company lookup (800ms), webhook delivery (200ms), CRM write (500ms). Implement a tick-based simulator (1 tick = 100ms) that processes `M=20` leads through this pipeline. Print the timeline, per-stage utilization, and bubble fraction. Then reconfigure the Apollo stage into two parallel sub-stages (split the 800ms workload into two 400ms stages) and print the improved utilization. Save the simulator and results to `signals/examples/enrichment_pipeline_bubble.py`.

@@ -1,0 +1,15 @@
+# Exercises — Inference Optimization
+
+## Exercises
+
+1. **Build two inference loops for the same local model — one with KV cache enabled and one with it disabled — and print prefill latency, decode latency, and total tokens generated for a fixed 500-token prompt.** Run each loop three times and print the median values. Your terminal output should clearly show separate prefill (ms) and decode (ms/token) measurements for both configurations so you can verify the cache's impact on decode specifically.
+
+2. **Load the same small model (e.g., `microsoft/phi-2` or equivalent) in FP16, INT8, and INT4 precision using your framework of choice.** For each precision level, print: (a) peak GPU memory in MB, (b) tokens-per-second over a 20-token generation, and (c) the raw text output for the prompt `"Explain what a sales pipeline is in two sentences."` Compare the outputs side by side in your terminal to assess quality degradation.
+
+3. **Configure a local model server (vLLM, TGI, or llama.cpp server) with continuous batching enabled.** Write a script that sends the same prompt to the endpoint at concurrency levels of 1, 5, 10, 25, and 50 simultaneous requests using `asyncio` and `aiohttp`. Print a table showing concurrency level, average latency (ms), and aggregate throughput (tokens/sec) for each tier. The throughput scaling curve should be visible in your terminal output.
+
+4. **Trace speculative decoding on a local model by enabling a draft model and logging per-step acceptance rates.** Run 10 generation steps on the prompt `"Write a cold email intro for a VP of Sales at a SaaS company"` and print, for each step: the number of tokens proposed by the draft model, the number accepted by the verifier, and the acceptance ratio. Then compute and print the effective tokens-per-second with and without speculative decoding to show the net speedup.
+
+5. **Deploy a quantized INT8 or INT4 model behind an OpenAI-compatible endpoint with manually tuned `max_batch_size` and `gpu_memory_utilization` (KV cache limit) parameters.** Write a brief benchmark report as a Markdown file to `outputs/skill-optimized-inference.md` that includes: your chosen configuration values, a throughput comparison against default settings across 25 concurrent requests, and a 3-sentence analysis of where the bottleneck moved after tuning. The report must reference real numbers from your terminal runs.
+
+6. **Design and implement a GTM enrichment inference pipeline that processes a batch of 50 company descriptions (pulled from Apollo's API or a local CSV of exported Clay rows) through your optimized endpoint to classify each as Enterprise / Mid-Market / SMB.** Configure the pipeline to use continuous batching, log per-request latency, and write results to `handlers/gtm-segmentation.py`. Your terminal output should show all 50 classifications completing in a single batched pass, with the total wall-clock time printed at the end. Verify correctness by spot-checking three classifications against manual judgment.

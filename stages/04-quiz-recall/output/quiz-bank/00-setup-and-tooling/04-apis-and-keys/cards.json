@@ -1,0 +1,118 @@
+{
+  "lesson_id": "00-setup-and-tooling/04-apis-and-keys",
+  "topic": "APIs & Keys",
+  "questions": [
+    {
+      "id": "pre-q0",
+      "type": "pre",
+      "stem": "You commit a Python script to a public GitHub repo with `API_KEY = \"sk-ant-live-abc123\"` written directly in the source. What is the most likely consequence?",
+      "choices": [
+        "A) The key is safe because GitHub only serves pages, not raw source files.",
+        "B) Automated bots scrape the key within minutes and begin making calls at your expense.",
+        "C) The API provider encrypts the key on their end, so the exposure is harmless.",
+        "D) GitHub automatically redacts API keys in public repos before serving them."
+      ],
+      "answer": "B",
+      "explanation": "Public repos are continuously scanned by bots looking for exposed credentials. A hardcoded key will be discovered and abused almost immediately, which is why keys must live in environment variables loaded at runtime.",
+      "strand": "ai-engineering",
+      "tags": [
+        "api-keys",
+        "security"
+      ]
+    },
+    {
+      "id": "check-q0",
+      "type": "check",
+      "stem": "An API key is best described as which kind of credential, and what protects it from interception in transit?",
+      "choices": [
+        "A) An encrypted token; the provider decrypts it using a public-private key pair on each request.",
+        "B) A shared secret presented verbatim on every request; HTTPS transport encryption protects it in transit.",
+        "C) A one-time password that changes after each call; the server tracks a counter.",
+        "D) A digital certificate signed by a CA; TLS validates the certificate chain."
+      ],
+      "answer": "B",
+      "explanation": "An API key is a shared secret — the same string is sent on every request. There is no per-call encryption of the key itself; security relies on HTTPS transport encryption and keeping the key out of observable locations like logs or Git repos.",
+      "strand": "ai-engineering",
+      "tags": [
+        "api-keys",
+        "authentication-model"
+      ]
+    },
+    {
+      "id": "check-q1",
+      "type": "check",
+      "stem": "Your `APIClient` receives an HTTP 429 from the Anthropic API. What should the client do before raising an error to the caller?",
+      "choices": [
+        "A) Immediately retry the same request as fast as possible to maximize throughput.",
+        "B) Parse the response, raise `RateLimitError` instantly, and terminate the program.",
+        "C) Wait an exponentially increasing delay (e.g., 1s, 2s, 4s) and retry before eventually surfacing the error.",
+        "D) Switch to a different API key from a hardcoded list of backups."
+      ],
+      "answer": "C",
+      "explanation": "Exponential backoff — waiting progressively longer between retries — gives the rate limiter time to reset without hammering the server. Only after several failed attempts should the client raise a `RateLimitError` to the caller.",
+      "strand": "ai-engineering",
+      "tags": [
+        "rate-limiting",
+        "retry-logic",
+        "api-client"
+      ]
+    },
+    {
+      "id": "check-q2",
+      "type": "check",
+      "stem": "A Clay enrichment waterfall tries Apollo first, then Hunter, then People Data Labs. All three providers use key-in-header authentication. What does this imply about the client code at each waterfall step?",
+      "choices": [
+        "A) Each step must implement a completely different authentication protocol with its own SDK.",
+        "B) Each step follows the same shape: read the provider's key from the environment, inject it into a header, then parse the JSON response.",
+        "C) Only the first step (Apollo) needs a key; the fallback steps inherit Apollo's session.",
+        "D) Each step must negotiate an OAuth 2.0 access token before making its call."
+      ],
+      "answer": "B",
+      "explanation": "When providers share the same auth pattern (key-in-header), each waterfall step reuses the same APIClient shape: load the provider-specific key from the environment, inject it into the appropriate header, and handle the response consistently.",
+      "strand": "gtm-application",
+      "tags": [
+        "enrichment-waterfall",
+        "clay",
+        "authentication-patterns"
+      ]
+    },
+    {
+      "id": "post-q0",
+      "type": "post",
+      "stem": "You build an `APIClient` that maps HTTP status codes to typed exceptions: `AuthError` for 401/403, `RateLimitError` for 429, `ServerError` for 5xx. A batch enrichment job makes 500 calls and the 37th call returns 503. If no retry logic is implemented, what happens?",
+      "choices": [
+        "A) The client silently skips the failed call and continues with call 38.",
+        "B) The client raises `ServerError`, halting the entire batch job at call 37.",
+        "C) The client retries call 37 indefinitely until the server recovers.",
+        "D) The client maps 503 to `AuthError` because it is not a 200 response."
+      ],
+      "answer": "B",
+      "explanation": "A 503 is a server-side error that maps to `ServerError`. Without retry logic, the exception propagates up and stops the batch immediately. This demonstrates why retry-with-backoff and batch-level error handling are essential for GTM workflows that make many sequential API calls.",
+      "strand": "ai-engineering",
+      "tags": [
+        "error-handling",
+        "typed-exceptions",
+        "batch-processing"
+      ]
+    },
+    {
+      "id": "post-q1",
+      "type": "post",
+      "stem": "You call the Anthropic API two ways: (1) using the `anthropic` Python SDK, and (2) using raw `requests.post` with the same key. Both succeed. From a debuggability standpoint, what is the key trade-off between these two approaches?",
+      "choices": [
+        "A) The SDK is impossible to debug because it hides all network activity; raw requests expose every byte.",
+        "B) Raw requests are always preferred in production because the SDK adds unnecessary latency.",
+        "C) The SDK handles auth headers, retries, and response parsing automatically but hides low-level details; raw requests give full visibility into headers and status codes but require you to implement all of that manually.",
+        "D) There is no meaningful difference — the SDK is just a thin wrapper that passes through raw HTTP with no added logic."
+      ],
+      "answer": "C",
+      "explanation": "SDKs abstract away auth, retries, and parsing — reducing boilerplate but making it harder to inspect the exact request/response cycle. Raw `requests` gives full control and visibility, which is valuable for debugging, but shifts all implementation burden onto you.",
+      "strand": "gtm-application",
+      "tags": [
+        "sdk-vs-requests",
+        "debuggability",
+        "api-client"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Exercises — Build Your Own Mini Framework
+
+## Exercises
+
+1. **Implement a `Node` subclass called `UppercaseNode`** that reads a key `raw_text` from the context, uppercases it, and writes the result to `transformed_text`. Wire it into a `Pipeline` alongside a `SeedNode` that sets `raw_text` to `"hello world"`. Run the pipeline and print the context dictionary. Confirm `transformed_text` appears as `"HELLO WORLD"` in your terminal output.
+
+2. **Configure a `RetryNode` that calls a flaky function** — one that raises `RuntimeError` on its first two invocations and succeeds on the third. Set the node's retry policy to `max_attempts=5` with `backoff_base=0.1` (exponential). Run the pipeline and print (a) the final context output and (b) a counter showing how many attempts the node actually consumed. Your terminal should show attempt count `3` and a successful result.
+
+3. **Build a `ConditionalNode` that branches on a context field.** Your node should read a `lead_score` integer from the context. If `lead_score >= 80`, write `route` set to `"sales"`. Otherwise write `route` set to `"nurture"`. Run the pipeline twice — once with a seed value of `92`, once with `45` — and print the resulting `route` from each run. Verify both branches produce the correct terminal output.
+
+4. **Apply the mini-framework to a GTM enrichment cascade.** Implement three nodes: (1) `FetchCompanyNode` that takes a domain string and writes a `company_name` to context, (2) `EnrichEmployeeCountNode` that reads `company_name` and writes `employee_count`, and (3) `ScoreLeadNode` that reads `employee_count` and writes a `tier` (`"enterprise"` if > 500, `"smb"` otherwise). Seed the pipeline with the domain `"stripe.com"` (or any domain you choose). Run it and print the final context. No scaffold — define every class yourself.
+
+5. **Extend your pipeline with a fallback node and branching logic for a real enrichment API.** Call the Apollo Person Search API (or Hunter.io, or Clearbit) inside a `FetchContactNode` with retry (`max_attempts=3`, `backoff_base=0.5`). If retries exhaust, a `FallbackNode` writes `contact_status` set to `"enrichment_failed"` and the pipeline short-circuits to a `LogFailureNode` instead of proceeding to scoring. If enrichment succeeds, the pipeline continues to a `ScoreContactNode`. Feed it three test domains — one valid, one that returns no results, and one malformed URL. Print the context after each run. Produce your implementation as a runnable script at `handlers/enrichment_pipeline.py`.
+
+6. **Design a written evaluation comparing your mini-framework to LangChain's `RunnableSequence` and Prefect's task graph for a specific GTM workload: a multi-step account-scoring pipeline that pulls CRM data from HubSpot, enriches with Apollo, scores with an LLM call, and writes results back to a CRM custom field.** Identify which abstractions each production tool provides that your mini-framework omits (serialization, observability, parallel execution, deployment, state persistence). Conclude with a recommendation: custom framework or existing library — and justify it. Write your evaluation to `outputs/skill-framework-evaluation.md`.

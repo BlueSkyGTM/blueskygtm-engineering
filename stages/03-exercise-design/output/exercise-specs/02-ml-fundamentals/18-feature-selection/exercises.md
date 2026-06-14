@@ -1,0 +1,13 @@
+# Exercises — Feature Selection
+
+## Exercises
+
+1. **Implement** a correlation-threshold filter on the lesson's sample dataset. Compute the full correlation matrix, extract the columns whose absolute correlation with the target exceeds 0.3, and print the surviving feature names to the terminal. Re-run with thresholds of 0.2 and 0.5 and print how many features survive at each cutoff.
+
+2. **Compute** mutual information scores between every feature and the target using `sklearn.feature_selection.mutual_info_classif` (or `mutual_info_regression` for a continuous target). Print a sorted list of feature names with their MI scores. Identify which features rank in the top 5 by MI but rank outside the top 10 by absolute correlation — these are your nonlinear-signal candidates.
+
+3. **Diagnose** multicollinearity on a dataset that contains at least two redundant features (you may construct one synthetically: e.g., `employee_count` and `estimated_revenue` derived from headcount). Compute the Variance Inflation Factor for each feature, iteratively drop the feature with the highest VIF above 10, and print the before/after feature list plus the final VIF values. Compare the surviving feature set against what a correlation-threshold filter alone would have kept.
+
+4. **Evaluate** permutation importance on a trained `RandomForestClassifier` using `sklearn.inspection.permutation_importance`. Use any tabular dataset (the lesson's sample, a `sklearn.datasets` entry, or a Kaggle CSV). Print the top 10 features by permutation importance alongside the model's built-in `feature_importances_`. Identify at least one feature that the model's built-in importance over- or under-ranks relative to permutation importance, and write a one-sentence explanation of why the two methods disagree for that feature.
+
+5. **Build** a feature-selection handler for a GTM signal dataset. Ingest a Clay or Apollo enrichment export CSV of company/lead signals (you may use a sample from `signals/examples/` or export a 50-row slice from your own Clay table — include columns like firmographics, technographic counts, intent scores, and engagement signals). Run a two-stage pipeline: (1) filter step using variance threshold + correlation threshold + mutual information, then (2) permutation importance on a `GradientBoostingClassifier` trained to predict a binary `converted` target. Print the final selected feature list and each feature's surviving score to the terminal. Persist the handler at `handlers/gtm_feature_selector.py` and write a markdown summary of the selected features, the rationale for each cut, and the dimensionality reduction (original feature count → final) to `outputs/skill-feature-selection.md`.

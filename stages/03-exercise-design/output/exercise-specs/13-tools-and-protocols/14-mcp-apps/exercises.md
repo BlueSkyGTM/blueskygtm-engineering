@@ -1,0 +1,11 @@
+# Exercises — MCP Apps â€” Interactive UI Resources via `ui://`
+
+## Exercises
+
+1. **Implement a minimal `ui://` resource endpoint.** Build an MCP server with one tool (`show_welcome`) whose result includes `_meta.ui.resourceUri` set to `ui://welcome`. Register a resource handler for that URI that returns an HTML string with MIME type `text/html;profile=mcp-app`. Start the server in stdio mode and call the tool from a client script — print the full tool result JSON and the resource read response so you can verify both the `_meta` annotations and the MIME type in your terminal.
+
+2. **Compare three CSP policies against the same HTML.** Write a single HTML document that includes an inline `<script>`, an inline `<style>`, and a `fetch("https://example.com")` call. Then write three CSP strings: (a) allow everything, (b) allow inline script + style but block network, (c) block everything (`default-src 'none'`). Write a test harness that loads the HTML under each CSP in a headless browser (or a sandboxed iframe simulation), attempts each operation, and prints a table showing pass/fail per policy per operation. Verify that policy (c) blocks all three and that policy (b) blocks only the fetch.
+
+3. **Implement a `postMessage` bridge that round-trips a tool call.** Create a `ui://echo` resource whose HTML renders a text input and a submit button. When the user submits, the HTML sends `{ type: "mcp:invoke", tool: "echo", args: { message: "<input value>" } }` via `window.parent.postMessage`. Implement the host-side listener that receives this message, calls the `echo` tool on your MCP server (which returns the message uppercased), and sends the result back to the iframe via a reply `postMessage`. The iframe displays the result. Run the full flow headlessly and print the final displayed value to confirm the round-trip works.
+
+4. **Render enriched Clay account data in a `ui://` list view.** Load 10 enriched company records from a Clay export (CSV or API) — fields: `company_name`, `domain`, `industry`, `employee_count`, `icp_fit_score`. Implement an MCP tool `view_accounts` that returns `ui://accounts/list`, and register that resource to render the accounts as an HTML table with sortable columns
