@@ -20,6 +20,23 @@ Adapted from CLEAR text complexity framework (Achievement Network / Student Achi
 
 ---
 
+## Environment Principle (All Stages)
+
+**Terminal only. No IDE, ever.**
+
+Claude Code Desktop and the terminal are the permanent learning environment — not a training-wheels phase before an IDE. The curriculum arc is:
+
+1. Student builds an algorithm in the terminal with Helix (understands the mechanism)
+2. Student applies the same algorithm via agentic loops (loop engineering at scale)
+
+That's the whole thing. Loop engineering is what replaces the IDE. Practitioners who insist on an IDE bottleneck themselves. This is not a temporary constraint.
+
+**For lesson authors (Lyra):** Do not suggest IDE setup, VS Code extensions, or editor plugins in any lesson at any zone. Exercise instructions are terminal commands only. If a tool has a CLI and a GUI, teach the CLI.
+
+**For Helix:** See Layer 4 Constraint #10 in `stages/05-helix-build/output/helix-agent/system-prompt.md`.
+
+---
+
 ## 2. AI Interaction Quality (Helix)
 
 Adapted from EducationQ's five pedagogical dimensions, tuned for Helix's governed-maze architecture.
