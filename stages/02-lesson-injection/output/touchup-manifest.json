@@ -1,0 +1,458 @@
+[
+  {
+    "id": "00-setup-and-tooling/01-dev-environment",
+    "phase": "00-setup-and-tooling",
+    "lesson": "01-dev-environment",
+    "topic": "Dev Environment",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\01-dev-environment\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/02-git-and-collaboration",
+    "phase": "00-setup-and-tooling",
+    "lesson": "02-git-and-collaboration",
+    "topic": "Git & Collaboration",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\02-git-and-collaboration\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/03-gpu-setup-and-cloud",
+    "phase": "00-setup-and-tooling",
+    "lesson": "03-gpu-setup-and-cloud",
+    "topic": "GPU Setup & Cloud",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\03-gpu-setup-and-cloud\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/04-apis-and-keys",
+    "phase": "00-setup-and-tooling",
+    "lesson": "04-apis-and-keys",
+    "topic": "APIs & Keys",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\04-apis-and-keys\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/05-jupyter-notebooks",
+    "phase": "00-setup-and-tooling",
+    "lesson": "05-jupyter-notebooks",
+    "topic": "Jupyter Notebooks",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\05-jupyter-notebooks\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/06-python-environments",
+    "phase": "00-setup-and-tooling",
+    "lesson": "06-python-environments",
+    "topic": "Python Environments",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\06-python-environments\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/07-docker-for-ai",
+    "phase": "00-setup-and-tooling",
+    "lesson": "07-docker-for-ai",
+    "topic": "Docker for AI",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\07-docker-for-ai\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/08-editor-setup",
+    "phase": "00-setup-and-tooling",
+    "lesson": "08-editor-setup",
+    "topic": "Editor Setup",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\08-editor-setup\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/09-data-management",
+    "phase": "00-setup-and-tooling",
+    "lesson": "09-data-management",
+    "topic": "Data Management",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\09-data-management\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/10-terminal-and-shell",
+    "phase": "00-setup-and-tooling",
+    "lesson": "10-terminal-and-shell",
+    "topic": "Terminal & Shell",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\10-terminal-and-shell\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/11-linux-for-ai",
+    "phase": "00-setup-and-tooling",
+    "lesson": "11-linux-for-ai",
+    "topic": "Linux for AI",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\11-linux-for-ai\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "00-setup-and-tooling/12-debugging-and-profiling",
+    "phase": "00-setup-and-tooling",
+    "lesson": "12-debugging-and-profiling",
+    "topic": "Debugging and Profiling",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\00-setup-and-tooling\\12-debugging-and-profiling\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/01-linear-algebra-intuition",
+    "phase": "01-math-foundations",
+    "lesson": "01-linear-algebra-intuition",
+    "topic": "Linear Algebra Intuition",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\01-linear-algebra-intuition\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/02-vectors-matrices-operations",
+    "phase": "01-math-foundations",
+    "lesson": "02-vectors-matrices-operations",
+    "topic": "Vectors, Matrices & Operations",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\02-vectors-matrices-operations\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/03-matrix-transformations",
+    "phase": "01-math-foundations",
+    "lesson": "03-matrix-transformations",
+    "topic": "Matrix Transformations",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\03-matrix-transformations\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/04-calculus-for-ml",
+    "phase": "01-math-foundations",
+    "lesson": "04-calculus-for-ml",
+    "topic": "Calculus for Machine Learning",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\04-calculus-for-ml\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/05-chain-rule-and-autodiff",
+    "phase": "01-math-foundations",
+    "lesson": "05-chain-rule-and-autodiff",
+    "topic": "Chain Rule & Automatic Differentiation",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\05-chain-rule-and-autodiff\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/06-probability-and-distributions",
+    "phase": "01-math-foundations",
+    "lesson": "06-probability-and-distributions",
+    "topic": "Probability and Distributions",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\06-probability-and-distributions\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/07-bayes-theorem",
+    "phase": "01-math-foundations",
+    "lesson": "07-bayes-theorem",
+    "topic": "Bayes' Theorem",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\07-bayes-theorem\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/08-optimization",
+    "phase": "01-math-foundations",
+    "lesson": "08-optimization",
+    "topic": "Optimization",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\08-optimization\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/09-information-theory",
+    "phase": "01-math-foundations",
+    "lesson": "09-information-theory",
+    "topic": "Information Theory",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\09-information-theory\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/10-dimensionality-reduction",
+    "phase": "01-math-foundations",
+    "lesson": "10-dimensionality-reduction",
+    "topic": "Dimensionality Reduction",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\10-dimensionality-reduction\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/11-singular-value-decomposition",
+    "phase": "01-math-foundations",
+    "lesson": "11-singular-value-decomposition",
+    "topic": "Singular Value Decomposition",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\11-singular-value-decomposition\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/12-tensor-operations",
+    "phase": "01-math-foundations",
+    "lesson": "12-tensor-operations",
+    "topic": "Tensor Operations",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\12-tensor-operations\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/13-numerical-stability",
+    "phase": "01-math-foundations",
+    "lesson": "13-numerical-stability",
+    "topic": "Numerical Stability",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\13-numerical-stability\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/14-norms-and-distances",
+    "phase": "01-math-foundations",
+    "lesson": "14-norms-and-distances",
+    "topic": "Norms and Distances",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\14-norms-and-distances\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/15-statistics-for-ml",
+    "phase": "01-math-foundations",
+    "lesson": "15-statistics-for-ml",
+    "topic": "Statistics for Machine Learning",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\15-statistics-for-ml\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/16-sampling-methods",
+    "phase": "01-math-foundations",
+    "lesson": "16-sampling-methods",
+    "topic": "Sampling Methods",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\16-sampling-methods\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/17-linear-systems",
+    "phase": "01-math-foundations",
+    "lesson": "17-linear-systems",
+    "topic": "Linear Systems",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\17-linear-systems\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/18-convex-optimization",
+    "phase": "01-math-foundations",
+    "lesson": "18-convex-optimization",
+    "topic": "Convex Optimization",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\18-convex-optimization\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/19-complex-numbers",
+    "phase": "01-math-foundations",
+    "lesson": "19-complex-numbers",
+    "topic": "Complex Numbers for AI",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\19-complex-numbers\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/20-fourier-transform",
+    "phase": "01-math-foundations",
+    "lesson": "20-fourier-transform",
+    "topic": "The Fourier Transform",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\20-fourier-transform\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/21-graph-theory",
+    "phase": "01-math-foundations",
+    "lesson": "21-graph-theory",
+    "topic": "Graph Theory for Machine Learning",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\21-graph-theory\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "01-math-foundations/22-stochastic-processes",
+    "phase": "01-math-foundations",
+    "lesson": "22-stochastic-processes",
+    "topic": "Stochastic Processes",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\01-math-foundations\\22-stochastic-processes\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/01-what-is-machine-learning",
+    "phase": "02-ml-fundamentals",
+    "lesson": "01-what-is-machine-learning",
+    "topic": "What Is Machine Learning",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\01-what-is-machine-learning\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/02-linear-regression",
+    "phase": "02-ml-fundamentals",
+    "lesson": "02-linear-regression",
+    "topic": "Linear Regression",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\02-linear-regression\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/03-logistic-regression",
+    "phase": "02-ml-fundamentals",
+    "lesson": "03-logistic-regression",
+    "topic": "Logistic Regression",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\03-logistic-regression\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/04-decision-trees",
+    "phase": "02-ml-fundamentals",
+    "lesson": "04-decision-trees",
+    "topic": "Decision Trees and Random Forests",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\04-decision-trees\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/05-support-vector-machines",
+    "phase": "02-ml-fundamentals",
+    "lesson": "05-support-vector-machines",
+    "topic": "Support Vector Machines",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\05-support-vector-machines\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/06-knn-and-distances",
+    "phase": "02-ml-fundamentals",
+    "lesson": "06-knn-and-distances",
+    "topic": "K-Nearest Neighbors and Distances",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\06-knn-and-distances\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/07-unsupervised-learning",
+    "phase": "02-ml-fundamentals",
+    "lesson": "07-unsupervised-learning",
+    "topic": "Unsupervised Learning",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\07-unsupervised-learning\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/08-feature-engineering",
+    "phase": "02-ml-fundamentals",
+    "lesson": "08-feature-engineering",
+    "topic": "Feature Engineering & Selection",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\08-feature-engineering\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/09-model-evaluation",
+    "phase": "02-ml-fundamentals",
+    "lesson": "09-model-evaluation",
+    "topic": "Model Evaluation",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\09-model-evaluation\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/10-bias-variance",
+    "phase": "02-ml-fundamentals",
+    "lesson": "10-bias-variance",
+    "topic": "Bias-Variance Tradeoff",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\10-bias-variance\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/11-ensemble-methods",
+    "phase": "02-ml-fundamentals",
+    "lesson": "11-ensemble-methods",
+    "topic": "Ensemble Methods",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\11-ensemble-methods\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/12-hyperparameter-tuning",
+    "phase": "02-ml-fundamentals",
+    "lesson": "12-hyperparameter-tuning",
+    "topic": "Hyperparameter Tuning",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\12-hyperparameter-tuning\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/13-ml-pipelines",
+    "phase": "02-ml-fundamentals",
+    "lesson": "13-ml-pipelines",
+    "topic": "ML Pipelines",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\13-ml-pipelines\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/14-naive-bayes",
+    "phase": "02-ml-fundamentals",
+    "lesson": "14-naive-bayes",
+    "topic": "Naive Bayes",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\14-naive-bayes\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/15-time-series",
+    "phase": "02-ml-fundamentals",
+    "lesson": "15-time-series",
+    "topic": "Time Series Fundamentals",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\15-time-series\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/16-anomaly-detection",
+    "phase": "02-ml-fundamentals",
+    "lesson": "16-anomaly-detection",
+    "topic": "Anomaly Detection",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\16-anomaly-detection\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/17-imbalanced-data",
+    "phase": "02-ml-fundamentals",
+    "lesson": "17-imbalanced-data",
+    "topic": "Handling Imbalanced Data",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\17-imbalanced-data\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "02-ml-fundamentals/18-feature-selection",
+    "phase": "02-ml-fundamentals",
+    "lesson": "18-feature-selection",
+    "topic": "Feature Selection",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\02-ml-fundamentals\\18-feature-selection\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "03-deep-learning-core/01-the-perceptron",
+    "phase": "03-deep-learning-core",
+    "lesson": "01-the-perceptron",
+    "topic": "The Perceptron",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\01-the-perceptron\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "03-deep-learning-core/02-multi-layer-networks",
+    "phase": "03-deep-learning-core",
+    "lesson": "02-multi-layer-networks",
+    "topic": "Multi-Layer Networks and Forward Pass",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\02-multi-layer-networks\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "03-deep-learning-core/03-backpropagation",
+    "phase": "03-deep-learning-core",
+    "lesson": "03-backpropagation",
+    "topic": "Backpropagation from Scratch",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\03-backpropagation\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "03-deep-learning-core/04-activation-functions",
+    "phase": "03-deep-learning-core",
+    "lesson": "04-activation-functions",
+    "topic": "Activation Functions",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\04-activation-functions\\docs\\en.md",
+    "status": "pending"
+  },
+  {
+    "id": "03-deep-learning-core/05-loss-functions",
+    "phase": "03-deep-learning-core",
+    "lesson": "05-loss-functions",
+    "topic": "Loss Functions",
+    "output_file": "stages\\02-lesson-injection\\output\\hybrid-lessons\\03-deep-learning-core\\05-loss-functions\\docs\\en.md",
+    "status": "pending"
+  }
+]
