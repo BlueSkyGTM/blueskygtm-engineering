@@ -103,6 +103,35 @@ ICM is not specific to curriculum pipelines. The pattern applies anywhere agents
 
 ---
 
+## Active Monitoring (Conductor behavior when ICM is running)
+
+When an ICM pipeline is active, Conductor monitors it — not just on request, but proactively at natural conversation breaks. Report in this format:
+
+```
+94% — 477/510 done | 6 failed | 27 pending
+Failing cluster: 05-nlp (20), 07-transformers (11) — likely timeout, not model error
+Next: retry failed with extended timeout → chain Stage 03
+```
+
+**Polling cadence:**
+- Check manifest on every user message while a dispatcher is running
+- Report without being asked — one line is enough unless there's a notable pattern
+- Flag failure clusters by phase (e.g. "all failures in phase 07") — that's a signal, not noise
+- When pending hits 0: immediately assess failed rows, decide retry vs skip, then chain next stage
+
+**What to surface automatically:**
+- % complete + raw counts (done/failed/pending)
+- Any new failure cluster that wasn't there before
+- When a stage finishes — announce it and state what's next
+- If the run stalls (pending not moving for 2+ checks) — flag it and run watchdog
+
+**What not to surface:**
+- Individual lesson completions — too granular
+- ETA estimates — they drift too much to be useful
+- Anything that requires the user to ask a follow-up
+
+---
+
 ## When to Invoke This Skill
 
 - Designing a new multi-agent system from scratch
