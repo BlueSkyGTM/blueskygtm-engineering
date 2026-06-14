@@ -2058,14 +2058,15 @@
   },
   {
     "id": "10-llms-from-scratch/06-instruction-tuning-sft",
-    "status": "failed",
+    "status": "done",
     "stage": "02",
     "phase": "10-llms-from-scratch",
     "lesson": "06-instruction-tuning-sft",
     "topic": "Instruction Tuning (SFT)",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\instruction-tuning-sft-draft.md",
     "output_file": "",
-    "updated_at": "2026-06-14T00:27:53Z"
+    "updated_at": "2026-06-14T00:27:53Z",
+    "written_by": "conductor-manual"
   },
   {
     "id": "10-llms-from-scratch/07-rlhf",
@@ -3015,14 +3016,15 @@
   },
   {
     "id": "14-agent-engineering/04-tree-of-thoughts-lats",
-    "status": "failed",
+    "status": "done",
     "stage": "02",
     "phase": "14-agent-engineering",
     "lesson": "04-tree-of-thoughts-lats",
     "topic": "Tree of Thoughts and LATS: Deliberate Search",
     "s1_outline": "stages\\01-gtm-skeleton\\output\\lessons\\tree-of-thoughts-and-lats-deliberate-search-draft.md",
     "output_file": "",
-    "updated_at": "2026-06-14T00:32:38Z"
+    "updated_at": "2026-06-14T00:32:38Z",
+    "written_by": "conductor-manual"
   },
   {
     "id": "14-agent-engineering/05-self-refine-and-critic",
